@@ -1,0 +1,154 @@
+"use client";
+
+import { useEffect, useState, useRef  } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import  Counter from "@/components/ui/counter"
+import { Clock, Code, Building2, Sparkles, Users, Laptop, Truck, UserCheck } from "lucide-react";
+import { motion , useInView} from "framer-motion";
+import Scene from "./Scene";
+
+export default function Hero() {
+   const [scrollY, setScrollY] = useState(0);
+   const ref = useRef(null);
+   
+   const isInView = useInView(ref, { once: true });
+
+   useEffect(() => {
+      const handleScroll = () => {
+         setScrollY(window.scrollY);
+      };
+
+      
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+   }, []);
+
+   return (
+      <section className="relative w-full py-20 lg:pb-10 lg:pt-8 overflow-hidden">
+         {/* Background Elements */}
+         <div className="absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background to-background/50" />
+
+            {/* Animated Gradient Orbs */}
+            <div
+               className="absolute top-1/4 -left-20 w-80 h-80 rounded-full bg-gradient-to-r from-primary/20 to-blue-400/20 blur-3xl"
+               style={{
+                  transform: `translate(${scrollY * 0.1}px, ${
+                     scrollY * -0.05
+                  }px)`,
+                  opacity: Math.max(0.2, 1 - scrollY * 0.001),
+               }}
+            />
+            <div
+               className="absolute bottom-1/3 -right-20 w-80 h-80 rounded-full bg-gradient-to-r from-blue-400/20 to-primary/20 blur-3xl"
+               style={{
+                  transform: `translate(${scrollY * -0.1}px, ${
+                     scrollY * 0.05
+                  }px)`,
+                  opacity: Math.max(0.2, 1 - scrollY * 0.001),
+               }}
+            />
+
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+         </div>
+
+         <div className="container px-4 md:px-12 relative">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+               <motion.div
+                  className="flex flex-col justify-center space-y-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+               >
+                  <div className="!w-fit flex items-center rounded-full border px-3 py-1 text-sm">
+                     <Sparkles className="mr-1 h-3.5 w-3.5 text-primary" />
+                     <span>Giải pháp công nghệ toàn diện</span>
+                  </div>
+
+                  <div className="space-y-4">
+                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/70">
+                        GENSOL <br />
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+                           Đồng hành cùng bạn
+                        </span>
+                     </h1>
+                     <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                        Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững.
+                        Giải pháp công nghệ toàn diện, Logistics và Nhân sự theo yêu cầu.
+                     </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                     <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90 transition-all duration-300"
+                     >
+                        Liên hệ tư vấn
+                     </Button>
+                     <Button
+                        size="lg"
+                        variant="outline"
+                        className="group relative overflow-hidden border-primary"
+                     >
+                        <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-blue-400/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                        <span className="relative">Tìm hiểu thêm</span>
+                     </Button>
+                  </div>
+
+                  <div className="flex items-center gap-8">
+                     <div className="flex flex-col items-center">
+                        <div ref={ref} className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+                           {isInView && <Counter to={50} suffix="+" />}
+                        </div>
+                         <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                           <Building2 className="h-4 w-4 text-blue-400" />
+                           Dự án
+                        </div>
+                     </div>
+                     <div className="h-10 border-r border-border"></div>
+                     <div className="flex flex-col items-center">
+                        <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+                           {isInView && <Counter to={10} suffix="+" />}
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                           <Laptop className="h-4 w-4 text-blue-400" />
+                           Dịch vụ
+                        </div>
+                     </div>
+                     <div className="h-10 border-r border-border"></div>
+                     <div className="flex flex-col items-center">
+                        <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+                           24/7
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                           <UserCheck className="h-4 w-4 text-blue-400" />
+                           Hỗ trợ
+                        </div>
+                     </div>
+                  </div>
+               </motion.div>
+
+               <motion.div
+                  className="relative mx-auto lg:ml-auto h-[700px] w-[700px] cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+               >
+                     {/* Decorative Elements */}
+                     <div className="absolute -top-6 -left-6 w-12 h-12 rounded-lg border border-primary/30 bg-background/50 backdrop-blur-sm flex items-center justify-center z-20">
+                        <Code className="h-6 w-6 text-primary" />
+                     </div>
+                     <div className="absolute -bottom-6 -right-6 w-12 h-12 rounded-lg border border-blue-400/30 bg-background/50 backdrop-blur-sm flex items-center justify-center z-20">
+                        <Truck className="h-6 w-6 text-blue-400" />
+                     </div>
+
+                     {/* 3D Scene */}
+                     <Scene />
+               </motion.div>
+            </div>
+         </div>
+      </section>
+   );
+}
