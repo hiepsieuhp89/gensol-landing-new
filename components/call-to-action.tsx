@@ -6,11 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Globe as GlobeIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, SERVICE_OPTIONS, COMPANY_INFO, type EmailTemplateParams } from '@/lib/emailjs';
 import { useToast } from "@/hooks/use-toast";
+import { Globe } from "@/components/magicui/globe";
+import { Pointer } from "@/components/magicui/pointer";
 
 interface FormData {
    name: string;
@@ -252,6 +255,12 @@ export default function Contact() {
                   opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5])
                }}
             />
+            
+            {/* Globe Background Effect */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10">
+               <Globe className="w-[800px] h-[800px]" />
+            </div>
+            
             <motion.div 
                className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
                style={{
