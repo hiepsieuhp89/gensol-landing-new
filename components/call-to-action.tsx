@@ -1,17 +1,51 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useInView, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG, SERVICE_OPTIONS, COMPANY_INFO, type EmailTemplateParams } from '@/lib/emailjs';
+import { useToast } from "@/hooks/use-toast";
+
+interface FormData {
+   name: string;
+   email: string;
+   phone: string;
+   service: string;
+   message: string;
+}
+
+interface FormStatus {
+   type: 'idle' | 'loading' | 'success' | 'error';
+   message: string;
+}
 
 export default function Contact() {
    const ref = useRef(null);
+   const formRef = useRef<HTMLFormElement>(null);
    const isInView = useInView(ref, { once: true, amount: 0.2 });
+   const { toast } = useToast();
+   
+   // Form state management
+   const [formData, setFormData] = useState<FormData>({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: ''
+   });
+   
+   const [formStatus, setFormStatus] = useState<FormStatus>({
+      type: 'idle',
+      message: ''
+   });
+   
+   const [isSubmitting, setIsSubmitting] = useState(false);
    
    const { scrollYProgress } = useScroll({
       target: ref,
@@ -32,17 +66,138 @@ export default function Contact() {
    const contactInfoX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [60, 0, 0, -30]);
    const contactInfoRotate = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -3]);
 
+   // Reset status after 5 seconds
+   useEffect(() => {
+      if (formStatus.type !== 'idle') {
+         const timer = setTimeout(() => {
+            setFormStatus({ type: 'idle', message: '' });
+         }, 5000);
+         return () => clearTimeout(timer);
+      }
+   }, [formStatus.type]);
+
+   // Handle form input changes
+   const handleInputChange = (field: keyof FormData, value: string) => {
+      setFormData(prev => ({
+         ...prev,
+         [field]: value
+      }));
+   };
+
+   // Validate form data
+   const validateForm = (): boolean => {
+      if (!formData.name.trim()) {
+         toast({
+            variant: "destructive",
+            title: "Lỗi xác thực",
+            description: "Vui lòng nhập họ và tên"
+         });
+         return false;
+      }
+      
+      if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+         toast({
+            variant: "destructive",
+            title: "Lỗi xác thực",
+            description: "Vui lòng nhập email hợp lệ"
+         });
+         return false;
+      }
+      
+      if (!formData.phone.trim()) {
+         toast({
+            variant: "destructive",
+            title: "Lỗi xác thực",
+            description: "Vui lòng nhập số điện thoại"
+         });
+         return false;
+      }
+      
+      return true;
+   };
+
+   // Handle form submission
+   const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      
+      if (!validateForm()) return;
+      
+      setIsSubmitting(true);
+
+      // Show loading toast
+      toast({
+         title: "Đang gửi yêu cầu...",
+         description: "Vui lòng chờ trong giây lát"
+      });
+
+      try {
+         // Prepare template parameters
+         const templateParams: EmailTemplateParams = {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            service: formData.service || 'Không chỉ định',
+            message: formData.message || 'Không có tin nhắn cụ thể',
+            to_email: COMPANY_INFO.email,
+            company_name: COMPANY_INFO.name,
+            company_email: COMPANY_INFO.email,
+            website_link: COMPANY_INFO.website
+         };
+
+         // Send email using EmailJS
+         const result = await emailjs.send(
+            EMAILJS_CONFIG.SERVICE_ID,
+            EMAILJS_CONFIG.TEMPLATE_ID,
+            templateParams,
+            EMAILJS_CONFIG.PUBLIC_KEY
+         );
+
+         if (result.status === 200) {
+            // Show success toast
+            toast({
+               title: "Gửi thành công! 🎉",
+               description: "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+            });
+            
+            // Reset form
+            setFormData({
+               name: '',
+               email: '',
+               phone: '',
+               service: '',
+               message: ''
+            });
+            
+            // Reset form ref
+            if (formRef.current) {
+               formRef.current.reset();
+            }
+         }
+      } catch (error) {
+         console.error('EmailJS Error:', error);
+         
+         // Show error toast
+         toast({
+            variant: "destructive",
+            title: "Gửi thất bại",
+            description: "Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email."
+         });
+      } finally {
+         setIsSubmitting(false);
+      }
+   };
+
    const contactInfo = [
       {
          icon: <Mail className="h-5 w-5 text-primary" />,
          title: "Email",
-         content: "contact@gensol.vn",
+         content: COMPANY_INFO.email,
          description: "Gửi email cho chúng tôi"
       },
       {
          icon: <Phone className="h-5 w-5 text-primary" />,
          title: "Điện thoại",
-         content: "+84 (0) 123 456 789",
+         content: COMPANY_INFO.phone,
          description: "Gọi trực tiếp cho chúng tôi"
       },
       {
@@ -179,7 +334,7 @@ export default function Contact() {
                   >
                      <h3 className="text-2xl font-bold mb-6">Gửi yêu cầu hợp tác</h3>
                      
-                     <form className="space-y-6">
+                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                         <motion.div 
                            className="grid gap-4 md:grid-cols-2"
                            initial={{ opacity: 0, y: 20 }}
@@ -191,11 +346,24 @@ export default function Contact() {
                         >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Họ và tên *</label>
-                              <Input placeholder="Nhập họ và tên của bạn" />
+                              <Input 
+                                 placeholder="Nhập họ và tên của bạn" 
+                                 value={formData.name}
+                                 onChange={(e) => handleInputChange('name', e.target.value)}
+                                 required
+                                 disabled={isSubmitting}
+                              />
                            </div>
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Email *</label>
-                              <Input type="email" placeholder="email@example.com" />
+                              <Input 
+                                 type="email" 
+                                 placeholder="email@example.com" 
+                                 value={formData.email}
+                                 onChange={(e) => handleInputChange('email', e.target.value)}
+                                 required
+                                 disabled={isSubmitting}
+                              />
                            </div>
                         </motion.div>
                         
@@ -210,21 +378,30 @@ export default function Contact() {
                         >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Số điện thoại *</label>
-                              <Input placeholder="0123 456 789" />
+                              <Input 
+                                 placeholder="0123 456 789" 
+                                 value={formData.phone}
+                                 onChange={(e) => handleInputChange('phone', e.target.value)}
+                                 required
+                                 disabled={isSubmitting}
+                              />
                            </div>
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Dịch vụ quan tâm</label>
-                              <Select>
+                              <Select 
+                                 value={formData.service} 
+                                 onValueChange={(value) => handleInputChange('service', value)}
+                                 disabled={isSubmitting}
+                              >
                                  <SelectTrigger>
                                     <SelectValue placeholder="Chọn dịch vụ" />
                                  </SelectTrigger>
                                  <SelectContent>
-                                    <SelectItem value="software">Phát triển phần mềm</SelectItem>
-                                    <SelectItem value="it-consulting">Tư vấn IT</SelectItem>
-                                    <SelectItem value="hardware">Thiết bị & Linh kiện</SelectItem>
-                                    <SelectItem value="hr">Nhân sự & Tuyển dụng</SelectItem>
-                                    <SelectItem value="logistics">Logistics & Vận tải</SelectItem>
-                                    <SelectItem value="other">Khác</SelectItem>
+                                    {SERVICE_OPTIONS.map((option) => (
+                                       <SelectItem key={option.value} value={option.value}>
+                                          {option.label}
+                                       </SelectItem>
+                                    ))}
                                  </SelectContent>
                               </Select>
                            </div>
@@ -243,6 +420,9 @@ export default function Contact() {
                            <Textarea 
                               placeholder="Vui lòng mô tả chi tiết nhu cầu của bạn..."
                               className="min-h-[120px]"
+                              value={formData.message}
+                              onChange={(e) => handleInputChange('message', e.target.value)}
+                              disabled={isSubmitting}
                            />
                         </motion.div>
                         
@@ -257,9 +437,19 @@ export default function Contact() {
                            <Button 
                               type="submit" 
                               className="w-full bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
+                              disabled={isSubmitting}
                            >
-                              <Send className="h-4 w-4 mr-2" />
-                              Gửi yêu cầu
+                              {isSubmitting ? (
+                                 <>
+                                    <div className="h-4 w-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                    Đang gửi...
+                                 </>
+                              ) : (
+                                 <>
+                                    <Send className="h-4 w-4 mr-2" />
+                                    Gửi yêu cầu
+                                 </>
+                              )}
                            </Button>
                         </motion.div>
                      </form>
