@@ -26,10 +26,13 @@ export default function Model() {
 
     if (group.current) {
       group.current.rotation.x = 0; // Không nghiêng
-      group.current.rotation.y = 0; // Hướng thẳng
+      group.current.rotation.y = 0; // Hướng về bên trái ban đầu (45 độ)
       group.current.rotation.z = 0; // Không nghiêng sang bên
-      group.current.position.y = 1.5; // Dịch lên trên
-      group.current.position.x = -1; // Dịch sang trái
+      group.current.position.y = 2; // Dịch lên trên
+      group.current.position.x = 3 // Dịch sang phải để align với layout mới
+      
+      // Set initial rotation offset to match the starting position
+      setRotationOffset(-Math.PI / 8);
       
       // Enable shadows for all meshes in the model
       group.current.traverse((child) => {
@@ -97,19 +100,20 @@ export default function Model() {
         group.current.rotation.y = spinRotation;
       } else {
         // Mouse tracking - make robot look towards mouse (only when not spinning)
-        const targetRotationY = rotationOffset + (mouse.x * 0.3); // Add offset to maintain position
-        const targetRotationX = mouse.y * 0.2; // Slight vertical tracking
+        // Increased sensitivity for better cursor following
+        const targetRotationY = rotationOffset + (mouse.x * 0.5); // Tăng từ 0.3 lên 0.5 để nhạy hơn
+        const targetRotationX = mouse.y * 0.3; // Tăng từ 0.2 lên 0.3 để nhạy hơn
         
-        // Smooth interpolation for natural movement
-        group.current.rotation.y += (targetRotationY - group.current.rotation.y) * 0.05;
-        group.current.rotation.x += (targetRotationX - group.current.rotation.x) * 0.05;
+        // Faster interpolation for more responsive movement
+        group.current.rotation.y += (targetRotationY - group.current.rotation.y) * 0.08; // Tăng từ 0.05 lên 0.08
+        group.current.rotation.x += (targetRotationX - group.current.rotation.x) * 0.08; // Tăng từ 0.05 lên 0.08
       }
     }
   });
 
   return (
     <group ref={group} onClick={handleClick}>
-      <primitive object={scene} scale={0.07} />
+      <primitive object={scene} scale={0.05} />
     </group>
   );
 }

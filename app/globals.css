@@ -59,6 +59,12 @@
   }
 }
 
+@layer utilities {
+  .bg-radial-gradient {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);

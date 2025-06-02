@@ -30,7 +30,7 @@ export default function Hero() {
    return (
       <motion.section
          ref={ref}
-         className="relative w-full py-20 lg:pb-0 lg:pt-8 overflow-hidden"
+         className="relative w-full py-20 lg:pt-8 overflow-visible"
          style={{ y: heroY, opacity: heroOpacity }}
       >
          {/* Simplified Background Elements */}
@@ -45,10 +45,10 @@ export default function Hero() {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
          </div>
 
-         <div className="container px-4 md:px-12 relative ">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+         <div className="container px-4 md:px-12 relative z-10">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center relative">
                <motion.div
-                  className="flex flex-col justify-start items-start space-y-8 h-full"
+                  className="flex flex-col justify-start items-start space-y-8 h-full z-10"
                   initial={{ opacity: 0, y: 50 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                   transition={{ duration: 0.8 }}
@@ -143,26 +143,14 @@ export default function Hero() {
                   </motion.div>
                </motion.div>
 
-               <motion.div
-                  className="relative mx-auto lg:ml-auto h-[600px] w-[700px] cursor-pointer"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-               >
-                  {/* Simplified floating icons */}
-                  {/* <Button
-                     variant="outline"
-                     className="absolute -top-6 -left-6 w-12 h-12 rounded-lg bg-background/50 backdrop-blur-sm z-20 p-0"
-                  >
-                     <Code className="h-6 w-6 text-primary" />
-                  </Button> */}
-
-                  {/* <div className="absolute -bottom-6 -right-6 w-12 h-12 flex items-center justify-center z-20">
-                     <Truck className="h-6 w-6 text-blue-400" />
-                  </div> */}
-                  <Scene />
-               </motion.div>
+               {/* Empty div to maintain grid layout */}
+               <div className="hidden lg:block"></div>
             </div>
+         </div>
+         
+         {/* Full screen Scene component - Hidden on mobile/tablet */}
+         <div className="hidden lg:block">
+            <Scene />
          </div>
       </motion.section>
    );
