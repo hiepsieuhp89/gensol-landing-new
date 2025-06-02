@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,7 +11,18 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
    const ref = useRef(null);
-   const isInView = useInView(ref, { once: true, amount: 0.2 });
+   const isInView = useInView(ref, { once: false, amount: 0.2 });
+   
+   const { scrollYProgress } = useScroll({
+      target: ref,
+      offset: ["start end", "end start"]
+   });
+
+   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+   const smoothProgress = useSpring(scrollYProgress, springConfig);
+   const y = useTransform(smoothProgress, [0, 0.5, 1], [100, 0, -100]);
+   const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+   const scale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9]);
 
    const contactInfo = [
       {
@@ -51,44 +62,83 @@ export default function Contact() {
    };
 
    const itemVariants = {
-      hidden: { y: 20, opacity: 0 },
+      hidden: { y: 30, opacity: 0, scale: 0.95 },
       visible: {
          y: 0,
          opacity: 1,
-         transition: { duration: 0.5 },
+         scale: 1,
+         transition: { 
+            duration: 0.6,
+            ease: "easeOut"
+         },
       },
    };
 
    return (
-      <section id="lien-he" className="w-full py-20 md:py-32 relative overflow-hidden">
+      <motion.section 
+         id="lien-he" 
+         ref={ref}
+         className="w-full py-12 md:py-16 relative overflow-hidden"
+         style={{ y, opacity }}
+      >
          {/* Background Elements */}
          <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
-            <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl" />
-            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-400/5 to-primary/5 blur-3xl" />
+            <motion.div 
+               className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
+               style={{
+                  scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]),
+                  x: useTransform(smoothProgress, [0, 1], [0, 100]),
+                  y: useTransform(smoothProgress, [0, 1], [0, -50]),
+               }}
+            />
+            <motion.div 
+               className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-400/5 to-primary/5 blur-3xl"
+               style={{
+                  scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.1, 0.8]),
+                  x: useTransform(smoothProgress, [0, 1], [0, -80]),
+                  y: useTransform(smoothProgress, [0, 1], [0, 30]),
+               }}
+            />
          </div>
 
-         <div className="container px-4 md:px-6" ref={ref}>
+         <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
                <motion.div
                   className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5 }}
+                  style={{ scale }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.6 }}
                >
-                  <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                  <motion.div 
+                     className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
+                     initial={{ scale: 0, rotate: -90 }}
+                     animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -90 }}
+                     transition={{ duration: 0.5, delay: 0.2 }}
+                  >
                      Liên hệ với chúng tôi
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl">
+                  </motion.div>
+                  <motion.h2 
+                     className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                     transition={{ duration: 0.6, delay: 0.3 }}
+                  >
                      Sẵn sàng{" "}
                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                         hợp tác?
                      </span>
-                  </h2>
-                  <p className="max-w-[800px] mx-auto text-muted-foreground md:text-lg">
+                  </motion.h2>
+                  <motion.p 
+                     className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                     transition={{ duration: 0.6, delay: 0.4 }}
+                  >
                      Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn 
                      giải pháp phù hợp nhất trong thời gian sớm nhất.
-                  </p>
+                  </motion.p>
                </motion.div>
             </div>
 
@@ -103,11 +153,23 @@ export default function Contact() {
                   <motion.div
                      className="rounded-xl border bg-background/50 backdrop-blur-sm p-8"
                      variants={itemVariants}
+                     whileHover={{ 
+                        scale: 1.01,
+                        transition: { duration: 0.2 }
+                     }}
+                     style={{
+                        y: useTransform(smoothProgress, [0, 0.5, 1], [50, 0, -50]),
+                     }}
                   >
                      <h3 className="text-2xl font-bold mb-6">Gửi yêu cầu hợp tác</h3>
                      
                      <form className="space-y-6">
-                        <div className="grid gap-4 md:grid-cols-2">
+                        <motion.div 
+                           className="grid gap-4 md:grid-cols-2"
+                           initial={{ opacity: 0, y: 20 }}
+                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                           transition={{ duration: 0.5, delay: 0.1 }}
+                        >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Họ và tên *</label>
                               <Input placeholder="Nhập họ và tên của bạn" />
@@ -116,9 +178,14 @@ export default function Contact() {
                               <label className="text-sm font-medium">Email *</label>
                               <Input type="email" placeholder="email@example.com" />
                            </div>
-                        </div>
+                        </motion.div>
                         
-                        <div className="grid gap-4 md:grid-cols-2">
+                        <motion.div 
+                           className="grid gap-4 md:grid-cols-2"
+                           initial={{ opacity: 0, y: 20 }}
+                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                           transition={{ duration: 0.5, delay: 0.2 }}
+                        >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Số điện thoại *</label>
                               <Input placeholder="0123 456 789" />
@@ -139,23 +206,34 @@ export default function Contact() {
                                  </SelectContent>
                               </Select>
                            </div>
-                        </div>
+                        </motion.div>
                         
-                        <div className="space-y-2">
+                        <motion.div 
+                           className="space-y-2"
+                           initial={{ opacity: 0, y: 20 }}
+                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                           transition={{ duration: 0.5, delay: 0.3 }}
+                        >
                            <label className="text-sm font-medium">Mô tả nhu cầu</label>
                            <Textarea 
                               placeholder="Vui lòng mô tả chi tiết nhu cầu của bạn..."
                               className="min-h-[120px]"
                            />
-                        </div>
+                        </motion.div>
                         
-                        <Button 
-                           type="submit" 
-                           className="w-full bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
+                        <motion.div
+                           initial={{ opacity: 0, y: 20 }}
+                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                           transition={{ duration: 0.5, delay: 0.4 }}
                         >
-                           <Send className="h-4 w-4 mr-2" />
-                           Gửi yêu cầu
-                        </Button>
+                           <Button 
+                              type="submit" 
+                              className="w-full bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
+                           >
+                              <Send className="h-4 w-4 mr-2" />
+                              Gửi yêu cầu
+                           </Button>
+                        </motion.div>
                      </form>
                   </motion.div>
                </motion.div>
@@ -175,10 +253,22 @@ export default function Contact() {
                               key={index}
                               className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-colors"
                               variants={itemVariants}
+                              whileHover={{ 
+                                 scale: 1.02,
+                                 x: 5,
+                                 transition: { duration: 0.2 }
+                              }}
+                              style={{
+                                 y: useTransform(smoothProgress, [0, 0.5, 1], [30, 0, -30]),
+                              }}
                            >
-                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                              <motion.div 
+                                 className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
+                                 whileHover={{ rotate: 360, scale: 1.1 }}
+                                 transition={{ duration: 0.5 }}
+                              >
                                  {info.icon}
-                              </div>
+                              </motion.div>
                               <div className="flex-1">
                                  <h4 className="font-semibold text-sm text-muted-foreground">{info.title}</h4>
                                  <p className="font-medium">{info.content}</p>
@@ -193,21 +283,44 @@ export default function Contact() {
                   <motion.div
                      className="rounded-xl border bg-background/50 backdrop-blur-sm p-6"
                      variants={itemVariants}
+                     whileHover={{ 
+                        scale: 1.01,
+                        transition: { duration: 0.2 }
+                     }}
+                     style={{
+                        y: useTransform(smoothProgress, [0, 0.5, 1], [40, 0, -40]),
+                     }}
                   >
                      <h4 className="font-bold mb-4">Công ty GENSOL</h4>
                      <div className="space-y-3 text-sm text-muted-foreground">
-                        <p>
+                        <motion.p
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                           transition={{ duration: 0.4, delay: 0.1 }}
+                        >
                            <strong>Tên đầy đủ:</strong> Công ty TNHH GENSOL
-                        </p>
-                        <p>
+                        </motion.p>
+                        <motion.p
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                           transition={{ duration: 0.4, delay: 0.2 }}
+                        >
                            <strong>Mã số thuế:</strong> [Mã số thuế]
-                        </p>
-                        <p>
+                        </motion.p>
+                        <motion.p
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                           transition={{ duration: 0.4, delay: 0.3 }}
+                        >
                            <strong>Địa chỉ:</strong> [Địa chỉ chi tiết], Hà Nội, Việt Nam
-                        </p>
-                        <p>
+                        </motion.p>
+                        <motion.p
+                           initial={{ opacity: 0, x: -10 }}
+                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                           transition={{ duration: 0.4, delay: 0.4 }}
+                        >
                            <strong>Lĩnh vực:</strong> Công nghệ thông tin, Nhân sự, Logistics
-                        </p>
+                        </motion.p>
                      </div>
                   </motion.div>
 
@@ -215,9 +328,21 @@ export default function Contact() {
                   <motion.div
                      className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 h-48 flex items-center justify-center"
                      variants={itemVariants}
+                     whileHover={{ 
+                        scale: 1.01,
+                        transition: { duration: 0.2 }
+                     }}
+                     style={{
+                        y: useTransform(smoothProgress, [0, 0.5, 1], [50, 0, -50]),
+                     }}
                   >
                      <div className="text-center text-muted-foreground">
-                        <MapPin className="h-8 w-8 mx-auto mb-2" />
+                        <motion.div
+                           whileHover={{ scale: 1.1, rotate: 10 }}
+                           transition={{ duration: 0.3 }}
+                        >
+                           <MapPin className="h-8 w-8 mx-auto mb-2" />
+                        </motion.div>
                         <p className="text-sm">Bản đồ văn phòng</p>
                         <p className="text-xs">Sẽ được cập nhật khi có địa chỉ cụ thể</p>
                      </div>
@@ -225,6 +350,6 @@ export default function Contact() {
                </motion.div>
             </div>
          </div>
-      </section>
+      </motion.section>
    );
 }

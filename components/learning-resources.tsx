@@ -1,13 +1,23 @@
 "use client"
 
 import { useRef } from "react"
-import { useInView } from "framer-motion"
+import { useInView, useScroll, useTransform, useSpring } from "framer-motion"
 import { Users, TrendingUp, Settings, Shield, Clock, Award } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: false, amount: 0.2 })
+  
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+  const smoothProgress = useSpring(scrollYProgress, springConfig);
+  const y = useTransform(smoothProgress, [0, 0.5, 1], [100, 0, -100])
+  const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const scale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9])
 
   const reasons = [
     {
@@ -54,43 +64,78 @@ export default function WhyChooseUs() {
   }
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 40, opacity: 0, scale: 0.9 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 },
+      scale: 1,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut"
+      },
     },
   }
 
   return (
-    <section id="ly-do-chon" className="w-full py-20 md:py-32 relative overflow-hidden">
+    <motion.section 
+      id="ly-do-chon" 
+      ref={ref}
+      className="w-full py-12 md:py-16 relative overflow-hidden"
+      style={{ y, opacity }}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
-        <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl" />
+        <motion.div 
+          className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
+          style={{
+            scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.3, 0.8]),
+            x: useTransform(smoothProgress, [0, 1], [0, -100]),
+            y: useTransform(smoothProgress, [0, 1], [0, 50]),
+          }}
+          initial={{ rotate: 0 }}
+          animate={{ rotate: 180 }}
+          transition={{ duration: 2 }}
+        />
       </div>
 
-      <div className="container px-4 md:px-6" ref={ref}>
+      <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <motion.div
             className="space-y-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
+            style={{ scale }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+            <motion.div 
+              className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
+              initial={{ scale: 0, rotate: 180 }}
+              animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 180 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               Lý do chọn chúng tôi
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl">
+            </motion.div>
+            <motion.h2 
+              className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               Tại sao chọn{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                 GENSOL?
               </span>
-            </h2>
-            <p className="max-w-[800px] mx-auto text-muted-foreground md:text-lg">
+            </motion.h2>
+            <motion.p 
+              className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài 
               với sự phát triển của doanh nghiệp bạn.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
@@ -105,31 +150,60 @@ export default function WhyChooseUs() {
               key={index}
               className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-8 transition-all hover:shadow-lg hover:shadow-primary/5"
               variants={itemVariants}
+              whileHover={{ 
+                scale: 1.02,
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
+              style={{
+                y: useTransform(smoothProgress, [0, 0.5, 1], [60, 0, -60]),
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                initial={{ scale: 0 }}
+                whileHover={{ scale: 1 }}
+              />
 
               <div className="relative z-10">
-                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <motion.div 
+                  className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {reason.icon}
-                </div>
+                </motion.div>
                 
                 <h3 className="mb-4 text-2xl font-bold">{reason.title}</h3>
                 <p className="mb-6 text-muted-foreground leading-relaxed">{reason.description}</p>
                 
                 <div className="grid grid-cols-2 gap-3">
                   {reason.features.map((feature, featureIndex) => (
-                    <div
+                    <motion.div
                       key={featureIndex}
                       className="flex items-center gap-2 text-sm"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 + featureIndex * 0.05 }}
                     >
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                      <motion.div 
+                        className="h-1.5 w-1.5 rounded-full bg-primary"
+                        initial={{ scale: 0 }}
+                        animate={isInView ? { scale: 1 } : { scale: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 + featureIndex * 0.05 + 0.2 }}
+                      />
                       <span className="text-muted-foreground">{feature}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-blue-400 group-hover:w-full transition-all duration-500" />
+              <motion.div 
+                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-blue-400"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              />
             </motion.div>
           ))}
         </motion.div>
@@ -146,16 +220,38 @@ export default function WhyChooseUs() {
               key={index}
               className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6"
               variants={itemVariants}
+              whileHover={{ 
+                scale: 1.05,
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
+              style={{
+                y: useTransform(smoothProgress, [0, 0.5, 1], [30, 0, -30]),
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                initial={{ scale: 0 }}
+                whileHover={{ scale: 1 }}
+              />
               
               <div className="relative z-10">
-                <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 mb-2">
+                <motion.div 
+                  className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 mb-2"
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : { scale: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
                   {stat.number}
-                </div>
-                <div className="text-sm text-muted-foreground font-medium">
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-muted-foreground font-medium"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                >
                   {stat.label}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -164,18 +260,27 @@ export default function WhyChooseUs() {
         {/* Call to Action */}
         <motion.div
           className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border bg-background/50 backdrop-blur-sm">
+          <motion.div 
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border bg-background/50 backdrop-blur-sm"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.2 }
+            }}
+            style={{
+              y: useTransform(smoothProgress, [0, 0.5, 1], [20, 0, -20]),
+            }}
+          >
             <Award className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-muted-foreground">
               Đối tác tin cậy cho sự phát triển bền vững
             </span>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

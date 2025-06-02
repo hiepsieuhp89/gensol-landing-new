@@ -29,17 +29,40 @@ export default function Header() {
                : "bg-transparent"
          )}
       >
-         <div className="container flex h-16 items-center justify-between">
-            <div className="flex items-center gap-2">
-               <div className="relative overflow-hidden rounded">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-400 rounded-lg flex items-center justify-center">
-                     <span className="text-white font-bold text-xl">GS</span>
-                  </div>
-               </div>
-               <div className="flex flex-col">
-                  <span className="font-bold text-lg">GENSOL</span>
-                  <span className="text-xs text-muted-foreground">Giải pháp toàn diện</span>
-               </div>
+         <div className="container px-4 md:px-12 flex h-16 items-center justify-between">
+            <div className='flex items-center gap-2'>
+               <Image
+                  src={"/images/logo.png"}
+                  alt="GENSOL logo"
+                  height={40}
+                  width={40}
+                  className='object-cover filter'
+                  style={{
+                     filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                     imageRendering: 'crisp-edges',
+                  }}
+                  quality={100}
+                  priority
+                  draggable={false}
+                  sizes="40px"
+                  unoptimized={false}
+               />
+               <Image
+                  src={"/images/text-logo.png"}
+                  alt="GENSOL text logo"
+                  height={32}
+                  width={120}
+                  className='filter'
+                  style={{
+                     filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                     imageRendering: 'crisp-edges',
+                  }}
+                  quality={100}
+                  priority
+                  draggable={false}
+                  sizes="110px"
+                  unoptimized={false}
+               />
             </div>
 
             {/* Desktop Navigation */}
