@@ -157,9 +157,9 @@ export default function Hero() {
                      <Code className="h-6 w-6 text-primary" />
                   </Button> */}
 
-                  <div className="absolute -bottom-6 -right-6 w-12 h-12 flex items-center justify-center z-20">
+                  {/* <div className="absolute -bottom-6 -right-6 w-12 h-12 flex items-center justify-center z-20">
                      <Truck className="h-6 w-6 text-blue-400" />
-                  </div>
+                  </div> */}
                   <Scene />
                </motion.div>
             </div>
