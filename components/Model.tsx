@@ -49,7 +49,7 @@ export default function Model() {
     const handleMouseMove = (event: MouseEvent) => {
       // Normalize mouse coordinates to -1 to 1
       const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
+      const y = (event.clientY / window.innerHeight) * 2 - 1;
       setMouse(new Vector2(x, y));
     };
 
