@@ -153,10 +153,11 @@ export default function Contact() {
          );
 
          if (result.status === 200) {
-            // Show success toast
+            // Show success toast with green styling
             toast({
                title: "Gửi thành công! 🎉",
                description: "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+               className: "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100 dark:border-green-400",
             });
             
             // Reset form
