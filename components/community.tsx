@@ -247,14 +247,7 @@ export default function AboutUs() {
                       )
                     }}
                   >
-                    <motion.div
-                      style={{
-                        scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 1.2]),
-                        rotate: useTransform(scrollYProgress, [0, 1], [0, 360])
-                      }}
-                    >
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    </motion.div>
+                    <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-sm text-muted-foreground">{area}</span>
                   </motion.div>
                 ))}

@@ -150,12 +150,12 @@ export default function Hero() {
                   transition={{ duration: 1, delay: 0.5 }}
                >
                   {/* Simplified floating icons */}
-                  <Button
+                  {/* <Button
                      variant="outline"
                      className="absolute -top-6 -left-6 w-12 h-12 rounded-lg bg-background/50 backdrop-blur-sm z-20 p-0"
                   >
                      <Code className="h-6 w-6 text-primary" />
-                  </Button>
+                  </Button> */}
 
                   <div className="absolute -bottom-6 -right-6 w-12 h-12 flex items-center justify-center z-20">
                      <Truck className="h-6 w-6 text-blue-400" />
