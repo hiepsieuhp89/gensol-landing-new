@@ -244,7 +244,7 @@ export default function Contact() {
       <motion.section 
          id="lien-he" 
          ref={ref}
-         className="w-full py-12 md:py-16 relative overflow-hidden"
+         className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden"
          style={{ y, opacity, scale, rotateX, perspective: 1000 }}
       >
          {/* Enhanced Background Elements with scroll effects */}
@@ -258,7 +258,7 @@ export default function Contact() {
             
             {/* Globe Background Effect */}
             <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10">
-               <Globe className="w-[800px] h-[800px]" />
+               {/* <Globe className="w-[800px] h-[800px]" /> */}
             </div>
             
             <motion.div 

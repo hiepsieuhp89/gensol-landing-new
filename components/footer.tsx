@@ -242,38 +242,27 @@ export default function Footer() {
                <div className="flex flex-wrap gap-2">
                   {/* Công nghệ - Phần mềm */}
                   {[
-                     { text: "Phát triển phần mềm", color: "blue" },
-                     { text: "Lập trình máy tính", color: "blue" },
-                     { text: "Tư vấn IT", color: "cyan" },
-                     { text: "Quản trị hệ thống", color: "cyan" },
-                     { text: "UI/UX Design", color: "orange" },
-                     { text: "Xuất bản phần mềm", color: "purple" },
-                     { text: "Game online", color: "purple" },
-                     { text: "Máy tính & Linh kiện", color: "green" },
-                     { text: "Thiết bị điện tử", color: "green" },
-                     { text: "Sửa chữa máy tính", color: "green" },
-                     { text: "Cung ứng nhân lực IT", color: "yellow" },
-                     { text: "Quản lý lao động", color: "yellow" },
-                     { text: "Cho thuê xe", color: "red" },
-                     { text: "Vận tải hành khách", color: "red" },
-                     { text: "Tư vấn quản lý", color: "indigo" },
-                     { text: "Tư vấn kỹ thuật", color: "indigo" },
-                     { text: "Thiết kế chuyên dụng", color: "indigo" }
+                     { text: "Phát triển phần mềm", color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
+                     { text: "Lập trình máy tính", color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
+                     { text: "Tư vấn IT", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
+                     { text: "Quản trị hệ thống", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
+                     { text: "UI/UX Design", color: "bg-orange-50 text-orange-700 ring-orange-600/10 dark:bg-orange-900/30 dark:text-orange-400 dark:ring-orange-400/20" },
+                     { text: "Xuất bản phần mềm", color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
+                     { text: "Game online", color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
+                     { text: "Máy tính & Linh kiện", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: "Thiết bị điện tử", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: "Sửa chữa máy tính", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: "Cung ứng nhân lực IT", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
+                     { text: "Quản lý lao động", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
+                     { text: "Cho thuê xe", color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
+                     { text: "Vận tải hành khách", color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
+                     { text: "Tư vấn quản lý", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
+                     { text: "Tư vấn kỹ thuật", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
+                     { text: "Thiết kế chuyên dụng", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" }
                   ].map((tag, index) => (
                      <motion.span
                         key={index}
-                        className={`inline-flex items-center rounded-sm bg-${tag.color}-50 px-2 py-1 text-xs font-medium text-${tag.color}-700 ring-1 ring-inset ring-${tag.color}-600/10 dark:bg-${tag.color}-900/30 dark:text-${tag.color}-400 dark:ring-${tag.color}-400/20`}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.02 }}
-                        whileHover={{ 
-                           scale: 1.05, 
-                           y: -2,
-                           boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
-                        }}
-                        style={{
-                           y: useTransform(scrollYProgress, [0, 1], [Math.sin(index) * 5, Math.cos(index) * 3])
-                        }}
+                        className={`inline-flex items-center rounded-sm px-2 py-1 text-xs font-medium ring-1 ring-inset ${tag.color}`}
                      >
                         {tag.text}
                      </motion.span>

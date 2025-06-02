@@ -2,14 +2,14 @@
 
 import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
-import { Users, TrendingUp, Settings, Shield, Clock, Award } from "lucide-react"
+import { Users, TrendingUp, Settings, Shield, Clock, Award, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
 import BentoGrid from "./bento-grid"
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -56,13 +56,6 @@ export default function WhyChooseUs() {
     }
   ]
 
-  const stats = [
-    { number: "100%", label: "Cam kết chất lượng" },
-    { number: "24/7", label: "Hỗ trợ khách hàng" },
-    { number: "50+", label: "Dự án thành công" },
-    { number: "5+", label: "Năm kinh nghiệm" }
-  ]
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,7 +71,7 @@ export default function WhyChooseUs() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
         ease: "easeOut"
       },
@@ -86,21 +79,21 @@ export default function WhyChooseUs() {
   }
 
   return (
-    <motion.section 
-      id="ly-do-chon" 
+    <motion.section
+      id="ly-do-chon"
       ref={ref}
-      className="w-full py-12 md:py-16 relative overflow-hidden"
+      className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden"
       style={{ y, opacity, scale, rotateX, perspective: 1000 }}
     >
       {/* Enhanced Background Elements with scroll effects */}
       <div className="absolute inset-0 -z-10">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background"
           style={{
             opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.6])
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
           style={{
             x: useTransform(scrollYProgress, [0, 0.5, 1], [0, -150, 100]),
@@ -119,15 +112,17 @@ export default function WhyChooseUs() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
-              className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
+            <motion.div
+              className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto"
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
+              <Sparkle className="h-4 w-4 text-white" />
               Lý do chọn chúng tôi
             </motion.div>
-            <motion.h2 
+
+            <motion.h2
               className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -138,13 +133,13 @@ export default function WhyChooseUs() {
                 GENSOL?
               </span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài 
+              Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài
               với sự phát triển của doanh nghiệp bạn.
             </motion.p>
           </motion.div>
@@ -155,109 +150,19 @@ export default function WhyChooseUs() {
           <BentoGrid items={reasons} columns={2} />
         </div>
 
-        {/* Stats Section with enhanced animations */}
+        {/* Company Values with enhanced scroll effects */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+          className="text-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          style={{ y: statsY, scale: statsScale }}
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
-              variants={itemVariants}
-              style={{
-                rotateY: useTransform(
-                  scrollYProgress,
-                  [0, 0.4, 0.6, 1],
-                  [index % 2 === 0 ? -20 : 20, 0, 0, index % 2 === 0 ? 15 : -15]
-                ),
-                transformPerspective: 1000,
-                y: useTransform(
-                  scrollYProgress,
-                  [0, 0.3, 0.7, 1],
-                  [40 + index * 10, 0, 0, -20 - index * 5]
-                ),
-                boxShadow: useTransform(
-                  scrollYProgress,
-                  [0, 0.5, 1],
-                  [
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                    "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-                  ]
-                )
-              }}
-            >
-              <div className="relative z-10">
-                <motion.div 
-                  className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 mb-2"
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1 } : { scale: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {stat.number}
-                </motion.div>
-                <motion.div 
-                  className="text-sm text-muted-foreground font-medium"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                  style={{
-                    y: useTransform(
-                      scrollYProgress,
-                      [0, 0.5, 1],
-                      [15, 0, -8]
-                    ),
-                    opacity: useTransform(
-                      scrollYProgress,
-                      [0, 0.3, 0.7, 1],
-                      [0, 1, 1, 0.8]
-                    )
-                  }}
-                >
-                  {stat.label}
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Call to Action with enhanced scroll effects */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border bg-background/50 backdrop-blur-sm"
-            style={{
-              scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.7, 1.3, 1.3, 0.9]),
-              rotateZ: useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 8]),
-              y: useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -20]),
-              boxShadow: useTransform(
-                scrollYProgress,
-                [0, 0.5, 1],
-                [
-                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
-                  "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
-                ]
-              )
-            }}
+            className="inline-flex items-center gap-2 px-4 py-3 rounded-sm border backdrop-blur-sm border-primary bg-[#ffffff95] dark:bg-background text-primary"
+            variants={itemVariants}
           >
-            {/* <motion.div
-              style={{
-                rotate: useTransform(scrollYProgress, [0, 1], [0, 540]),
-                scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.3, 1])
-              }}
-            > */}
-              <Award className="h-4 w-4 text-primary" />
-            {/* </motion.div> */}
-            <span className="text-sm font-medium text-muted-foreground">
+            <Award className="h-4 w-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">
               Đối tác tin cậy cho sự phát triển bền vững
             </span>
           </motion.div>

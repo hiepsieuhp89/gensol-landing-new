@@ -95,7 +95,7 @@ export default function CompanyValues() {
    return (
       <motion.section 
          ref={ref}
-         className="w-full py-12 md:py-16 relative overflow-hidden"
+         className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden"
          style={{ 
             y: sectionY, 
             opacity: sectionOpacity, 

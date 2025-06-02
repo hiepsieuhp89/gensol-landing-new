@@ -110,7 +110,7 @@ export default function Hero() {
                      <Button
                         size="lg"
                         variant="outline"
-                        className="border-primary"
+                        className="border-primary text-primary hover:text-primary"
                      >
                         Tìm hiểu thêm
                      </Button>
@@ -148,9 +148,8 @@ export default function Hero() {
             </div>
          </div>
          
-         {/* Full screen Scene component - Hidden on mobile/tablet */}
          <div className="hidden lg:block">
-            <Scene />
+            {/* <Scene /> */}
          </div>
       </motion.section>
    );
