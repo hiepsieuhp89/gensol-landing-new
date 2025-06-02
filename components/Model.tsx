@@ -29,7 +29,7 @@ export default function Model() {
       group.current.rotation.y = 0; // Hướng thẳng
       group.current.rotation.z = 0; // Không nghiêng sang bên
       group.current.position.y = 1.5; // Dịch lên trên
-      group.current.position.x = -1.2; // Dịch sang trái
+      group.current.position.x = -1; // Dịch sang trái
     }
 
     // Mouse move handler
@@ -96,7 +96,7 @@ export default function Model() {
 
   return (
     <group ref={group} onClick={handleClick}>
-      <primitive object={scene} scale={0.06} />
+      <primitive object={scene} scale={0.07} />
     </group>
   );
 }

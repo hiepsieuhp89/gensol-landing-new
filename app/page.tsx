@@ -6,11 +6,13 @@ import WhyChooseUs from "@/components/learning-resources"
 import CompanyValues from "@/components/testimonials"
 import Contact from "@/components/call-to-action"
 import Footer from "@/components/footer"
+import { ReactLenis, useLenis } from 'lenis/react'
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
+      <ReactLenis root>
       <main className="flex-1">
         <Hero />
         <AboutUs />
@@ -19,6 +21,7 @@ export default function Home() {
         <CompanyValues />
         <Contact />
       </main>
+      </ReactLenis>
       <Footer />
     </div>
   )

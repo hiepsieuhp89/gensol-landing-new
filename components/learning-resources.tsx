@@ -1,23 +1,33 @@
 "use client"
 
 import { useRef } from "react"
-import { useInView, useScroll, useTransform, useSpring } from "framer-motion"
+import { useInView, useScroll, useTransform } from "framer-motion"
 import { Users, TrendingUp, Settings, Shield, Clock, Award } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
   
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   })
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothProgress = useSpring(scrollYProgress, springConfig);
-  const y = useTransform(smoothProgress, [0, 0.5, 1], [100, 0, -100])
-  const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const scale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9])
+
+  // Enhanced scroll-based transforms for why choose us section
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.9])
+  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [12, 0, -8])
+
+  // Reason cards animations
+  const leftCardsX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-80, 0, 0, 40])
+  const rightCardsX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [80, 0, 0, -40])
+  const cardsRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -10])
+
+  // Stats section animations
+  const statsY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [120, 0, 0, -80])
+  const statsScale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.7, 1.1, 1.1, 0.8])
 
   const reasons = [
     {
@@ -64,11 +74,10 @@ export default function WhyChooseUs() {
   }
 
   const itemVariants = {
-    hidden: { y: 40, opacity: 0, scale: 0.9 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      scale: 1,
       transition: { 
         duration: 0.6,
         ease: "easeOut"
@@ -81,37 +90,39 @@ export default function WhyChooseUs() {
       id="ly-do-chon" 
       ref={ref}
       className="w-full py-12 md:py-16 relative overflow-hidden"
-      style={{ y, opacity }}
+      style={{ y, opacity, scale, rotateX, perspective: 1000 }}
     >
-      {/* Background Elements */}
+      {/* Enhanced Background Elements with scroll effects */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
         <motion.div 
-          className="absolute top-1/3 left-1/3 w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
+          className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background"
           style={{
-            scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.3, 0.8]),
-            x: useTransform(smoothProgress, [0, 1], [0, -100]),
-            y: useTransform(smoothProgress, [0, 1], [0, 50]),
+            opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.6])
           }}
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 180 }}
-          transition={{ duration: 2 }}
+        />
+        <motion.div 
+          className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
+          style={{
+            x: useTransform(scrollYProgress, [0, 0.5, 1], [0, -150, 100]),
+            y: useTransform(scrollYProgress, [0, 0.5, 1], [0, 100, -80]),
+            scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.6, 1.4, 1.2, 0.8]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, 270])
+          }}
         />
       </div>
 
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <motion.div
-            className="space-y-2"
-            style={{ scale }}
+            className="space-y-4"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
             <motion.div 
-              className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
-              initial={{ scale: 0, rotate: 180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 180 }}
+              className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
+              initial={{ scale: 0 }}
+              animate={isInView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               Lý do chọn chúng tôi
@@ -139,6 +150,7 @@ export default function WhyChooseUs() {
           </motion.div>
         </div>
 
+        {/* Reasons Grid with enhanced animations */}
         <motion.div
           className="grid gap-8 md:grid-cols-2 mb-16"
           variants={containerVariants}
@@ -150,32 +162,87 @@ export default function WhyChooseUs() {
               key={index}
               className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-8 transition-all hover:shadow-lg hover:shadow-primary/5"
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.02,
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
               style={{
-                y: useTransform(smoothProgress, [0, 0.5, 1], [60, 0, -60]),
+                // Alternating slide animations
+                x: index % 2 === 0 ? leftCardsX : rightCardsX,
+                rotateY: index % 2 === 0 ? cardsRotateY : useTransform(cardsRotateY, (value) => -value),
+                transformPerspective: 1000,
+                scale: useTransform(
+                  scrollYProgress,
+                  [0, 0.3, 0.7, 1],
+                  [0.9, 1, 1, 0.95]
+                ),
+                boxShadow: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.6, 1],
+                  [
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                  ]
+                )
               }}
             >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-              />
-
               <div className="relative z-10">
                 <motion.div 
-                  className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
+                  className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] group-hover:bg-primary/20 transition-colors"
+                  style={{
+                    scale: useTransform(
+                      scrollYProgress,
+                      [0, 0.3, 0.7, 1],
+                      [0.6, 1.3, 1.3, 0.9]
+                    ),
+                    rotate: useTransform(
+                      scrollYProgress,
+                      [0, 1],
+                      [0, index % 2 === 0 ? 180 : -180]
+                    ),
+                    y: useTransform(
+                      scrollYProgress,
+                      [0, 0.5, 1],
+                      [30, 0, -15]
+                    )
+                  }}
                 >
                   {reason.icon}
                 </motion.div>
                 
-                <h3 className="mb-4 text-2xl font-bold">{reason.title}</h3>
-                <p className="mb-6 text-muted-foreground leading-relaxed">{reason.description}</p>
+                <motion.h3 
+                  className="mb-4 text-2xl font-bold"
+                  style={{
+                    x: useTransform(
+                      scrollYProgress,
+                      [0, 0.3, 0.7, 1],
+                      [index % 2 === 0 ? -30 : 30, 0, 0, index % 2 === 0 ? 15 : -15]
+                    ),
+                    opacity: useTransform(
+                      scrollYProgress,
+                      [0, 0.2, 0.8, 1],
+                      [0, 1, 1, 0.8]
+                    )
+                  }}
+                >
+                  {reason.title}
+                </motion.h3>
+                
+                <motion.p 
+                  className="mb-6 text-muted-foreground leading-relaxed"
+                  style={{
+                    x: useTransform(
+                      scrollYProgress,
+                      [0, 0.3, 0.7, 1],
+                      [index % 2 === 0 ? 30 : -30, 0, 0, index % 2 === 0 ? -15 : 15]
+                    ),
+                    opacity: useTransform(
+                      scrollYProgress,
+                      [0, 0.25, 0.75, 1],
+                      [0, 1, 1, 0.7]
+                    )
+                  }}
+                >
+                  {reason.description}
+                </motion.p>
                 
                 <div className="grid grid-cols-2 gap-3">
                   {reason.features.map((feature, featureIndex) => (
@@ -185,12 +252,38 @@ export default function WhyChooseUs() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                       transition={{ duration: 0.4, delay: index * 0.1 + featureIndex * 0.05 }}
+                      style={{
+                        x: useTransform(
+                          scrollYProgress,
+                          [0, 0.4, 0.6, 1],
+                          [20 + featureIndex * 5, 0, 0, -10 - featureIndex * 2]
+                        ),
+                        opacity: useTransform(
+                          scrollYProgress,
+                          [0, 0.3 + featureIndex * 0.05, 0.7 - featureIndex * 0.05, 1],
+                          [0, 1, 1, 0.8]
+                        ),
+                        scale: useTransform(
+                          scrollYProgress,
+                          [0, 0.4, 0.6, 1],
+                          [0.8, 1, 1, 0.9]
+                        )
+                      }}
                     >
                       <motion.div 
                         className="h-1.5 w-1.5 rounded-full bg-primary"
-                        initial={{ scale: 0 }}
-                        animate={isInView ? { scale: 1 } : { scale: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 + featureIndex * 0.05 + 0.2 }}
+                        style={{
+                          scale: useTransform(
+                            scrollYProgress,
+                            [0, 0.5, 1],
+                            [0.5, 1.5, 1]
+                          ),
+                          rotate: useTransform(
+                            scrollYProgress,
+                            [0, 1],
+                            [0, 360]
+                          )
+                        }}
                       />
                       <span className="text-muted-foreground">{feature}</span>
                     </motion.div>
@@ -203,38 +296,59 @@ export default function WhyChooseUs() {
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
+                style={{
+                  scaleY: useTransform(
+                    scrollYProgress,
+                    [0, 0.4, 0.6, 1],
+                    [1, 4, 4, 1]
+                  ),
+                  opacity: useTransform(
+                    scrollYProgress,
+                    [0, 0.3, 0.7, 1],
+                    [0.5, 1, 1, 0.3]
+                  )
+                }}
               />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Stats Section */}
+        {/* Stats Section with enhanced animations */}
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          style={{ y: statsY, scale: statsScale }}
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6"
+              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05,
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
               style={{
-                y: useTransform(smoothProgress, [0, 0.5, 1], [30, 0, -30]),
+                rotateY: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.6, 1],
+                  [index % 2 === 0 ? -20 : 20, 0, 0, index % 2 === 0 ? 15 : -15]
+                ),
+                transformPerspective: 1000,
+                y: useTransform(
+                  scrollYProgress,
+                  [0, 0.3, 0.7, 1],
+                  [40 + index * 10, 0, 0, -20 - index * 5]
+                ),
+                boxShadow: useTransform(
+                  scrollYProgress,
+                  [0, 0.5, 1],
+                  [
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                  ]
+                )
               }}
             >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-              />
-              
               <div className="relative z-10">
                 <motion.div 
                   className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 mb-2"
@@ -249,6 +363,18 @@ export default function WhyChooseUs() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                   transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                  style={{
+                    y: useTransform(
+                      scrollYProgress,
+                      [0, 0.5, 1],
+                      [15, 0, -8]
+                    ),
+                    opacity: useTransform(
+                      scrollYProgress,
+                      [0, 0.3, 0.7, 1],
+                      [0, 1, 1, 0.8]
+                    )
+                  }}
                 >
                   {stat.label}
                 </motion.div>
@@ -257,24 +383,38 @@ export default function WhyChooseUs() {
           ))}
         </motion.div>
 
-        {/* Call to Action */}
+        {/* Call to Action with enhanced scroll effects */}
         <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <motion.div 
+          <motion.div
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border bg-background/50 backdrop-blur-sm"
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.2 }
-            }}
             style={{
-              y: useTransform(smoothProgress, [0, 0.5, 1], [20, 0, -20]),
+              scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.7, 1.3, 1.3, 0.9]),
+              rotateZ: useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 8]),
+              y: useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -20]),
+              boxShadow: useTransform(
+                scrollYProgress,
+                [0, 0.5, 1],
+                [
+                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                  "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+                ]
+              )
             }}
           >
-            <Award className="h-4 w-4 text-primary" />
+            <motion.div
+              style={{
+                rotate: useTransform(scrollYProgress, [0, 1], [0, 540]),
+                scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.3, 1])
+              }}
+            >
+              <Award className="h-4 w-4 text-primary" />
+            </motion.div>
             <span className="text-sm font-medium text-muted-foreground">
               Đối tác tin cậy cho sự phát triển bền vững
             </span>

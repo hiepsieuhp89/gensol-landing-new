@@ -7,17 +7,26 @@ import { motion } from "framer-motion"
 
 export default function AboutUs() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
   
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   })
 
-  // Transform values for scroll animations
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100])
+  // Enhanced scroll-based transforms for about section
+  const y = useTransform(scrollYProgress, [0, 1], [80, -80])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9])
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95])
+  
+  // Vision/Mission cards animations
+  const visionX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-60, 0, 0, 30])
+  const missionX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [60, 0, 0, -30])
+  const cardsRotate = useTransform(scrollYProgress, [0, 0.5, 1], [8, 0, -4])
+  
+  // Business areas animations
+  const businessAreasY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [100, 0, 0, -50])
+  const businessAreasRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-3, 0, 2])
 
   const businessAreas = [
     "Hoạt động tư vấn quản lý",
@@ -46,11 +55,10 @@ export default function AboutUs() {
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0, scale: 0.95 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      scale: 1,
       transition: { 
         duration: 0.6,
         ease: "easeOut"
@@ -63,17 +71,22 @@ export default function AboutUs() {
       id="ve-chung-toi" 
       ref={ref}
       className="w-full py-12 md:py-16 relative overflow-hidden"
-      style={{ y, opacity }}
+      style={{ y, opacity, scale }}
     >
-      {/* Background Elements */}
+      {/* Enhanced Background Elements with scroll effects */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-muted/50 via-background to-background" />
         <motion.div 
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
+          className="absolute inset-0 bg-gradient-to-b from-muted/50 via-background to-background"
           style={{
-            scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]),
-            x: useTransform(scrollYProgress, [0, 1], [0, 100]),
-            y: useTransform(scrollYProgress, [0, 1], [0, -50]),
+            opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.6])
+          }}
+        />
+        <motion.div 
+          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
+          style={{
+            x: useTransform(scrollYProgress, [0, 1], [0, -120]),
+            y: useTransform(scrollYProgress, [0, 1], [0, 80]),
+            scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1.3, 0.8])
           }}
         />
       </div>
@@ -81,16 +94,15 @@ export default function AboutUs() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <motion.div
-            className="space-y-2"
-            style={{ scale }}
+            className="space-y-4"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
             <motion.div 
-              className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
-              initial={{ scale: 0, rotate: -180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+              className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
+              initial={{ scale: 0 }}
+              animate={isInView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               Về chúng tôi
@@ -119,7 +131,7 @@ export default function AboutUs() {
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2 items-start mb-16">
-          {/* Vision & Mission */}
+          {/* Vision & Mission with enhanced animations */}
           <motion.div
             className="space-y-8"
             variants={containerVariants}
@@ -127,27 +139,31 @@ export default function AboutUs() {
             animate={isInView ? "visible" : "hidden"}
           >
             <motion.div
-              className="group relative overflow-hidden rounded-xl border bg-white dark:bg-background backdrop-blur-sm p-6"
+              className="group relative overflow-hidden rounded-xl border bg-white dark:bg-background backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.02,
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
-              style={{
-                y: useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]),
+              style={{ 
+                x: visionX, 
+                rotateY: cardsRotate,
+                transformPerspective: 1000,
+                boxShadow: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.6, 1],
+                  [
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                  ]
+                )
               }}
             >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-              />
               <div className="relative z-10">
                 <motion.div 
-                  className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
+                  className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B]"
+                  style={{
+                    scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1.2, 1.2, 1]),
+                    rotate: useTransform(scrollYProgress, [0, 1], [0, 360])
+                  }}
                 >
                   <Eye className="h-6 w-6 text-primary" />
                 </motion.div>
@@ -160,28 +176,31 @@ export default function AboutUs() {
             </motion.div>
 
             <motion.div
-              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6"
+              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.02,
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
-              style={{
-                y: useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -30]),
+              style={{ 
+                x: missionX, 
+                rotateY: useTransform(cardsRotate, (value) => -value),
+                transformPerspective: 1000,
+                boxShadow: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.6, 1],
+                  [
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    "0 25px 50px -12px rgba(59, 130, 246, 0.15)",
+                    "0 25px 50px -12px rgba(59, 130, 246, 0.15)",
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                  ]
+                )
               }}
             >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-blue-400/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-              />
-              
               <div className="relative z-10">
                 <motion.div 
                   className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-400/10"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
+                  style={{
+                    scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1.2, 1.2, 1]),
+                    rotate: useTransform(scrollYProgress, [0, 1], [0, -360])
+                  }}
                 >
                   <Target className="h-6 w-6 text-blue-400" />
                 </motion.div>
@@ -194,18 +213,21 @@ export default function AboutUs() {
             </motion.div>
           </motion.div>
 
-          {/* Business Areas */}
+          {/* Business Areas with staggered animations */}
           <motion.div
             className="space-y-6"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
+            style={{ y: businessAreasY, rotateX: businessAreasRotate }}
           >
             <motion.div variants={itemVariants}>
               <motion.div 
-                className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.5 }}
+                className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B]"
+                style={{
+                  scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.5, 1.3, 1.3, 0.9]),
+                  rotate: useTransform(scrollYProgress, [0, 1], [0, 180])
+                }}
               >
                 <Building2 className="h-6 w-6 text-primary" />
               </motion.div>
@@ -218,17 +240,30 @@ export default function AboutUs() {
                     variants={itemVariants}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    whileHover={{ 
-                      scale: 1.02,
-                      x: 5,
-                      transition: { duration: 0.2 }
+                    transition={{ duration: 0.5, delay: index * 0.03 }}
+                    style={{
+                      x: useTransform(
+                        scrollYProgress,
+                        [0, 0.3, 0.7, 1],
+                        [40 + index * 2, 0, 0, -20 - index]
+                      ),
+                      opacity: useTransform(
+                        scrollYProgress,
+                        [0, 0.2 + index * 0.02, 0.8 - index * 0.02, 1],
+                        [0, 1, 1, 0.8]
+                      ),
+                      scale: useTransform(
+                        scrollYProgress,
+                        [0, 0.4, 0.6, 1],
+                        [0.9, 1, 1, 0.95]
+                      )
                     }}
                   >
                     <motion.div
-                      initial={{ scale: 0 }}
-                      animate={isInView ? { scale: 1 } : { scale: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
+                      style={{
+                        scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 1.2]),
+                        rotate: useTransform(scrollYProgress, [0, 1], [0, 360])
+                      }}
                     >
                       <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     </motion.div>
@@ -240,7 +275,7 @@ export default function AboutUs() {
           </motion.div>
         </div>
 
-        {/* Company Values */}
+        {/* Company Values with enhanced scroll effects */}
         <motion.div
           className="text-center"
           variants={containerVariants}
@@ -250,12 +285,18 @@ export default function AboutUs() {
           <motion.div
             className="inline-flex items-center gap-4 px-6 py-3 rounded-full border bg-background/50 backdrop-blur-sm"
             variants={itemVariants}
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.2 }
-            }}
             style={{
-              y: useTransform(scrollYProgress, [0, 0.5, 1], [20, 0, -20]),
+              scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.8, 1.1, 1.1, 0.9]),
+              rotateZ: useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 5]),
+              boxShadow: useTransform(
+                scrollYProgress,
+                [0, 0.5, 1],
+                [
+                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                  "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                  "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+                ]
+              )
             }}
           >
             <span className="text-sm font-medium text-muted-foreground">

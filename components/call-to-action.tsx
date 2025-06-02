@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useInView, useScroll, useTransform, useSpring } from "framer-motion";
+import { useInView, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,18 +11,26 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
    const ref = useRef(null);
-   const isInView = useInView(ref, { once: false, amount: 0.2 });
+   const isInView = useInView(ref, { once: true, amount: 0.2 });
    
    const { scrollYProgress } = useScroll({
       target: ref,
       offset: ["start end", "end start"]
    });
 
-   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-   const smoothProgress = useSpring(scrollYProgress, springConfig);
-   const y = useTransform(smoothProgress, [0, 0.5, 1], [100, 0, -100]);
-   const opacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-   const scale = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9]);
+   // Enhanced scroll-based transforms for contact section
+   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.9]);
+   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
+   
+   // Form-specific animations
+   const formY = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [80, 0, 0, -40]);
+   const formRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 3]);
+   
+   // Contact info animations
+   const contactInfoX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [60, 0, 0, -30]);
+   const contactInfoRotate = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -3]);
 
    const contactInfo = [
       {
@@ -40,7 +48,7 @@ export default function Contact() {
       {
          icon: <MapPin className="h-5 w-5 text-primary" />,
          title: "Địa chỉ",
-         content: "Hà Nội, Việt Nam",
+         content: "Tòa nhà Lotte Center, Ba Đình, Hà Nội",
          description: "Văn phòng chính"
       },
       {
@@ -62,11 +70,10 @@ export default function Contact() {
    };
 
    const itemVariants = {
-      hidden: { y: 30, opacity: 0, scale: 0.95 },
+      hidden: { y: 30, opacity: 0 },
       visible: {
          y: 0,
          opacity: 1,
-         scale: 1,
          transition: { 
             duration: 0.6,
             ease: "easeOut"
@@ -79,25 +86,30 @@ export default function Contact() {
          id="lien-he" 
          ref={ref}
          className="w-full py-12 md:py-16 relative overflow-hidden"
-         style={{ y, opacity }}
+         style={{ y, opacity, scale, rotateX, perspective: 1000 }}
       >
-         {/* Background Elements */}
+         {/* Enhanced Background Elements with scroll effects */}
          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
             <motion.div 
-               className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
+               className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background"
+               style={{ 
+                  opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5])
+               }}
+            />
+            <motion.div 
+               className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
                style={{
-                  scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]),
-                  x: useTransform(smoothProgress, [0, 1], [0, 100]),
-                  y: useTransform(smoothProgress, [0, 1], [0, -50]),
+                  x: useTransform(scrollYProgress, [0, 1], [0, 100]),
+                  y: useTransform(scrollYProgress, [0, 1], [0, -50]),
+                  scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.6])
                }}
             />
             <motion.div 
                className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-400/5 to-primary/5 blur-3xl"
                style={{
-                  scale: useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.1, 0.8]),
-                  x: useTransform(smoothProgress, [0, 1], [0, -80]),
-                  y: useTransform(smoothProgress, [0, 1], [0, 30]),
+                  x: useTransform(scrollYProgress, [0, 1], [0, -80]),
+                  y: useTransform(scrollYProgress, [0, 1], [0, 60]),
+                  scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 1.1])
                }}
             />
          </div>
@@ -105,16 +117,15 @@ export default function Contact() {
          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
                <motion.div
-                  className="space-y-2"
-                  style={{ scale }}
+                  className="space-y-4"
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ duration: 0.6 }}
                >
                   <motion.div 
-                     className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
-                     initial={{ scale: 0, rotate: -90 }}
-                     animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -90 }}
+                     className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
+                     initial={{ scale: 0 }}
+                     animate={isInView ? { scale: 1 } : { scale: 0 }}
                      transition={{ duration: 0.5, delay: 0.2 }}
                   >
                      Liên hệ với chúng tôi
@@ -143,22 +154,27 @@ export default function Contact() {
             </div>
 
             <div className="grid gap-12 lg:grid-cols-2 items-start">
-               {/* Contact Form */}
+               {/* Contact Form with enhanced scroll animations */}
                <motion.div
                   className="space-y-6"
                   variants={containerVariants}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
+                  style={{ y: formY, rotateY: formRotate }}
                >
                   <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-8"
+                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-lg transition-shadow"
                      variants={itemVariants}
-                     whileHover={{ 
-                        scale: 1.01,
-                        transition: { duration: 0.2 }
-                     }}
                      style={{
-                        y: useTransform(smoothProgress, [0, 0.5, 1], [50, 0, -50]),
+                        boxShadow: useTransform(
+                           scrollYProgress,
+                           [0, 0.5, 1],
+                           [
+                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                              "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                           ]
+                        )
                      }}
                   >
                      <h3 className="text-2xl font-bold mb-6">Gửi yêu cầu hợp tác</h3>
@@ -169,6 +185,9 @@ export default function Contact() {
                            initial={{ opacity: 0, y: 20 }}
                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                            transition={{ duration: 0.5, delay: 0.1 }}
+                           style={{
+                              x: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [-20, 0, 0, 10])
+                           }}
                         >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Họ và tên *</label>
@@ -185,6 +204,9 @@ export default function Contact() {
                            initial={{ opacity: 0, y: 20 }}
                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                            transition={{ duration: 0.5, delay: 0.2 }}
+                           style={{
+                              x: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [20, 0, 0, -10])
+                           }}
                         >
                            <div className="space-y-2">
                               <label className="text-sm font-medium">Số điện thoại *</label>
@@ -213,6 +235,9 @@ export default function Contact() {
                            initial={{ opacity: 0, y: 20 }}
                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                            transition={{ duration: 0.5, delay: 0.3 }}
+                           style={{
+                              scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.95, 1, 1, 0.98])
+                           }}
                         >
                            <label className="text-sm font-medium">Mô tả nhu cầu</label>
                            <Textarea 
@@ -225,6 +250,9 @@ export default function Contact() {
                            initial={{ opacity: 0, y: 20 }}
                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                            transition={{ duration: 0.5, delay: 0.4 }}
+                           style={{
+                              y: useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, -5])
+                           }}
                         >
                            <Button 
                               type="submit" 
@@ -238,12 +266,13 @@ export default function Contact() {
                   </motion.div>
                </motion.div>
 
-               {/* Contact Information */}
+               {/* Contact Information with sliding animations */}
                <motion.div
                   className="space-y-6"
                   variants={containerVariants}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
+                  style={{ x: contactInfoX, rotateY: contactInfoRotate }}
                >
                   <motion.div variants={itemVariants}>
                      <h3 className="text-2xl font-bold mb-6">Thông tin liên hệ</h3>
@@ -253,22 +282,22 @@ export default function Contact() {
                               key={index}
                               className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-colors"
                               variants={itemVariants}
-                              whileHover={{ 
-                                 scale: 1.02,
-                                 x: 5,
-                                 transition: { duration: 0.2 }
-                              }}
                               style={{
-                                 y: useTransform(smoothProgress, [0, 0.5, 1], [30, 0, -30]),
+                                 x: useTransform(
+                                    scrollYProgress,
+                                    [0, 0.4, 0.6, 1],
+                                    [50 + index * 10, 0, 0, -20 - index * 5]
+                                 ),
+                                 opacity: useTransform(
+                                    scrollYProgress,
+                                    [0, 0.2 + index * 0.05, 0.8 - index * 0.05, 1],
+                                    [0, 1, 1, 0.7]
+                                 )
                               }}
                            >
-                              <motion.div 
-                                 className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors"
-                                 whileHover={{ rotate: 360, scale: 1.1 }}
-                                 transition={{ duration: 0.5 }}
-                              >
+                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                                  {info.icon}
-                              </motion.div>
+                              </div>
                               <div className="flex-1">
                                  <h4 className="font-semibold text-sm text-muted-foreground">{info.title}</h4>
                                  <p className="font-medium">{info.content}</p>
@@ -279,16 +308,13 @@ export default function Contact() {
                      </div>
                   </motion.div>
 
-                  {/* Company Info */}
+                  {/* Company Info with enhanced animations */}
                   <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-6"
+                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
                      variants={itemVariants}
-                     whileHover={{ 
-                        scale: 1.01,
-                        transition: { duration: 0.2 }
-                     }}
                      style={{
-                        y: useTransform(smoothProgress, [0, 0.5, 1], [40, 0, -40]),
+                        scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95]),
+                        rotateX: useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, -5])
                      }}
                   >
                      <h4 className="font-bold mb-4">Công ty GENSOL</h4>
@@ -312,7 +338,7 @@ export default function Contact() {
                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                            transition={{ duration: 0.4, delay: 0.3 }}
                         >
-                           <strong>Địa chỉ:</strong> [Địa chỉ chi tiết], Hà Nội, Việt Nam
+                           <strong>Địa chỉ:</strong> Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam
                         </motion.p>
                         <motion.p
                            initial={{ opacity: 0, x: -10 }}
@@ -324,27 +350,52 @@ export default function Contact() {
                      </div>
                   </motion.div>
 
-                  {/* Map placeholder */}
+                  {/* Map with reveal animation */}
                   <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 h-48 flex items-center justify-center"
+                     className="rounded-xl border bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow"
                      variants={itemVariants}
-                     whileHover={{ 
-                        scale: 1.01,
-                        transition: { duration: 0.2 }
-                     }}
                      style={{
-                        y: useTransform(smoothProgress, [0, 0.5, 1], [50, 0, -50]),
+                        clipPath: useTransform(
+                           scrollYProgress,
+                           [0, 0.4, 0.6, 1],
+                           [
+                              "inset(50% 50% 50% 50%)",
+                              "inset(0% 0% 0% 0%)",
+                              "inset(0% 0% 0% 0%)",
+                              "inset(10% 10% 10% 10%)"
+                           ]
+                        )
                      }}
                   >
-                     <div className="text-center text-muted-foreground">
-                        <motion.div
-                           whileHover={{ scale: 1.1, rotate: 10 }}
-                           transition={{ duration: 0.3 }}
-                        >
-                           <MapPin className="h-8 w-8 mx-auto mb-2" />
-                        </motion.div>
-                        <p className="text-sm">Bản đồ văn phòng</p>
-                        <p className="text-xs">Sẽ được cập nhật khi có địa chỉ cụ thể</p>
+                     <div className="p-4 border-b">
+                        <h4 className="font-semibold flex items-center gap-2">
+                           <MapPin className="h-5 w-5 text-primary" />
+                           Vị trí văn phòng
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-1">
+                           Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội
+                        </p>
+                     </div>
+                     <div className="relative h-64">
+                        <iframe
+                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.096756919!2d105.8197!3d21.0285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2sLotte%20Center%20Hanoi!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s"
+                           width="100%"
+                           height="100%"
+                           style={{ border: 0 }}
+                           allowFullScreen
+                           loading="lazy"
+                           referrerPolicy="no-referrer-when-downgrade"
+                        />
+                     </div>
+                     <div className="p-4 bg-muted/30">
+                        <div className="flex items-center justify-between text-sm">
+                           <span className="text-muted-foreground">Cách trung tâm Hà Nội</span>
+                           <span className="font-medium">~3km</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm mt-1">
+                           <span className="text-muted-foreground">Thời gian di chuyển</span>
+                           <span className="font-medium">10-15 phút bằng xe</span>
+                        </div>
                      </div>
                   </motion.div>
                </motion.div>

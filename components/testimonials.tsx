@@ -1,42 +1,33 @@
 "use client";
 
 import { useRef } from "react";
-import { useInView, useScroll, useTransform, useSpring } from "framer-motion";
+import { useInView, useScroll, useTransform } from "framer-motion";
 import { Quote, Heart, Lightbulb, Target, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CompanyValues() {
    const ref = useRef(null);
-   const isInView = useInView(ref, { once: false, amount: 0.3 });
+   const isInView = useInView(ref, { once: true, amount: 0.3 });
    
    const { scrollYProgress } = useScroll({
       target: ref,
       offset: ["start end", "end start"]
    });
 
-   // Smooth spring animations
-   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-   const smoothProgress = useSpring(scrollYProgress, springConfig);
+   // Enhanced scroll-based transforms for values section
+   const sectionY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+   const sectionOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+   const sectionScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.85]);
+   const sectionRotateX = useTransform(scrollYProgress, [0, 0.5, 1], [20, 0, -15]);
 
-   // Creative transform values with proper reverse animations
-   const sectionY = useTransform(smoothProgress, [0, 0.5, 1], [120, 0, -120]);
-   const sectionOpacity = useTransform(smoothProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-   const sectionScale = useTransform(smoothProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.9]);
-
-   // Header animations
-   const headerY = useTransform(smoothProgress, [0, 0.6], [80, -40]);
-   const headerOpacity = useTransform(smoothProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-   const headerRotate = useTransform(smoothProgress, [0, 1], [0, -3]);
-
-   // Background animations
-   const bgScale = useTransform(smoothProgress, [0, 0.5, 1], [0.8, 1.3, 0.7]);
-   const bgRotate = useTransform(smoothProgress, [0, 1], [0, 180]);
-   const bgOpacity = useTransform(smoothProgress, [0, 0.5, 1], [0.3, 0.7, 0.2]);
+   // Values grid animations
+   const gridY = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [100, 0, 0, -80]);
+   const gridRotateZ = useTransform(scrollYProgress, [0, 0.5, 1], [-3, 0, 4]);
 
    // Quote section animations
-   const quoteY = useTransform(smoothProgress, [0, 0.8], [60, -30]);
-   const quoteOpacity = useTransform(smoothProgress, [0, 0.4, 0.9, 1], [0, 1, 1, 0]);
-   const quoteScale = useTransform(smoothProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+   const quoteY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [200, 0, 0, -100]);
+   const quoteScale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.6, 1.1, 1.1, 0.8]);
+   const quoteRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-10, 0, 8]);
 
    const values = [
       {
@@ -87,20 +78,16 @@ export default function CompanyValues() {
    const itemVariants = {
       hidden: { 
          opacity: 0, 
-         y: 60, 
-         scale: 0.8,
-         rotateY: -30
+         y: 40, 
+         scale: 0.9
       },
       visible: {
          opacity: 1,
          y: 0,
          scale: 1,
-         rotateY: 0,
          transition: { 
-            duration: 0.8,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 100
+            duration: 0.6,
+            ease: "easeOut"
          },
       },
    };
@@ -109,328 +96,358 @@ export default function CompanyValues() {
       <motion.section 
          ref={ref}
          className="w-full py-12 md:py-16 relative overflow-hidden"
-         style={{ y: sectionY, opacity: sectionOpacity, scale: sectionScale }}
+         style={{ 
+            y: sectionY, 
+            opacity: sectionOpacity, 
+            scale: sectionScale, 
+            rotateX: sectionRotateX,
+            perspective: 1000 
+         }}
       >
+         {/* Enhanced Background Elements with scroll effects */}
          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-b from-muted/50 via-background to-background" />
             <motion.div 
-               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
+               className="absolute inset-0 bg-gradient-to-b from-muted/50 via-background to-background"
                style={{
-                  scale: bgScale,
-                  rotate: bgRotate,
-                  opacity: bgOpacity,
+                  opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.5])
                }}
-               initial={{ borderRadius: "50%" }}
-               animate={{ borderRadius: "40% 60%" }}
-               transition={{ duration: 2 }}
             />
-
-            {values.map((value, index) => (
-               <motion.div
-                  key={index}
-                  className="absolute w-6 h-6 opacity-20"
-                  style={{
-                     left: `${20 + index * 20}%`,
-                     top: `${25 + (index % 2) * 40}%`,
-                  }}
-                  initial={{ opacity: 0.2, scale: 0.8 }}
-                  animate={{ opacity: 0.4, scale: 1.2 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-               >
-                  {value.icon}
-               </motion.div>
-            ))}
-
-            {/* Static particle system */}
-            {[...Array(12)].map((_, i) => (
-               <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-primary/30 rounded-full"
-                  style={{
-                     left: `${10 + i * 8}%`,
-                     top: `${15 + (i % 4) * 20}%`,
-                  }}
-                  initial={{ opacity: 0.2, scale: 0.5 }}
-                  animate={{ opacity: 0.8, scale: 1 }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-               />
-            ))}
+            <motion.div 
+               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl"
+               style={{
+                  x: useTransform(scrollYProgress, [0, 0.5, 1], [0, -200, 150]),
+                  y: useTransform(scrollYProgress, [0, 0.5, 1], [0, 120, -100]),
+                  scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1.6, 1.4, 0.7]),
+                  rotate: useTransform(scrollYProgress, [0, 1], [0, 450])
+               }}
+            />
          </div>
 
          <div className="container px-4 md:px-6">
             {/* Header Section */}
-            <motion.div
-               className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
-               style={{ y: headerY, opacity: headerOpacity, rotateZ: headerRotate }}
-            >
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                  transition={{ duration: 0.8 }}
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.6 }}
                >
                   <motion.div 
-                     className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary"
-                     initial={{ scale: 0, rotateZ: 180 }}
-                     animate={isInView ? { scale: 1, rotateZ: 0 } : { scale: 0, rotateZ: 180 }}
-                     transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
-                     whileHover={{ scale: 1.1, rotateZ: -5 }}
+                     className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
+                     initial={{ scale: 0 }}
+                     animate={isInView ? { scale: 1 } : { scale: 0 }}
+                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
                      Giá trị cốt lõi
                   </motion.div>
                   
                   <motion.h2 
                      className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
-                     initial={{ opacity: 0, y: 30, rotateX: -20 }}
-                     animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 30, rotateX: -20 }}
-                     transition={{ duration: 0.8, delay: 0.4 }}
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                     {"Những giá trị ".split("").map((char, index) => (
-                        <motion.span
-                           key={index}
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.4, delay: 0.6 + index * 0.03 }}
-                           className="inline-block"
-                           whileHover={{ scale: 1.1, color: "#3b82f6" }}
-                        >
-                           {char === " " ? "\u00A0" : char}
-                        </motion.span>
-                     ))}
-                     <motion.span 
-                        className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400"
-                        initial={{ opacity: 0, scale: 0.8, rotateY: -45 }}
-                        animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : { opacity: 0, scale: 0.8, rotateY: -45 }}
-                        transition={{ duration: 0.8, delay: 1.2 }}
-                        whileHover={{ scale: 1.05, rotateY: 5 }}
-                     >
+                     Những giá trị{" "}
+                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                         định hướng
-                     </motion.span>
+                     </span>
                   </motion.h2>
                   
                   <motion.p 
                      className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
                      initial={{ opacity: 0, y: 20 }}
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                     transition={{ duration: 0.8, delay: 0.8 }}
+                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
                      Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, 
                      từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm.
                   </motion.p>
                </motion.div>
-            </motion.div>
+            </div>
 
-            {/* Values Grid */}
+            {/* Values Grid with enhanced animations */}
             <motion.div
                className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
                variants={containerVariants}
                initial="hidden"
                animate={isInView ? "visible" : "hidden"}
+               style={{ y: gridY, rotateZ: gridRotateZ }}
             >
                {values.map((value, index) => (
                   <motion.div
                      key={index}
-                     className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-8 text-center transition-all cursor-pointer"
+                     className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-8 text-center transition-all cursor-pointer hover:shadow-lg"
                      variants={itemVariants}
                      style={{
-                        y: useTransform(smoothProgress, [0, 0.5, 1], [40, 0, -40]),
+                        // Individual card animations
+                        x: useTransform(
+                           scrollYProgress,
+                           [0, 0.3, 0.7, 1],
+                           [
+                              index % 2 === 0 ? -60 : 60,
+                              0,
+                              0,
+                              index % 2 === 0 ? 40 : -40
+                           ]
+                        ),
+                        rotateY: useTransform(
+                           scrollYProgress,
+                           [0, 0.4, 0.6, 1],
+                           [index % 2 === 0 ? -25 : 25, 0, 0, index % 2 === 0 ? 15 : -15]
+                        ),
+                        scale: useTransform(
+                           scrollYProgress,
+                           [0, 0.3, 0.7, 1],
+                           [0.7, 1, 1, 0.85]
+                        ),
+                        transformPerspective: 1000,
+                        boxShadow: useTransform(
+                           scrollYProgress,
+                           [0, 0.4, 0.6, 1],
+                           [
+                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                              "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                              "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+                           ]
+                        )
                      }}
                      whileHover={{ 
-                        scale: 1.05,
-                        y: -10,
-                        rotateY: 5,
-                        rotateZ: 1,
-                        transition: { 
-                           duration: 0.3,
-                           type: "spring",
-                           stiffness: 300
-                        }
+                        scale: 1.02,
+                        y: -5,
+                        transition: { duration: 0.2 }
                      }}
-                     whileTap={{ scale: 0.95 }}
                   >
-                     {/* Static background */}
+                     {/* Enhanced background with morphing effect */}
                      <motion.div 
-                        className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                        initial={{ scale: 0, rotate: 45 }}
-                        whileHover={{ scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.5 }}
-                        animate={{
-                           borderRadius: ["20px", "30px 10px", "10px 30px", "20px"],
+                        className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                        style={{
+                           opacity: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [0, 0.15, 0.15, 0]
+                           ),
+                           scale: useTransform(
+                              scrollYProgress,
+                              [0, 0.5, 1],
+                              [0.8, 1.2, 0.9]
+                           )
                         }}
                      />
 
-                     {/* Static border */}
-                     <motion.div
-                        className={`absolute inset-0 rounded-xl border-2 ${value.borderColor} opacity-0 group-hover:opacity-100`}
-                        initial={{ borderRadius: "12px", borderWidth: "2px" }}
-                        whileHover={{ borderRadius: "20px", borderWidth: "3px" }}
-                        transition={{ duration: 0.3 }}
-                     />
-
                      <div className="relative z-10">
-                        {/* Icon with hover animations only */}
+                        {/* Icon with complex animations */}
                         <motion.div 
                            className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm mx-auto"
-                           whileHover={{ 
-                              rotate: 360,
-                              scale: 1.2,
-                              transition: { duration: 0.6 }
+                           style={{
+                              scale: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.3, 0.7, 1],
+                                 [0.4, 1.4, 1.4, 0.8]
+                              ),
+                              rotate: useTransform(
+                                 scrollYProgress,
+                                 [0, 1],
+                                 [0, index % 2 === 0 ? 720 : -720]
+                              ),
+                              y: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.5, 1],
+                                 [40, 0, -20]
+                              )
                            }}
-                           initial={{ scale: 1 }}
-                           animate={{ scale: 1.05 }}
-                           transition={{ duration: 0.5 }}
                         >
-                           <motion.div
-                              whileHover={{
-                                 filter: "drop-shadow(0 0 12px rgba(59, 130, 246, 0.6))",
-                              }}
-                           >
                            {value.icon}
-                           </motion.div>
                         </motion.div>
                         
-                        {/* Title with wave effect */}
+                        {/* Title with slide and fade */}
                         <motion.h3 
                            className="mb-4 text-xl font-bold"
-                           initial={{ opacity: 0 }}
-                           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                           transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                           style={{
+                              x: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.3, 0.7, 1],
+                                 [index % 2 === 0 ? -40 : 40, 0, 0, index % 2 === 0 ? 20 : -20]
+                              ),
+                              opacity: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.2, 0.8, 1],
+                                 [0, 1, 1, 0.7]
+                              ),
+                              scale: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.4, 0.6, 1],
+                                 [0.8, 1.1, 1.1, 0.9]
+                              )
+                           }}
                         >
-                           {value.title.split("").map((char, charIndex) => (
-                              <motion.span
-                                 key={charIndex}
-                                 initial={{ opacity: 0, y: 30 }}
-                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                 transition={{ 
-                                    duration: 0.4, 
-                                    delay: 0.7 + index * 0.1 + charIndex * 0.05 
-                                 }}
-                                 className="inline-block"
-                                 whileHover={{ 
-                                    scale: 1.2, 
-                                    y: -5,
-                                    transition: { duration: 0.2 }
-                                 }}
-                              >
-                                 {char}
-                              </motion.span>
-                           ))}
+                           {value.title}
                         </motion.h3>
                         
-                        {/* Description with slide effect */}
+                        {/* Description with wave effect */}
                         <motion.p 
                            className="text-muted-foreground leading-relaxed"
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+                           style={{
+                              y: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.3, 0.7, 1],
+                                 [30, 0, 0, -15]
+                              ),
+                              opacity: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.25, 0.75, 1],
+                                 [0, 1, 1, 0.6]
+                              ),
+                              scale: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.4, 0.6, 1],
+                                 [0.9, 1, 1, 0.95]
+                              )
+                           }}
                         >
                            {value.description}
                         </motion.p>
                      </div>
 
-                     {/* Progress indicator */}
+                     {/* Enhanced progress indicator with wave */}
                      <motion.div 
                         className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-blue-400"
-                        initial={{ width: 0, scaleY: 1 }}
-                        whileInView={{ 
-                           width: "100%",
-                           scaleY: [1, 2, 1],
-                        }}
-                        transition={{ 
-                           width: { duration: 1, delay: index * 0.2 },
-                           scaleY: { duration: 0.5, delay: index * 0.2 + 1 }
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 0.8, delay: index * 0.2 }}
+                        style={{
+                           scaleY: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [1, 5, 5, 1]
+                           ),
+                           opacity: useTransform(
+                              scrollYProgress,
+                              [0, 0.3, 0.7, 1],
+                              [0.3, 1, 1, 0.2]
+                           )
                         }}
                      />
 
-                     {/* Static particles on hover */}
-                     <div className="absolute inset-0 pointer-events-none">
-                        {[...Array(4)].map((_, particleIndex) => (
-                           <motion.div
-                              key={particleIndex}
-                              className="absolute w-1 h-1 bg-primary/60 rounded-full"
-                              style={{
-                                 left: `${25 + particleIndex * 20}%`,
-                                 top: `${30 + particleIndex * 15}%`,
-                              }}
-                              initial={{ opacity: 0, scale: 0 }}
-                              whileHover={{
-                                 opacity: 1,
-                                 scale: 1.5,
-                                 y: -30,
-                                 x: Math.random() * 20 - 10,
-                              }}
-                              transition={{
-                                 duration: 0.5,
-                                 delay: particleIndex * 0.1,
-                              }}
-                           />
-                        ))}
-                     </div>
+                     {/* Decorative floating elements */}
+                     <motion.div
+                        className="absolute top-4 right-4 w-3 h-3 rounded-full bg-primary/20"
+                        style={{
+                           scale: useTransform(
+                              scrollYProgress,
+                              [0, 0.5, 1],
+                              [0, 1.5, 0]
+                           ),
+                           rotate: useTransform(
+                              scrollYProgress,
+                              [0, 1],
+                              [0, 360]
+                           ),
+                           opacity: useTransform(
+                              scrollYProgress,
+                              [0, 0.3, 0.7, 1],
+                              [0, 1, 1, 0]
+                           )
+                        }}
+                     />
                   </motion.div>
                ))}
             </motion.div>
 
-            {/* Quote Section */}
+            {/* Quote Section with enhanced animations */}
             <motion.div
                className="mt-20 text-center"
-               style={{ y: quoteY, opacity: quoteOpacity, scale: quoteScale }}
+               initial={{ opacity: 0, y: 30 }}
+               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+               transition={{ duration: 0.6, delay: 0.8 }}
+               style={{ y: quoteY, scale: quoteScale, rotateZ: quoteRotate }}
             >
                <div className="max-w-4xl mx-auto">
                   <div className="relative">
-                     {/* Static quote icon */}
+                     {/* Quote icon with complex animation */}
                      <motion.div
-                        className="mx-auto mb-6"
-                        initial={{ rotate: 0, scale: 1 }}
-                        animate={{ rotate: 5, scale: 1.1 }}
-                        transition={{ duration: 1 }}
+                        style={{
+                           scale: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [0.3, 1.5, 1.5, 0.8]
+                           ),
+                           rotate: useTransform(
+                              scrollYProgress,
+                              [0, 1],
+                              [0, 180]
+                           ),
+                           opacity: useTransform(
+                              scrollYProgress,
+                              [0, 0.3, 0.7, 1],
+                              [0, 1, 1, 0.3]
+                           )
+                        }}
                      >
-                        <Quote className="h-12 w-12 text-primary/20 mx-auto" />
+                        <Quote className="h-12 w-12 text-primary/20 mx-auto mb-6" />
                      </motion.div>
                      
-                     {/* Quote text */}
+                     {/* Quote text with typewriter reveal effect */}
                      <motion.blockquote 
                         className="text-xl md:text-2xl font-medium text-muted-foreground italic mb-6"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
+                        style={{
+                           clipPath: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [
+                                 "inset(0 100% 0 0)",
+                                 "inset(0 0% 0 0)",
+                                 "inset(0 0% 0 0)",
+                                 "inset(0 0 0 100%)"
+                              ]
+                           ),
+                           scale: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [0.9, 1.05, 1.05, 0.95]
+                           )
+                        }}
                      >
                         "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. 
                         Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự."
                      </motion.blockquote>
                      
-                     {/* Author section */}
+                     {/* Author section with slide-in effect */}
                      <motion.div 
                         className="flex items-center justify-center gap-2"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.6, delay: 1 }}
+                        style={{
+                           x: useTransform(
+                              scrollYProgress,
+                              [0, 0.4, 0.6, 1],
+                              [-100, 0, 0, 50]
+                           ),
+                           opacity: useTransform(
+                              scrollYProgress,
+                              [0, 0.3, 0.7, 1],
+                              [0, 1, 1, 0.8]
+                           )
+                        }}
                      >
                         <motion.div 
                            className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-blue-400 flex items-center justify-center"
-                           whileHover={{ 
-                              scale: 1.1,
-                              rotate: 360,
-                              transition: { duration: 0.5 }
+                           style={{
+                              scale: useTransform(
+                                 scrollYProgress,
+                                 [0, 0.4, 0.6, 1],
+                                 [0.5, 1.2, 1.2, 0.9]
+                              ),
+                              rotate: useTransform(
+                                 scrollYProgress,
+                                 [0, 1],
+                                 [0, 360]
+                              )
                            }}
-                           initial={{ boxShadow: "0 0 0 0 rgba(59, 130, 246, 0.4)" }}
-                           animate={{ boxShadow: "0 0 0 10px rgba(59, 130, 246, 0.1)" }}
-                           transition={{ duration: 1 }}
                         >
                            <span className="text-white font-bold">GS</span>
                         </motion.div>
                         <div className="text-left">
-                           <motion.div 
-                              className="font-semibold"
-                              whileHover={{ scale: 1.05 }}
-                           >
-                              Ban lãnh đạo GENSOL
-                           </motion.div>
-                           <motion.div 
-                              className="text-sm text-muted-foreground"
-                              whileHover={{ scale: 1.05 }}
-                           >
-                              Công ty TNHH GENSOL
-                           </motion.div>
+                           <div className="font-semibold">Ban lãnh đạo GENSOL</div>
+                           <div className="text-sm text-muted-foreground">Công ty TNHH GENSOL</div>
                         </div>
                      </motion.div>
                   </div>
