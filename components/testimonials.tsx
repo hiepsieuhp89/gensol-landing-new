@@ -428,23 +428,23 @@ export default function CompanyValues() {
                            )
                         }}
                      >
-                        <motion.div 
+                        <div 
                            className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-blue-400 flex items-center justify-center"
-                           style={{
-                              scale: useTransform(
-                                 scrollYProgress,
-                                 [0, 0.4, 0.6, 1],
-                                 [0.5, 1.2, 1.2, 0.9]
-                              ),
-                              rotate: useTransform(
-                                 scrollYProgress,
-                                 [0, 1],
-                                 [0, 360]
-                              )
-                           }}
+                           // style={{
+                           //    scale: useTransform(
+                           //       scrollYProgress,
+                           //       [0, 0.4, 0.6, 1],
+                           //       [0.5, 1.2, 1.2, 0.9]
+                           //    ),
+                           //    rotate: useTransform(
+                           //       scrollYProgress,
+                           //       [0, 1],
+                           //       [0, 360]
+                           //    )
+                           // }}
                         >
                            <span className="text-white font-bold">GS</span>
-                        </motion.div>
+                        </div>
                         <div className="text-left">
                            <div className="font-semibold">Ban lãnh đạo GENSOL</div>
                            <div className="text-sm text-muted-foreground">Công ty TNHH GENSOL</div>

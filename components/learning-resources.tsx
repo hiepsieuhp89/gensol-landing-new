@@ -249,14 +249,14 @@ export default function WhyChooseUs() {
               )
             }}
           >
-            <motion.div
+            {/* <motion.div
               style={{
                 rotate: useTransform(scrollYProgress, [0, 1], [0, 540]),
                 scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.3, 1])
               }}
-            >
+            > */}
               <Award className="h-4 w-4 text-primary" />
-            </motion.div>
+            {/* </motion.div> */}
             <span className="text-sm font-medium text-muted-foreground">
               Đối tác tin cậy cho sự phát triển bền vững
             </span>
