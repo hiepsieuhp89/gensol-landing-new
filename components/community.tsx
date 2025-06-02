@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 export default function AboutUs() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -18,12 +18,12 @@ export default function AboutUs() {
   const y = useTransform(scrollYProgress, [0, 1], [80, -80])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95])
-  
+
   // Vision/Mission cards animations
   const visionX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-60, 0, 0, 30])
   const missionX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [60, 0, 0, -30])
   const cardsRotate = useTransform(scrollYProgress, [0, 0.5, 1], [8, 0, -4])
-  
+
   // Business areas animations
   const businessAreasY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [100, 0, 0, -50])
   const businessAreasRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-3, 0, 2])
@@ -59,7 +59,7 @@ export default function AboutUs() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
         ease: "easeOut"
       },
@@ -67,21 +67,21 @@ export default function AboutUs() {
   }
 
   return (
-    <motion.section 
-      id="ve-chung-toi" 
+    <motion.section
+      id="ve-chung-toi"
       ref={ref}
       className="w-full py-12 md:py-16 relative overflow-hidden"
       style={{ y, opacity, scale }}
     >
       {/* Enhanced Background Elements with scroll effects */}
       <div className="absolute inset-0 -z-10">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-b from-muted/50 via-background to-background"
           style={{
             opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.6])
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
           style={{
             x: useTransform(scrollYProgress, [0, 1], [0, -120]),
@@ -99,7 +99,7 @@ export default function AboutUs() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
+            <motion.div
               className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : { scale: 0 }}
@@ -107,7 +107,7 @@ export default function AboutUs() {
             >
               Về chúng tôi
             </motion.div>
-            <motion.h2 
+            <motion.h2
               className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -118,13 +118,13 @@ export default function AboutUs() {
                 GENSOL
               </span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện 
+              Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện
               cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số.
             </motion.p>
           </motion.div>
@@ -141,8 +141,8 @@ export default function AboutUs() {
             <motion.div
               className="group relative overflow-hidden rounded-xl border bg-white dark:bg-background backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
               variants={itemVariants}
-              style={{ 
-                x: visionX, 
+              style={{
+                x: visionX,
                 rotateY: cardsRotate,
                 transformPerspective: 1000,
                 boxShadow: useTransform(
@@ -158,18 +158,14 @@ export default function AboutUs() {
               }}
             >
               <div className="relative z-10">
-                <motion.div 
+                <motion.div
                   className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B]"
-                  style={{
-                    scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1.2, 1.2, 1]),
-                    rotate: useTransform(scrollYProgress, [0, 1], [0, 360])
-                  }}
                 >
                   <Eye className="h-6 w-6 text-primary" />
                 </motion.div>
                 <h3 className="mb-3 text-xl font-bold">Tầm nhìn</h3>
                 <p className="text-muted-foreground">
-                  Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, 
+                  Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ,
                   nhân sự và logistics toàn diện cho các doanh nghiệp tại Việt Nam.
                 </p>
               </div>
@@ -178,8 +174,8 @@ export default function AboutUs() {
             <motion.div
               className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
               variants={itemVariants}
-              style={{ 
-                x: missionX, 
+              style={{
+                x: missionX,
                 rotateY: useTransform(cardsRotate, (value) => -value),
                 transformPerspective: 1000,
                 boxShadow: useTransform(
@@ -195,18 +191,14 @@ export default function AboutUs() {
               }}
             >
               <div className="relative z-10">
-                <motion.div 
-                  className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-400/10"
-                  style={{
-                    scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1.2, 1.2, 1]),
-                    rotate: useTransform(scrollYProgress, [0, 1], [0, -360])
-                  }}
+                <motion.div
+                  className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B]"
                 >
-                  <Target className="h-6 w-6 text-blue-400" />
+                  <Target className="h-6 w-6 text-primary" />
                 </motion.div>
                 <h3 className="mb-3 text-xl font-bold">Sứ mệnh</h3>
                 <p className="text-muted-foreground">
-                  Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp 
+                  Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp
                   linh hoạt, hiệu quả và bền vững để tối ưu hóa hoạt động kinh doanh.
                 </p>
               </div>
@@ -222,12 +214,8 @@ export default function AboutUs() {
             style={{ y: businessAreasY, rotateX: businessAreasRotate }}
           >
             <motion.div variants={itemVariants}>
-              <motion.div 
+              <motion.div
                 className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B]"
-                style={{
-                  scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.5, 1.3, 1.3, 0.9]),
-                  rotate: useTransform(scrollYProgress, [0, 1], [0, 180])
-                }}
               >
                 <Building2 className="h-6 w-6 text-primary" />
               </motion.div>
@@ -236,7 +224,7 @@ export default function AboutUs() {
                 {businessAreas.map((area, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/30 transition-colors"
+                    className="flex items-start gap-3 p-3 rounded-sm bg-background/50 border-2 border-border/50 hover:border-primary transition-colors cursor-pointer"
                     variants={itemVariants}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}

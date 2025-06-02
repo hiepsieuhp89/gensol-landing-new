@@ -228,23 +228,6 @@ export default function Features() {
                 {/* Icon with complex animations */}
                 <motion.div 
                   className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] group-hover:bg-primary/20 transition-colors"
-                  style={{
-                    scale: useTransform(
-                      scrollYProgress,
-                      [0, 0.3, 0.7, 1],
-                      [0.5, 1.3, 1.3, 0.8]
-                    ),
-                    rotate: useTransform(
-                      scrollYProgress,
-                      [0, 1],
-                      [0, index % 2 === 0 ? 360 : -360]
-                    ),
-                    y: useTransform(
-                      scrollYProgress,
-                      [0, 0.5, 1],
-                      [20, 0, -10]
-                    )
-                  }}
                 >
                   {feature.icon}
                 </motion.div>
@@ -310,7 +293,7 @@ export default function Features() {
 
               {/* Additional decorative element */}
               <motion.div
-                className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary/30"
+                className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary"
                 style={{
                   scale: useTransform(
                     scrollYProgress,

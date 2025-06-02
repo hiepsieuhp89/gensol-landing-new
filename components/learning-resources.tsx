@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
 import { Users, TrendingUp, Settings, Shield, Clock, Award } from "lucide-react"
 import { motion } from "framer-motion"
+import BentoGrid from "./bento-grid"
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
@@ -20,39 +21,38 @@ export default function WhyChooseUs() {
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.9])
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [12, 0, -8])
 
-  // Reason cards animations
-  const leftCardsX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-80, 0, 0, 40])
-  const rightCardsX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [80, 0, 0, -40])
-  const cardsRotateY = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -10])
-
   // Stats section animations
   const statsY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [120, 0, 0, -80])
   const statsScale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.7, 1.1, 1.1, 0.8])
 
   const reasons = [
     {
-      icon: <Users className="h-8 w-8 text-primary" />,
+      icon: <Users className="h-6 w-6" />,
       title: "Đội ngũ linh hoạt, đa lĩnh vực",
       description: "Chúng tôi có đội ngũ chuyên gia đa dạng, có thể đáp ứng nhiều nhu cầu khác nhau của doanh nghiệp từ công nghệ đến nhân sự.",
-      features: ["Chuyên gia IT", "Nhân sự logistics", "Tư vấn quản lý", "Kỹ thuật viên"]
+      features: ["Chuyên gia IT", "Nhân sự logistics", "Tư vấn quản lý", "Kỹ thuật viên"],
+      size: "large" as const
     },
     {
-      icon: <TrendingUp className="h-8 w-8 text-primary" />,
+      icon: <TrendingUp className="h-6 w-6" />,
       title: "Sẵn sàng mở rộng quy mô",
       description: "Khả năng mở rộng linh hoạt theo dự án, đảm bảo đáp ứng mọi yêu cầu từ nhỏ đến lớn của khách hàng.",
-      features: ["Mở rộng nhanh", "Tài nguyên linh hoạt", "Quản lý hiệu quả", "Theo dõi tiến độ"]
+      features: ["Mở rộng nhanh", "Tài nguyên linh hoạt", "Quản lý hiệu quả", "Theo dõi tiến độ"],
+      size: "medium" as const
     },
     {
-      icon: <Settings className="h-8 w-8 text-primary" />,
+      icon: <Settings className="h-6 w-6" />,
       title: "Dịch vụ đa ngành",
       description: "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics.",
-      features: ["Công nghệ", "Thiết bị", "Nhân sự", "Vận tải"]
+      features: ["Công nghệ", "Thiết bị", "Nhân sự", "Vận tải"],
+      size: "medium" as const
     },
     {
-      icon: <Shield className="h-8 w-8 text-primary" />,
+      icon: <Shield className="h-6 w-6" />,
       title: "Phù hợp SME",
       description: "Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao.",
-      features: ["Chi phí hợp lý", "Giải pháp tùy chỉnh", "Hỗ trợ 24/7", "Tư vấn miễn phí"]
+      features: ["Chi phí hợp lý", "Giải pháp tùy chỉnh", "Hỗ trợ 24/7", "Tư vấn miễn phí"],
+      size: "large" as const
     }
   ]
 
@@ -150,168 +150,10 @@ export default function WhyChooseUs() {
           </motion.div>
         </div>
 
-        {/* Reasons Grid with enhanced animations */}
-        <motion.div
-          className="grid gap-8 md:grid-cols-2 mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {reasons.map((reason, index) => (
-            <motion.div
-              key={index}
-              className="group relative overflow-hidden rounded-xl border bg-background/50 backdrop-blur-sm p-8 transition-all hover:shadow-lg hover:shadow-primary/5"
-              variants={itemVariants}
-              style={{
-                // Alternating slide animations
-                x: index % 2 === 0 ? leftCardsX : rightCardsX,
-                rotateY: index % 2 === 0 ? cardsRotateY : useTransform(cardsRotateY, (value) => -value),
-                transformPerspective: 1000,
-                scale: useTransform(
-                  scrollYProgress,
-                  [0, 0.3, 0.7, 1],
-                  [0.9, 1, 1, 0.95]
-                ),
-                boxShadow: useTransform(
-                  scrollYProgress,
-                  [0, 0.4, 0.6, 1],
-                  [
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                    "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-                  ]
-                )
-              }}
-            >
-              <div className="relative z-10">
-                <motion.div 
-                  className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] group-hover:bg-primary/20 transition-colors"
-                  style={{
-                    scale: useTransform(
-                      scrollYProgress,
-                      [0, 0.3, 0.7, 1],
-                      [0.6, 1.3, 1.3, 0.9]
-                    ),
-                    rotate: useTransform(
-                      scrollYProgress,
-                      [0, 1],
-                      [0, index % 2 === 0 ? 180 : -180]
-                    ),
-                    y: useTransform(
-                      scrollYProgress,
-                      [0, 0.5, 1],
-                      [30, 0, -15]
-                    )
-                  }}
-                >
-                  {reason.icon}
-                </motion.div>
-                
-                <motion.h3 
-                  className="mb-4 text-2xl font-bold"
-                  style={{
-                    x: useTransform(
-                      scrollYProgress,
-                      [0, 0.3, 0.7, 1],
-                      [index % 2 === 0 ? -30 : 30, 0, 0, index % 2 === 0 ? 15 : -15]
-                    ),
-                    opacity: useTransform(
-                      scrollYProgress,
-                      [0, 0.2, 0.8, 1],
-                      [0, 1, 1, 0.8]
-                    )
-                  }}
-                >
-                  {reason.title}
-                </motion.h3>
-                
-                <motion.p 
-                  className="mb-6 text-muted-foreground leading-relaxed"
-                  style={{
-                    x: useTransform(
-                      scrollYProgress,
-                      [0, 0.3, 0.7, 1],
-                      [index % 2 === 0 ? 30 : -30, 0, 0, index % 2 === 0 ? -15 : 15]
-                    ),
-                    opacity: useTransform(
-                      scrollYProgress,
-                      [0, 0.25, 0.75, 1],
-                      [0, 1, 1, 0.7]
-                    )
-                  }}
-                >
-                  {reason.description}
-                </motion.p>
-                
-                <div className="grid grid-cols-2 gap-3">
-                  {reason.features.map((feature, featureIndex) => (
-                    <motion.div
-                      key={featureIndex}
-                      className="flex items-center gap-2 text-sm"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 + featureIndex * 0.05 }}
-                      style={{
-                        x: useTransform(
-                          scrollYProgress,
-                          [0, 0.4, 0.6, 1],
-                          [20 + featureIndex * 5, 0, 0, -10 - featureIndex * 2]
-                        ),
-                        opacity: useTransform(
-                          scrollYProgress,
-                          [0, 0.3 + featureIndex * 0.05, 0.7 - featureIndex * 0.05, 1],
-                          [0, 1, 1, 0.8]
-                        ),
-                        scale: useTransform(
-                          scrollYProgress,
-                          [0, 0.4, 0.6, 1],
-                          [0.8, 1, 1, 0.9]
-                        )
-                      }}
-                    >
-                      <motion.div 
-                        className="h-1.5 w-1.5 rounded-full bg-primary"
-                        style={{
-                          scale: useTransform(
-                            scrollYProgress,
-                            [0, 0.5, 1],
-                            [0.5, 1.5, 1]
-                          ),
-                          rotate: useTransform(
-                            scrollYProgress,
-                            [0, 1],
-                            [0, 360]
-                          )
-                        }}
-                      />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <motion.div 
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-blue-400"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                style={{
-                  scaleY: useTransform(
-                    scrollYProgress,
-                    [0, 0.4, 0.6, 1],
-                    [1, 4, 4, 1]
-                  ),
-                  opacity: useTransform(
-                    scrollYProgress,
-                    [0, 0.3, 0.7, 1],
-                    [0.5, 1, 1, 0.3]
-                  )
-                }}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* BentoGrid for Reasons */}
+        <div className="mb-16">
+          <BentoGrid items={reasons} columns={2} />
+        </div>
 
         {/* Stats Section with enhanced animations */}
         <motion.div

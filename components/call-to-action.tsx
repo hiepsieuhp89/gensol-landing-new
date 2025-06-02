@@ -280,7 +280,7 @@ export default function Contact() {
                         {contactInfo.map((info, index) => (
                            <motion.div
                               key={index}
-                              className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary/30 transition-colors"
+                              className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary transition-colors"
                               variants={itemVariants}
                               style={{
                                  x: useTransform(
