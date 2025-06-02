@@ -2,7 +2,7 @@
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import React, { useRef, useEffect, useState } from 'react';
-import { Group, Vector2 } from 'three';
+import { Group, Vector2, Mesh } from 'three';
 
 export default function Model() {
   const group = useRef<Group>(null);
@@ -30,6 +30,19 @@ export default function Model() {
       group.current.rotation.z = 0; // Không nghiêng sang bên
       group.current.position.y = 1.5; // Dịch lên trên
       group.current.position.x = -1; // Dịch sang trái
+      
+      // Enable shadows for all meshes in the model
+      group.current.traverse((child) => {
+        if (child instanceof Mesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          
+          // Enhance material properties for better lighting
+          if (child.material) {
+            child.material.needsUpdate = true;
+          }
+        }
+      });
     }
 
     // Mouse move handler
