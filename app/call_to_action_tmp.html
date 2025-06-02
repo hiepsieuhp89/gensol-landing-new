@@ -1,50 +1,307 @@
-<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; font-size: 16px; background-color: #ffffff; padding: 24px; color: #333333">
-    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #eeeeee; border-radius: 8px; padding: 32px; background-color: #fffaf5;">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <a href="{{website_link}}" target="_blank" style="text-decoration: none;">
-          <img src="https://gensol-beta.vercel.app/images/logo.png" alt="{{company_name}} Logo" style="height: 40px;" />
-          <img src="https://gensol-beta.vercel.app/images/text-logo.png" alt="{{company_name}} Logo" style="height: 40px;" />
-        </a>
-      </div>
-  
-      <h2 style="font-size: 22px; font-weight: 600; color: #fc0038; margin-bottom: 16px;">Welcome to {{company_name}}!</h2>
-  
-      <p style="margin: 0 0 16px;">
-        We're thrilled to have you as part of our community. Your account has been successfully created, and you're all set to begin your journey with us.
-      </p>
-  
-      <p style="margin: 0 0 24px;">
-        Dive in and explore the tools, features, and services waiting for you. We're confident you'll love what {{company_name}} has to offer.
-      </p>
-  
-      <div style="text-align: center; margin-bottom: 32px;">
-        <a
-          href="[Website Link]"
-          target="_blank"
-          style="
-            background-color: #fc0038;
-            color: #ffffff;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            display: inline-block;
-          "
-        >
-          Open {{company_name}}
-        </a>
-      </div>
-  
-      <p style="margin: 0 0 16px;">
-        Need help or have questions? Our support team is here for you at
-        <a href="mailto:{{company_email}}" style="color: #fc0038; text-decoration: none;">{{company_name}}</a>.
-        We’re just an email away.
-      </p>
-  
-      <p style="margin: 32px 0 0;">
-        Warm regards,<br />
-        <strong>The {{company_name}} Team</strong>
-      </p>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảm ơn bạn đã liên hệ - GENSOL</title>
+    <style>
+        /* Mobile-first responsive styles */
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .mobile-padding {
+                padding: 20px !important;
+            }
+            .mobile-text {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+            }
+            .mobile-title {
+                font-size: 22px !important;
+            }
+            .mobile-subtitle {
+                font-size: 16px !important;
+            }
+            .service-card {
+                width: 100% !important;
+                display: block !important;
+                margin-bottom: 12px !important;
+            }
+            .contact-item {
+                width: 100% !important;
+                display: block !important;
+                margin-bottom: 16px !important;
+            }
+            .mobile-center {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background-color: #f8fafc; line-height: 1.6;">
+    <!-- Main Container -->
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8fafc;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <!-- Email Content -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" class="container" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #415cb8 0%, #67a1ff 50%, #8ec1ff 100%); padding: 40px 32px; text-align: center;" class="mobile-padding">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center" style="padding-bottom: 20px;">
+                                        <img src="https://gensol-beta.vercel.app/images/logo.png" alt="GENSOL Logo" style="height: 40px; margin-right: 8px; vertical-align: middle;" />
+                                        <img src="https://gensol-beta.vercel.app/images/text-logo.png" alt="GENSOL" style="height: 40px; vertical-align: middle;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <h1 style="color: #ffffff; font-size: 28px; font-weight: 700; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.1);" class="mobile-title">
+                                            Cảm ơn bạn đã liên hệ!
+                                        </h1>
+                                        <p style="color: #bfdbfe; font-size: 16px; margin: 8px 0 0 0;" class="mobile-text">
+                                            Chúng tôi đã nhận được yêu cầu của bạn
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Main Content -->
+                    <tr>
+                        <td style="padding: 40px 32px;" class="mobile-padding">
+                            
+                            <!-- Greeting -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 32px;">
+                                <tr>
+                                    <td>
+                                        <h2 style="color: #1f2937; font-size: 24px; font-weight: 600; margin: 0 0 16px 0;" class="mobile-subtitle">
+                                            Xin chào {{name}}! 👋
+                                        </h2>
+                                        <p style="color: #4b5563; font-size: 16px; margin: 0; line-height: 1.7;" class="mobile-text">
+                                            Cảm ơn bạn đã quan tâm đến các dịch vụ của <strong style="color: #415cb8;">GENSOL</strong>. 
+                                            Chúng tôi rất vui khi được hỗ trợ bạn trong hành trình số hóa và phát triển doanh nghiệp.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Customer Information Summary -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; margin-bottom: 32px;">
+                                <tr>
+                                    <td style="padding: 24px;">
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <h3 style="color: #374151; font-size: 18px; font-weight: 600; margin: 0 0 20px 0;" class="mobile-subtitle">
+                                                        <span style="background-color: #415cb8; color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-block; text-align: center; line-height: 24px; font-size: 12px; margin-right: 12px; vertical-align: middle;">✓</span>
+                                                        Thông tin yêu cầu của bạn
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Customer Info Table -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td style="color: #6b7280; font-weight: 500; width: 140px; vertical-align: top;" class="mobile-text">Họ và tên:</td>
+                                                            <td style="color: #1f2937; font-weight: 600;" class="mobile-text">{{name}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td style="color: #6b7280; font-weight: 500; width: 140px; vertical-align: top;" class="mobile-text">Email:</td>
+                                                            <td style="color: #1f2937; font-weight: 600;" class="mobile-text">{{email}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td style="color: #6b7280; font-weight: 500; width: 140px; vertical-align: top;" class="mobile-text">Số điện thoại:</td>
+                                                            <td style="color: #1f2937; font-weight: 600;" class="mobile-text">{{phone}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td style="color: #6b7280; font-weight: 500; width: 140px; vertical-align: top;" class="mobile-text">Dịch vụ quan tâm:</td>
+                                                            <td style="color: #1f2937; font-weight: 600;" class="mobile-text">{{service}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 12px 0;">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span style="color: #6b7280; font-weight: 500; display: block; margin-bottom: 8px;" class="mobile-text">Nhu cầu cụ thể:</span>
+                                                                <div style="background-color: #ffffff; border: 1px solid #d1d5db; border-radius: 8px; padding: 16px; color: #1f2937; white-space: pre-wrap;" class="mobile-text">{{message}}</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Next Steps -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; border: 1px solid #67a1ff; margin-bottom: 32px;">
+                                <tr>
+                                    <td style="padding: 24px;">
+                                        <h3 style="color: #415cb8; font-size: 18px; font-weight: 600; margin: 0 0 16px 0;" class="mobile-subtitle">
+                                            <span style="font-size: 20px; margin-right: 8px;">⏰</span>
+                                            Các bước tiếp theo
+                                        </h3>
+                                        <ul style="color: #1e3a8a; margin: 0; padding-left: 20px; line-height: 1.8;" class="mobile-text">
+                                            <li style="margin-bottom: 8px;"><strong>Trong 2-4 giờ:</strong> Chúng tôi sẽ xem xét yêu cầu của bạn</li>
+                                            <li style="margin-bottom: 8px;"><strong>Trong 24 giờ:</strong> Chuyên viên tư vấn sẽ liên hệ qua điện thoại hoặc email</li>
+                                            <li style="margin-bottom: 8px;"><strong>Sau đó:</strong> Lên kế hoạch tư vấn chi tiết và báo giá (nếu cần)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Services Highlight -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 32px;">
+                                <tr>
+                                    <td align="center">
+                                        <h3 style="color: #1f2937; font-size: 18px; font-weight: 600; margin: 0 0 20px 0;" class="mobile-subtitle">
+                                            🚀 Dịch vụ chính của GENSOL
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <!-- Service Cards Table -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td style="width: 33.33%; padding: 8px;" class="service-card">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+                                                        <tr>
+                                                            <td style="padding: 16px; text-align: center;">
+                                                                <div style="font-size: 24px; margin-bottom: 8px;">💻</div>
+                                                                <h4 style="color: #0c4a6e; font-size: 14px; font-weight: 600; margin: 0 0 4px 0;" class="mobile-text">Phát triển phần mềm</h4>
+                                                                <p style="color: #075985; font-size: 12px; margin: 0;" class="mobile-text">Ứng dụng web, mobile, hệ thống quản lý</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="width: 33.33%; padding: 8px;" class="service-card">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f0fdf4; border: 1px solid #22c55e; border-radius: 8px;">
+                                                        <tr>
+                                                            <td style="padding: 16px; text-align: center;">
+                                                                <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+                                                                <h4 style="color: #14532d; font-size: 14px; font-weight: 600; margin: 0 0 4px 0;" class="mobile-text">Tư vấn IT</h4>
+                                                                <p style="color: #166534; font-size: 12px; margin: 0;" class="mobile-text">Chuyển đổi số, tối ưu hệ thống</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td style="width: 33.33%; padding: 8px;" class="service-card">
+                                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #fef2f2; border: 1px solid #ef4444; border-radius: 8px;">
+                                                        <tr>
+                                                            <td style="padding: 16px; text-align: center;">
+                                                                <div style="font-size: 24px; margin-bottom: 8px;">👥</div>
+                                                                <h4 style="color: #7f1d1d; font-size: 14px; font-weight: 600; margin: 0 0 4px 0;" class="mobile-text">Nhân sự & Logistics</h4>
+                                                                <p style="color: #991b1b; font-size: 12px; margin: 0;" class="mobile-text">Tuyển dụng, quản lý vận tải</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Contact Information -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #1f2937; border-radius: 12px;">
+                                <tr>
+                                    <td style="padding: 24px; text-align: center;">
+                                        <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 0 0 20px 0;" class="mobile-subtitle">
+                                            📞 Liên hệ trực tiếp
+                                        </h3>
+                                        
+                                        <!-- Contact Items Table -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td style="width: 50%; padding: 10px; vertical-align: top;" class="contact-item mobile-center">
+                                                    <div style="color: #9ca3af; font-size: 14px; margin-bottom: 4px;" class="mobile-text">Email</div>
+                                                    <a href="mailto:{{company_email}}" style="color: #67a1ff; text-decoration: none; font-weight: 600;" class="mobile-text">{{company_email}}</a>
+                                                </td>
+                                                <td style="width: 50%; padding: 10px; vertical-align: top;" class="contact-item mobile-center">
+                                                    <div style="color: #9ca3af; font-size: 14px; margin-bottom: 4px;" class="mobile-text">Điện thoại</div>
+                                                    <a href="tel:+84123456789" style="color: #67a1ff; text-decoration: none; font-weight: 600;" class="mobile-text">+84 (0) 123 456 789</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 50%; padding: 10px; vertical-align: top;" class="contact-item mobile-center">
+                                                    <div style="color: #9ca3af; font-size: 14px; margin-bottom: 4px;" class="mobile-text">Địa chỉ</div>
+                                                    <span style="color: #d1d5db; font-size: 14px;" class="mobile-text">Tòa nhà Lotte Center, Ba Đình, Hà Nội</span>
+                                                </td>
+                                                <td style="width: 50%; padding: 10px; vertical-align: top;" class="contact-item mobile-center">
+                                                    <div style="color: #9ca3af; font-size: 14px; margin-bottom: 4px;" class="mobile-text">Website</div>
+                                                    <a href="{{website_link}}" style="color: #67a1ff; text-decoration: none; font-weight: 600;" class="mobile-text">{{website_link}}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 32px; text-align: center; border-top: 1px solid #e5e7eb;" class="mobile-padding">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <p style="color: #6b7280; font-size: 14px; margin: 0 0 16px 0;" class="mobile-text">
+                                            Cảm ơn bạn đã tin tưởng GENSOL! 🙏
+                                        </p>
+                                        <p style="color: #9ca3af; font-size: 12px; margin: 0; line-height: 1.5;" class="mobile-text">
+                                            Email này được gửi tự động từ hệ thống liên hệ của GENSOL.<br>
+                                            Nếu bạn có thắc mắc, vui lòng liên hệ trực tiếp qua email hoặc điện thoại.
+                                        </p>
+                                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                                            <p style="color: #374151; font-size: 14px; font-weight: 600; margin: 0;" class="mobile-text">
+                                                Công ty TNHH GENSOL
+                                            </p>
+                                            <p style="color: #6b7280; font-size: 12px; margin: 4px 0 0 0;" class="mobile-text">
+                                                Đồng hành cùng bạn trong hành trình số hóa
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
   
