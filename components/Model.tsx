@@ -15,7 +15,7 @@ export default function Model() {
   const [rotationOffset, setRotationOffset] = useState(0);
   
   // Fixed base position - không thay đổi khi scroll
-  const basePosition = { x: 3, y: 0.8, z: 0 };
+  const basePosition = { x: 4, y: 0.8, z: 0 };
 
   useEffect(() => {
     const actionKeys = Object.keys(actions);

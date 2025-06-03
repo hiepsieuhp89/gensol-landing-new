@@ -476,7 +476,7 @@ export default function Contact() {
                >
                   <motion.div variants={itemVariants}>
                      <h3 className="text-2xl font-bold mb-6">Thông tin liên hệ</h3>
-                     <div className="grid gap-6">
+                     <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
                         {contactInfo.map((info, index) => (
                            <motion.div
                               key={index}
