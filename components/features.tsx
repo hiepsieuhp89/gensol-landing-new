@@ -4,10 +4,6 @@ import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
 import { Code, Laptop, Users, Truck, Settings, Smartphone, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
-import {
-  DraggableCardBody,
-  DraggableCardContainer,
-} from "@/components/ui/draggable-card"
 
 export default function Features() {
   const ref = useRef(null)
@@ -30,7 +26,6 @@ export default function Features() {
       title: "Công nghệ - Phần mềm",
       description: "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT và thiết kế UI/UX chuyên nghiệp.",
       color: "from-blue-500/20 to-cyan-500/20",
-      className: "absolute top-10 left-[15%] rotate-[-8deg]",
       image: "/images/feature1.png"
     },
     {
@@ -38,27 +33,21 @@ export default function Features() {
       title: "Thiết bị & Dịch vụ",
       description: "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị và các dịch vụ công nghệ liên quan.",
       color: "from-green-500/20 to-emerald-500/20",
-      className: "absolute top-32 left-[35%] rotate-[12deg]",
       image: "/images/feature2.png"
-
     },
     {
       icon: <Users className="h-5 w-5 text-white" />,
       title: "Nhân sự & Tư vấn",
       description: "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ và các dịch vụ nhân sự chuyên nghiệp.",
       color: "from-purple-500/20 to-pink-500/20",
-      className: "absolute top-5 left-[55%] rotate-[-5deg]",
       image: "/images/feature3.png"
-
     },
     {
       icon: <Truck className="h-5 w-5 text-white" />,
       title: "Logistics & Vận tải",
       description: "Dịch vụ cho thuê xe, vận tải hành khách và các giải pháp logistics linh hoạt theo nhu cầu.",
       color: "from-orange-500/20 to-red-500/20",
-      className: "absolute top-24 right-[25%] rotate-[7deg]",
       image: "/images/feature4.png"
-
     },
   ]
 
@@ -139,11 +128,25 @@ export default function Features() {
           </motion.div>
         </div>
 
-        {/* Draggable Cards Container */}
-        <DraggableCardContainer className="relative flex min-h-[600px] w-full items-center justify-center overflow-visible">
+        {/* Grid Cards Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {features.map((feature, index) => (
-            <DraggableCardBody key={index} className={feature.className}>
-              <div className="relative h-full group">
+            <motion.div
+              key={index}
+              className="relative group"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -10,
+                rotateY: 5,
+                rotateX: 5,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              style={{ perspective: 1000 }}
+            >
+              <div className="relative h-full">
                 {/* Glassmorphism background with enhanced border */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/80 to-white/70 dark:from-slate-800/90 dark:via-slate-800/80 dark:to-slate-900/70 backdrop-blur-xl rounded-2xl border border-slate-200/60 dark:border-slate-600/40 shadow-2xl" />
 
@@ -169,10 +172,10 @@ export default function Features() {
                   </div>
 
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500 flex-shrink-0">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500 flex-shrink-0 group-hover:scale-110 group-hover:rotate-3">
                       {feature.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-primary dark:text-white">{feature.title}</h3>
+                    <h3 className="text-xl font-bold text-primary dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{feature.title}</h3>
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors duration-300">
@@ -194,9 +197,12 @@ export default function Features() {
 
               {/* Hover glow effect */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 via-blue-400/0 to-cyan-400/0 group-hover:from-primary/5 group-hover:via-blue-400/5 group-hover:to-cyan-400/5 transition-all duration-500 pointer-events-none" />
-            </DraggableCardBody>
+              
+              {/* Enhanced shadow on hover */}
+              <div className="absolute inset-0 rounded-2xl shadow-none group-hover:shadow-2xl group-hover:shadow-primary/20 transition-all duration-500 pointer-events-none" />
+            </motion.div>
           ))}
-        </DraggableCardContainer>
+        </div>
       </div>
     </motion.section>
   )
