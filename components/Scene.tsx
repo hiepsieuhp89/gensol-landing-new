@@ -22,7 +22,7 @@ export default function Scene() {
   const isDark = mounted && theme === 'dark';
   
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none">
+    <div className="absolute inset-0 w-full h-full pointer-events-none">
       {/* Professional background effects - full screen */}
       <div className="absolute inset-0 -z-10">
         {/* Gradient background */}
@@ -77,12 +77,12 @@ export default function Scene() {
         className="pointer-events-auto"
       >
         {/* Dynamic lighting based on theme */}
-        <ambientLight intensity={isDark ? 0.3 : 0.6} />
+        <ambientLight intensity={isDark ? 0.5 : 0.9} />
         
         {/* Main directional light with enhanced settings for light theme */}
         <directionalLight 
           position={[10, 10, 5]} 
-          intensity={isDark ? 1.5 : 2.2}
+          intensity={isDark ? 2.0 : 2.8}
           castShadow
           shadow-mapSize-width={4096}
           shadow-mapSize-height={4096}
@@ -97,14 +97,14 @@ export default function Scene() {
         {/* Secondary fill light - stronger for light theme */}
         <directionalLight 
           position={[-5, 5, 5]} 
-          intensity={isDark ? 0.3 : 0.8}
+          intensity={isDark ? 0.6 : 1.2}
           color={isDark ? "#4f46e5" : "#3b82f6"}
         />
         
         {/* Rim light for edge highlighting - enhanced for light theme */}
         <directionalLight 
           position={[0, 5, -10]} 
-          intensity={isDark ? 0.5 : 1.0}
+          intensity={isDark ? 0.8 : 1.4}
           color={isDark ? "#06b6d4" : "#0ea5e9"}
         />
         
@@ -112,10 +112,25 @@ export default function Scene() {
         {!isDark && (
           <directionalLight 
             position={[0, 15, 0]} 
-            intensity={0.4}
+            intensity={0.6}
             color="#f0f9ff"
           />
         )}
+        
+        {/* Additional front light to brighten the model */}
+        <directionalLight 
+          position={[0, 0, 10]} 
+          intensity={isDark ? 0.4 : 0.8}
+          color={isDark ? "#ffffff" : "#ffffff"}
+        />
+        
+        {/* Point light for extra brightness */}
+        <pointLight 
+          position={[5, 5, 5]} 
+          intensity={isDark ? 0.5 : 1.0}
+          color="#ffffff"
+          distance={20}
+        />
         
         {/* Ground plane for shadow receiving - larger to prevent overflow */}
         <mesh 

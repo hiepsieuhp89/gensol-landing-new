@@ -8,12 +8,14 @@ export default function Model() {
   const group = useRef<Group>(null);
   const { scene, animations } = useGLTF('/blue_the_minimalistic_robot.glb');
   const { actions } = useAnimations(animations, group);
-  const { viewport } = useThree();
   const [mouse, setMouse] = useState(new Vector2(0, 0));
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinStartRotation, setSpinStartRotation] = useState(0);
   const [spinProgress, setSpinProgress] = useState(0);
   const [rotationOffset, setRotationOffset] = useState(0);
+  
+  // Fixed base position - không thay đổi khi scroll
+  const basePosition = { x: 3, y: 0.8, z: 0 };
 
   useEffect(() => {
     const actionKeys = Object.keys(actions);
@@ -26,10 +28,11 @@ export default function Model() {
 
     if (group.current) {
       group.current.rotation.x = 0; // Không nghiêng
-      group.current.rotation.y = 0; // Hướng về bên trái ban đầu (45 độ)
+      group.current.rotation.y = 0; // Hướng về bên trái ban đầu
       group.current.rotation.z = 0; // Không nghiêng sang bên
-      group.current.position.y = 2; // Dịch lên trên
-      group.current.position.x = 3 // Dịch sang phải để align với layout mới
+      group.current.position.x = basePosition.x; // Dịch sang phải để align với layout mới
+      group.current.position.y = basePosition.y; // Vị trí cố định
+      group.current.position.z = basePosition.z;
       
       // Set initial rotation offset to match the starting position
       setRotationOffset(-Math.PI / 8);
@@ -40,8 +43,20 @@ export default function Model() {
           child.castShadow = true;
           child.receiveShadow = true;
           
-          // Enhance material properties for better lighting
+          // Enhance material properties for better lighting and brightness
           if (child.material) {
+            // Make material more reflective and brighter
+            if (child.material.type === 'MeshStandardMaterial' || child.material.type === 'MeshPhysicalMaterial') {
+              child.material.metalness = Math.min(child.material.metalness + 0.2, 1.0);
+              child.material.roughness = Math.max(child.material.roughness - 0.3, 0.1);
+              child.material.envMapIntensity = 1.5;
+            }
+            
+            // Increase emissive for self-illumination
+            if (child.material.emissive) {
+              child.material.emissive.multiplyScalar(1.2);
+            }
+            
             child.material.needsUpdate = true;
           }
         }
@@ -60,9 +75,14 @@ export default function Model() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [actions]);
 
-  // Handle click to spin
-  const handleClick = () => {
+  // Handle click to spin - chỉ cho phép 1 vòng xoay mỗi lần click
+  const handleClick = (event: any) => {
+    console.log('Model clicked!', { isSpinning, event }); // Debug log
+    event.stopPropagation(); // Prevent event bubbling
+    
+    // Chỉ cho phép click khi không đang xoay
     if (!isSpinning && group.current) {
+      console.log('Starting spin animation'); // Debug log
       setIsSpinning(true);
       setSpinStartRotation(group.current.rotation.y);
       setSpinProgress(0);
@@ -73,47 +93,61 @@ export default function Model() {
     if (group.current) {
       const time = state.clock.getElapsedTime();
       
-      // Floating animation
-      group.current.position.y = 0.8 + Math.sin(time) * 0.12;
+      // Floating animation - giữ vị trí cố định, chỉ thay đổi Y một chút
+      group.current.position.x = basePosition.x; // Giữ X cố định
+      group.current.position.y = basePosition.y + Math.sin(time) * 0.12; // Floating nhẹ
+      group.current.position.z = basePosition.z; // Giữ Z cố định
       
       if (isSpinning) {
-        // Smooth spin animation - 360 degrees over ~2 seconds
+        // Tăng tốc độ xoay để hoàn thành 1 vòng trong khoảng 1.5 giây
         setSpinProgress(prev => {
-          const newProgress = prev + 0.015; // Much slower for smoother animation
+          const newProgress = prev + 0.02; // Tăng tốc độ từ 0.015 lên 0.02
+          
           if (newProgress >= 1) {
+            // Kết thúc animation - đảm bảo xoay đúng 1 vòng
             setIsSpinning(false);
-            // Set the final rotation and update offset to match
             const finalRotation = spinStartRotation + Math.PI * 2;
             group.current!.rotation.y = finalRotation;
             setRotationOffset(finalRotation);
-            return 1; // Ensure we end exactly at 1 full rotation
+            return 1;
           }
           return newProgress;
         });
         
-        // Smooth easing function for more natural movement
-        const easeInOut = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        // Smooth easing function cho chuyển động tự nhiên hơn
+        const easeInOut = (t: number) => {
+          return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        };
         const easedProgress = easeInOut(spinProgress);
         
-        // Smooth spin animation - exactly one full rotation
+        // Xoay đúng 1 vòng 360 độ (2π radians)
         const spinRotation = spinStartRotation + (easedProgress * Math.PI * 2);
         group.current.rotation.y = spinRotation;
       } else {
-        // Mouse tracking - make robot look towards mouse (only when not spinning)
-        // Increased sensitivity for better cursor following
-        const targetRotationY = rotationOffset + (mouse.x * 0.5); // Tăng từ 0.3 lên 0.5 để nhạy hơn
-        const targetRotationX = mouse.y * 0.3; // Tăng từ 0.2 lên 0.3 để nhạy hơn
+        // Mouse tracking - chỉ hoạt động khi không đang xoay
+        const targetRotationY = rotationOffset + (mouse.x * 0.5);
+        const targetRotationX = mouse.y * 0.3;
         
-        // Faster interpolation for more responsive movement
-        group.current.rotation.y += (targetRotationY - group.current.rotation.y) * 0.08; // Tăng từ 0.05 lên 0.08
-        group.current.rotation.x += (targetRotationX - group.current.rotation.x) * 0.08; // Tăng từ 0.05 lên 0.08
+        // Interpolation mượt mà
+        group.current.rotation.y += (targetRotationY - group.current.rotation.y) * 0.08;
+        group.current.rotation.x += (targetRotationX - group.current.rotation.x) * 0.08;
       }
     }
   });
 
   return (
-    <group ref={group} onClick={handleClick}>
-      <primitive object={scene} scale={0.05} />
+    <group ref={group}>
+      {/* Invisible clickable mesh around the model */}
+      <mesh
+        onPointerDown={handleClick}
+        position={[0, 0, 0]}
+        scale={[2, 3, 2]} // Adjust size to cover the robot
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial transparent opacity={0} />
+      </mesh>
+      
+      <primitive object={scene} scale={0.06} />
     </group>
   );
 }
