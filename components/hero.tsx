@@ -149,7 +149,7 @@ export default function Hero() {
          </div>
          
          <div className="hidden lg:block">
-            {/* <Scene /> */}
+            <Scene />
          </div>
       </motion.section>
    );
