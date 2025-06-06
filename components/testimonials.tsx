@@ -236,26 +236,8 @@ export default function CompanyValues() {
                      />
 
                      <div className="relative z-10">
-                        {/* Icon with complex animations */}
                         <motion.div 
                            className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm mx-auto"
-                           style={{
-                              scale: useTransform(
-                                 scrollYProgress,
-                                 [0, 0.3, 0.7, 1],
-                                 [0.4, 1.4, 1.4, 0.8]
-                              ),
-                              rotate: useTransform(
-                                 scrollYProgress,
-                                 [0, 1],
-                                 [0, index % 2 === 0 ? 720 : -720]
-                              ),
-                              y: useTransform(
-                                 scrollYProgress,
-                                 [0, 0.5, 1],
-                                 [40, 0, -20]
-                              )
-                           }}
                         >
                            {value.icon}
                         </motion.div>

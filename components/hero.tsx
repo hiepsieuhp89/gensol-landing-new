@@ -10,6 +10,7 @@ import Scene from "./Scene";
 
 export default function Hero() {
    const [scrollY, setScrollY] = useState(0);
+   const [hasMounted, setHasMounted] = useState(false);
    const ref = useRef(null);
    const isInView = useInView(ref, { once: true, amount: 0.3 });
    const { scrollYProgress } = useScroll({
@@ -20,6 +21,7 @@ export default function Hero() {
    const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
    useEffect(() => {
+      setHasMounted(true);
       const handleScroll = () => {
          setScrollY(window.scrollY);
       };
@@ -128,10 +130,10 @@ export default function Hero() {
                      ].map((stat, index) => (
                         <div key={index} className="flex flex-col items-center text-center px-6 first:pl-0 last:pr-0">
                            <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 mb-1">
-                              {typeof stat.value === 'number' && isInView ? (
+                              {typeof stat.value === 'number' && isInView && hasMounted ? (
                                  <Counter to={stat.value} suffix={stat.suffix} />
                               ) : (
-                                 stat.value
+                                 typeof stat.value === 'number' ? `${stat.value}${stat.suffix}` : stat.value
                               )}
                            </div>
                            <div className="flex items-center gap-1 text-xs text-muted-foreground">

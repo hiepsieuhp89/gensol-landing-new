@@ -22,8 +22,10 @@ export default function Counter({
 }: CounterProps) {
   const count = useMotionValue(from);
   const [display, setDisplay] = useState(from.toFixed(decimals));
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
+    setHasMounted(true);
     const controls = animate(count, to, {
       duration,
       onUpdate(value) {
@@ -34,10 +36,13 @@ export default function Counter({
     return controls.stop;
   }, [count, to, duration, decimals]);
 
+  // Show initial value during SSR and before animation starts
+  const displayValue = hasMounted ? display : from.toFixed(decimals);
+
   return (
     <span>
       {prefix}
-      {display}
+      {displayValue}
       {suffix}
     </span>
   );

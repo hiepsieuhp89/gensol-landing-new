@@ -43,7 +43,7 @@ export default function Footer() {
                            width={40}
                            className='object-cover filter scale-90'
                            style={{
-                              filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                              // filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
                               imageRendering: 'crisp-edges',
                            }}
                            quality={100}
@@ -64,7 +64,7 @@ export default function Footer() {
                            width={120}
                            className='filter scale-90'
                            style={{
-                              filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                              // filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
                               imageRendering: 'crisp-edges',
                            }}
                            quality={100}

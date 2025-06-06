@@ -34,11 +34,11 @@ export default function Header() {
                <Image
                   src={"/images/logo.png"}
                   alt="GENSOL logo"
-                  height={40}
-                  width={40}
+                  height={44}
+                  width={44}
                   className='object-cover filter'
                   style={{
-                     filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                     // filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
                      imageRendering: 'crisp-edges',
                   }}
                   quality={100}
@@ -54,7 +54,7 @@ export default function Header() {
                   width={120}
                   className='filter'
                   style={{
-                     filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+                     // filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
                      imageRendering: 'crisp-edges',
                   }}
                   quality={100}
