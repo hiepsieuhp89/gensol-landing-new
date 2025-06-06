@@ -2,8 +2,9 @@
 
 import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
-import { Quote, Heart, Lightbulb, Target, Users, Sparkles, Star } from "lucide-react"
+import { Quote, Heart, Lightbulb, Target, Users, Sparkles, Star, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function CompanyValues() {
    const ref = useRef(null)
@@ -200,13 +201,14 @@ export default function CompanyValues() {
                   animate={isInView ? { y: 0, scale: 1 } : { y: 80, scale: 0.7 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                >
+
                   <motion.div
-                     className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-blue-900/30 backdrop-blur-sm border border-purple-200/50 dark:border-purple-700/30 px-6 py-2 text-sm font-semibold text-purple-700 dark:text-purple-300"
-                     initial={{ scale: 0, rotateX: 90 }}
-                     animate={isInView ? { scale: 1, rotateX: 0 } : { scale: 0, rotateX: 90 }}
-                     transition={{ duration: 0.6, delay: 0.3 }}
+                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto"
+                     initial={{ scale: 0 }}
+                     animate={isInView ? { scale: 1 } : { scale: 0 }}
+                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                     <Sparkles className="h-4 w-4" />
+                     <Sparkle className="h-4 w-4 text-white" />
                      Giá trị cốt lõi
                   </motion.div>
                   <motion.h2
@@ -367,13 +369,14 @@ export default function CompanyValues() {
                            rotate: useTransform(scrollYProgress, [0, 1], [0, 180]),
                         }}
                      >
-                        <Quote className="h-16 w-16 text-purple-400/60 dark:text-purple-500/40 mx-auto" />
+                        <Quote className="h-12 w-12 text-primary mx-auto" />
                      </motion.div>
 
                      {/* Quote text */}
                      <motion.blockquote
-                        className="text-2xl md:text-3xl font-medium text-slate-700 dark:text-slate-200 italic mb-8 leading-relaxed"
+                        className="text-2xl md:text-3xl font-normal text-slate-700 dark:text-slate-200 italic mb-8 leading-relaxed"
                         style={{
+                           fontFamily: '"Playfair Display", "Crimson Text", "Noto Serif", "Times New Roman", serif',
                            clipPath: useTransform(
                               scrollYProgress,
                               [0, 0.4, 0.6, 1],
@@ -393,15 +396,16 @@ export default function CompanyValues() {
                            x: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [-120, 0, 0, 60]),
                         }}
                      >
-                        <motion.div
-                           className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 flex items-center justify-center"
+                        <motion.img
+                           src={"/images/logo.png"}
+                           alt="GENSOL logo"
+                           className='object-contain filter h-16 w-auto'
                            style={{
+                              imageRendering: 'crisp-edges',
                               scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.6, 1.1, 1.1, 0.95]),
-                              rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
                            }}
-                        >
-                           <span className="text-white font-bold text-xl">GS</span>
-                        </motion.div>
+                           draggable={false}
+                        />
                         <div className="text-left">
                            <div className="font-bold text-lg text-slate-800 dark:text-white">Ban lãnh đạo GENSOL</div>
                            <div className="text-slate-600 dark:text-slate-400">Công ty TNHH GENSOL</div>
