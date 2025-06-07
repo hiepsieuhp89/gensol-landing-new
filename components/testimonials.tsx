@@ -4,11 +4,13 @@ import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
 import { Quote, Heart, Lightbulb, Target, Users, Sparkles, Star, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
+import { useTranslation } from "@/contexts/translation-context"
 import Image from "next/image"
 
 export default function CompanyValues() {
    const ref = useRef(null)
    const isInView = useInView(ref, { once: true, amount: 0.3 })
+   const { t } = useTranslation()
 
    const { scrollYProgress } = useScroll({
       target: ref,
@@ -32,9 +34,9 @@ export default function CompanyValues() {
    const values = [
       {
          icon: <Heart className="h-10 w-10 text-white" />,
-         title: "Tận tâm",
+         title: t("Tận tâm"),
          description:
-            "Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe và thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất.",
+            t("Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe và thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất."),
          gradient: "from-rose-400 via-pink-500 to-red-500",
          bgGradient: "from-rose-50/80 via-pink-50/60 to-red-50/80",
          darkBgGradient: "from-rose-900/20 via-pink-900/15 to-red-900/20",
@@ -43,8 +45,8 @@ export default function CompanyValues() {
       },
       {
          icon: <Lightbulb className="h-10 w-10 text-white" />,
-         title: "Sáng tạo",
-         description: "Không ngừng đổi mới và sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo và hiệu quả.",
+         title: t("Sáng tạo"),
+         description: t("Không ngừng đổi mới và sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo và hiệu quả."),
          gradient: "from-amber-400 via-yellow-500 to-orange-500",
          bgGradient: "from-amber-50/80 via-yellow-50/60 to-orange-50/80",
          darkBgGradient: "from-amber-900/20 via-yellow-900/15 to-orange-900/20",
@@ -53,8 +55,8 @@ export default function CompanyValues() {
       },
       {
          icon: <Target className="h-10 w-10 text-white" />,
-         title: "Chính xác",
-         description: "Cam kết chất lượng cao trong mọi sản phẩm và dịch vụ, đảm bảo độ chính xác và tin cậy tuyệt đối.",
+         title: t("Chính xác"),
+         description: t("Cam kết chất lượng cao trong mọi sản phẩm và dịch vụ, đảm bảo độ chính xác và tin cậy tuyệt đối."),
          gradient: "from-blue-400 via-cyan-500 to-teal-500",
          bgGradient: "from-blue-50/80 via-cyan-50/60 to-teal-50/80",
          darkBgGradient: "from-blue-900/20 via-cyan-900/15 to-teal-900/20",
@@ -63,8 +65,8 @@ export default function CompanyValues() {
       },
       {
          icon: <Users className="h-10 w-10 text-white" />,
-         title: "Đồng hành",
-         description: "Xây dựng mối quan hệ đối tác lâu dài, đồng hành cùng khách hàng trong mọi giai đoạn phát triển.",
+         title: t("Đồng hành"),
+         description: t("Xây dựng mối quan hệ đối tác lâu dài, đồng hành cùng khách hàng trong mọi giai đoạn phát triển."),
          gradient: "from-emerald-400 via-green-500 to-teal-500",
          bgGradient: "from-emerald-50/80 via-green-50/60 to-teal-50/80",
          darkBgGradient: "from-emerald-900/20 via-green-900/15 to-teal-900/20",
@@ -209,7 +211,7 @@ export default function CompanyValues() {
                      transition={{ duration: 0.5, delay: 0.2 }}
                   >
                      <Sparkle className="h-4 w-4 text-white" />
-                     Giá trị cốt lõi
+                     {t("Giá trị cốt lõi")}
                   </motion.div>
                   <motion.h2
                      className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
@@ -217,9 +219,9 @@ export default function CompanyValues() {
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                      transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                     Những giá trị{" "}
+                     {t("Những giá trị")}{" "}
                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
-                        định hướng
+                        {t("định hướng")}
                      </span>
                   </motion.h2>
 
@@ -229,8 +231,7 @@ export default function CompanyValues() {
                      animate={isInView ? { y: 0, scale: 1 } : { y: 40, scale: 0.9 }}
                      transition={{ duration: 0.8, delay: 0.5 }}
                   >
-                     Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến
-                     cách chúng tôi phát triển sản phẩm và dịch vụ.
+                     {t("Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm và dịch vụ.")}
                   </motion.p>
                </motion.div>
             </div>

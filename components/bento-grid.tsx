@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, FileText, Layers, Palette, Zap } from 'lucide-react';
+import { useTranslation } from '@/contexts/translation-context';
  
 interface BentoGridItemProps {
   title: string;
@@ -20,6 +21,7 @@ const BentoGridItem = ({
   size = 'small',
   features = [],
 }: BentoGridItemProps) => {
+  const { t } = useTranslation()
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 25 } },
@@ -62,7 +64,7 @@ const BentoGridItem = ({
           )}
         </div>
         <div className="mt-4 flex items-center text-sm text-primary">
-          <span className="mr-1">Tìm hiểu thêm</span>
+          <span className="mr-1">{t("Tìm hiểu thêm")}</span>
           <ArrowRight className="size-4 transition-all duration-500 group-hover:translate-x-2" />
         </div>
       </div>

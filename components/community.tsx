@@ -4,10 +4,12 @@
   import { useInView, useScroll, useTransform } from "framer-motion"
   import { Target, Eye, Building2, CheckCircle, Settings, Zap, Sparkle } from "lucide-react"
   import { motion } from "framer-motion"
+  import { useTranslation } from "@/contexts/translation-context"
 
   export default function AboutUs() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, amount: 0.2 })
+    const { t } = useTranslation()
 
     const { scrollYProgress } = useScroll({
       target: ref,
@@ -36,19 +38,17 @@
     const doodleFloat3 = useTransform(scrollYProgress, [0, 1], [0, -15])
 
     const businessAreas = [
-      "Hoạt động tư vấn quản lý",
-      "Bán buôn máy vi tính, thiết bị ngoại vi và phần mềm",
-      "Bán buôn thiết bị và linh kiện điện tử, viễn thông",
-      "Vận tải hành khách đường bộ",
-      "Xuất bản phần mềm & game",
-      "Cho thuê xe có động cơ",
-      "Lập trình máy tính",
-      "Tư vấn máy vi tính và quản trị hệ thống",
-      "Hoạt động dịch vụ công nghệ thông tin",
-      "Hoạt động kiến trúc và tư vấn kỹ thuật",
-      "Hoạt động thiết kế chuyên dụng",
-      "Cung ứng và quản lý nguồn lao động",
-      "Sửa chữa máy vi tính và thiết bị ngoại vi",
+      t("Hoạt động tư vấn quản lý"),
+      t("Tư vấn máy vi tính và quản trị hệ thống"),
+      t("Hoạt động dịch vụ công nghệ thông tin"),
+      t("Lập trình máy vi tính"),
+      t("Xuất bản phần mềm & game"),
+      t("Bán buôn thiết bị và linh kiện điện tử, viễn thông"),
+      t("Hoạt động kiến trúc và tư vấn kỹ thuật"),
+      t("Hoạt động thiết kế chuyên dụng"),
+      t("Bán buôn máy vi tính, thiết bị ngoại vi và phần mềm"),
+      t("Sửa chữa máy vi tính và thiết bị ngoại vi"),
+      t("Cung ứng và quản lý nguồn lao động"),
     ]
 
     // Update the containerVariants to use transform instead of clipPath
@@ -221,7 +221,7 @@
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Sparkle className="h-4 w-4 text-white" />
-                Về chúng tôi
+                {t("Về chúng tôi")}
               </motion.div>
               <motion.h2
                 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
@@ -229,7 +229,7 @@
                 animate={isInView ? { y: 0, rotateX: 0 } : { y: 30, rotateX: 45 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Công ty{" "}
+                {t("Công ty")}{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">GENSOL</span>
               </motion.h2>
               <motion.p
@@ -238,8 +238,7 @@
                 animate={isInView ? { y: 0, scale: 1 } : { y: 30, scale: 0.9 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt
-                Nam, giúp họ phát triển bền vững trong kỷ nguyên số.
+                {t("Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.")}
               </motion.p>
             </motion.div>
           </div>
@@ -278,11 +277,10 @@
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
                       <Eye className="h-5 w-5 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-primary dark:text-white">Tầm nhìn</h3>
+                    <h3 className="text-xl font-bold text-primary dark:text-white">{t("Tầm nhìn")}</h3>
                   </div>
                   <p>
-                    Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự và logistics toàn
-                    diện cho các doanh nghiệp tại Việt Nam.
+                    {t("Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.")}
                   </p>
                 </div>
               </motion.div>
@@ -314,11 +312,10 @@
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
                       <Target className="h-5 w-5 text-white" />
                     </div>
-                    <h3 className="mb-3 text-xl font-bold text-primary dark:text-white">Sứ mệnh</h3>
+                    <h3 className="mb-3 text-xl font-bold text-primary dark:text-white">{t("Sứ mệnh")}</h3>
                   </div>
                   <p>
-                    Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả
-                    và bền vững để tối ưu hóa hoạt động kinh doanh.
+                    {t("Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả và bền vững để tối ưu hóa hoạt động kinh doanh.")}
                   </p>
                 </div>
               </motion.div>
@@ -337,7 +334,7 @@
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
                     <Building2 className="h-5 w-5 text-white" />
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-primary dark:text-white">Lĩnh vực kinh doanh</h3>
+                  <h3 className="mb-4 text-xl font-bold text-primary dark:text-white">{t("Lĩnh vực kinh doanh")}</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {businessAreas.map((area, index) => (
@@ -378,7 +375,7 @@
             >
               <Sparkle className="h-4 w-4 text-primary" />
               <span className="text-sm font-semibold text-primary">
-                Đội ngũ linh hoạt • Dịch vụ đa ngành • Giải pháp bền vững
+                {t("Đội ngũ linh hoạt • Dịch vụ đa ngành • Giải pháp bền vững")}
               </span>
             </motion.div>
           </motion.div>

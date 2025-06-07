@@ -4,11 +4,13 @@ import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
 import { Users, TrendingUp, Settings, Shield, Clock, Award, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
+import { useTranslation } from "@/contexts/translation-context"
 import BentoGrid from "./bento-grid"
 
 export default function WhyChooseUs() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -28,30 +30,30 @@ export default function WhyChooseUs() {
   const reasons = [
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Đội ngũ linh hoạt, đa lĩnh vực",
-      description: "Chúng tôi có đội ngũ chuyên gia đa dạng, có thể đáp ứng nhiều nhu cầu khác nhau của doanh nghiệp từ công nghệ đến nhân sự.",
-      features: ["Chuyên gia IT", "Nhân sự logistics", "Tư vấn quản lý", "Kỹ thuật viên"],
+      title: t("Đội ngũ linh hoạt, đa lĩnh vực"),
+      description: t("Chúng tôi có đội ngũ chuyên gia đa dạng, có thể đáp ứng nhiều nhu cầu khác nhau của doanh nghiệp từ công nghệ đến nhân sự."),
+      features: [t("Chuyên gia IT"), t("Nhân sự logistics"), t("Tư vấn quản lý"), t("Kỹ thuật viên")],
       size: "large" as const
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
-      title: "Sẵn sàng mở rộng quy mô",
-      description: "Khả năng mở rộng linh hoạt theo dự án, đảm bảo đáp ứng mọi yêu cầu từ nhỏ đến lớn của khách hàng.",
-      features: ["Mở rộng nhanh", "Tài nguyên linh hoạt", "Quản lý hiệu quả", "Theo dõi tiến độ"],
+      title: t("Sẵn sàng mở rộng quy mô"),
+      description: t("Khả năng mở rộng linh hoạt theo dự án, đảm bảo đáp ứng mọi yêu cầu từ nhỏ đến lớn của khách hàng."),
+      features: [t("Mở rộng nhanh"), t("Tài nguyên linh hoạt"), t("Quản lý hiệu quả"), t("Theo dõi tiến độ")],
       size: "medium" as const
     },
     {
       icon: <Settings className="h-6 w-6" />,
-      title: "Dịch vụ đa ngành",
-      description: "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics.",
-      features: ["Công nghệ", "Thiết bị", "Nhân sự", "Vận tải"],
+      title: t("Dịch vụ đa ngành"),
+      description: t("Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics."),
+      features: [t("Công nghệ"), t("Thiết bị"), t("Nhân sự"), t("Vận tải")],
       size: "medium" as const
     },
     {
       icon: <Shield className="h-6 w-6" />,
-      title: "Phù hợp SME",
-      description: "Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao.",
-      features: ["Chi phí hợp lý", "Giải pháp tùy chỉnh", "Hỗ trợ 24/7", "Tư vấn miễn phí"],
+      title: t("Phù hợp SME"),
+      description: t("Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao."),
+      features: [t("Chi phí hợp lý"), t("Giải pháp tùy chỉnh"), t("Hỗ trợ 24/7"), t("Tư vấn miễn phí")],
       size: "large" as const
     }
   ]
@@ -119,7 +121,7 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Sparkle className="h-4 w-4 text-white" />
-              Lý do chọn chúng tôi
+              {t("Lý do chọn chúng tôi")}
             </motion.div>
 
             <motion.h2
@@ -128,7 +130,7 @@ export default function WhyChooseUs() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Tại sao chọn{" "}
+              {t("Tại sao chọn")}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                 GENSOL?
               </span>
@@ -139,8 +141,7 @@ export default function WhyChooseUs() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài
-              với sự phát triển của doanh nghiệp bạn.
+              {t("Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn.")}
             </motion.p>
           </motion.div>
         </div>
@@ -163,7 +164,7 @@ export default function WhyChooseUs() {
           >
             <Award className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold text-primary">
-              Đối tác tin cậy cho sự phát triển bền vững
+              {t("Đối tác tin cậy cho sự phát triển bền vững")}
             </span>
           </motion.div>
         </motion.div>

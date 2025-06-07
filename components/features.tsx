@@ -4,8 +4,10 @@ import { useRef } from "react"
 import { useInView, useScroll, useTransform } from "framer-motion"
 import { Code, Laptop, Users, Truck, Sparkle } from "lucide-react"
 import { motion } from "framer-motion"
+import { useTranslation } from "@/contexts/translation-context"
 
 export default function Features() {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
@@ -23,29 +25,29 @@ export default function Features() {
   const features = [
     {
       icon: <Code className="h-5 w-5 text-white" />,
-      title: "Công nghệ - Phần mềm",
-      description: "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT và thiết kế UI/UX chuyên nghiệp.",
+      title: t("Công nghệ thông tin & Lập trình"),
+      description: t("Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính và quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin."),
       color: "from-blue-500/20 to-cyan-500/20",
       image: "/images/feature1.png",
     },
     {
       icon: <Laptop className="h-5 w-5 text-white" />,
-      title: "Thiết bị & Dịch vụ",
-      description: "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị và các dịch vụ công nghệ liên quan.",
+      title: t("Thiết bị & Linh kiện ICT"),
+      description: t("Buôn bán thiết bị và linh kiện điện tử viễn thông, tư vấn và cung cấp giải pháp công nghệ thông tin toàn diện."),
       color: "from-green-500/20 to-emerald-500/20",
       image: "/images/feature2.png",
     },
     {
       icon: <Users className="h-5 w-5 text-white" />,
-      title: "Nhân sự & Tư vấn",
-      description: "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ và các dịch vụ nhân sự chuyên nghiệp.",
+      title: t("Kiến trúc & Thiết kế"),
+      description: t("Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng và các dịch vụ tư vấn kỹ thuật chuyên nghiệp."),
       color: "from-purple-500/20 to-pink-500/20",
       image: "/images/feature3.png",
     },
     {
       icon: <Truck className="h-5 w-5 text-white" />,
-      title: "Logistics & Vận tải",
-      description: "Dịch vụ cho thuê xe, vận tải hành khách và các giải pháp logistics linh hoạt theo nhu cầu.",
+      title: t("Tư vấn & Quản lý"),
+      description: t("Hoạt động tư vấn quản lý, tư vấn doanh nghiệp và các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp."),
       color: "from-orange-500/20 to-red-500/20",
       image: "/images/feature4.png",
     },
@@ -100,7 +102,7 @@ export default function Features() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Sparkle className="h-4 w-4 text-white" />
-              Lĩnh vực hoạt động
+              {t("Lĩnh vực hoạt động")}
             </motion.div>
 
             <motion.h2
@@ -109,9 +111,9 @@ export default function Features() {
               animate={isInView ? { y: 0, rotateX: 0 } : { y: 30, rotateX: 45 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Giải pháp đa ngành{" "}
+              {t("Giải pháp đa ngành")}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
-                cho doanh nghiệp
+                {t("cho doanh nghiệp")}
               </span>
             </motion.h2>
 
@@ -121,8 +123,7 @@ export default function Features() {
               animate={isInView ? { y: 0, scale: 1 } : { y: 30, scale: 0.9 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho
-              các doanh nghiệp vừa và nhỏ.
+              {t("GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa và nhỏ.")}
             </motion.p>
           </motion.div>
         </div>

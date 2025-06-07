@@ -3,14 +3,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { SimpleThemeToggle } from "@/components/simple-theme-toggle";
+import LanguageDropdown from "@/components/language-dropdown";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/contexts/translation-context";
 
 export default function Header() {
    const [isScrolled, setIsScrolled] = useState(false);
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+   const { t } = useTranslation();
 
    useEffect(() => {
       const handleScroll = () => {
@@ -31,23 +34,25 @@ export default function Header() {
       >
          <div className="container px-4 md:px-12 flex h-16 items-center justify-between">
             <div className='flex items-center gap-2'>
-               <Image
-                  src={"/images/logo.png"}
-                  alt="GENSOL logo"
-                  height={44}
-                  width={44}
-                  className='object-cover filter'
-                  style={{
-                     // filter: 'brightness(1.2) contrast(1.2) saturate(1.2) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
-                     imageRendering: 'crisp-edges',
-                  }}
-                  quality={100}
-                  priority
-                  draggable={false}
-                  sizes="40px"
-                  unoptimized={false}
-               />
-               <Image
+               <Link
+                  href="/"
+               >
+                  <Image
+                     src={"/images/logo.png"}
+                     alt="GENSOL logo"
+                     height={64}
+                     width={64}
+                     className='object-cover filter cursor-pointer'
+                     style={{
+                        imageRendering: 'crisp-edges',
+                     }}
+                     quality={100}
+                     priority
+                     draggable={false}
+                     sizes="64px"
+                     unoptimized={false}
+                  /></Link>
+               {/* <Image
                   src={"/images/text-logo.png"}
                   alt="GENSOL text logo"
                   height={32}
@@ -62,7 +67,7 @@ export default function Header() {
                   draggable={false}
                   sizes="110px"
                   unoptimized={false}
-               />
+               /> */}
             </div>
 
             {/* Desktop Navigation */}
@@ -72,7 +77,7 @@ export default function Header() {
                   className="text-sm font-medium relative group"
                >
                   <span className="transition-colors hover:text-primary">
-                     Về chúng tôi
+                     {t("Về chúng tôi")}
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                </Link>
@@ -81,7 +86,7 @@ export default function Header() {
                   className="text-sm font-medium relative group"
                >
                   <span className="transition-colors hover:text-primary">
-                     Lĩnh vực
+                     {t("Lĩnh vực")}
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                </Link>
@@ -90,7 +95,7 @@ export default function Header() {
                   className="text-sm font-medium relative group"
                >
                   <span className="transition-colors hover:text-primary">
-                     Lý do chọn
+                     {t("Lý do chọn")}
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                </Link>
@@ -99,16 +104,17 @@ export default function Header() {
                   className="text-sm font-medium relative group"
                >
                   <span className="transition-colors hover:text-primary">
-                     Liên hệ
+                     {t("Liên hệ")}
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                </Link>
             </nav>
 
             <div className="flex items-center gap-4">
+               <LanguageDropdown />
                <SimpleThemeToggle />
                <Button className="hidden md:flex bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90 transition-all duration-300">
-                  Liên hệ tư vấn
+                  {t("Liên hệ tư vấn")}
                </Button>
 
                {/* Mobile Menu Button */}
@@ -136,31 +142,35 @@ export default function Header() {
                      className="py-3 text-sm font-medium border-b border-border/50"
                      onClick={() => setMobileMenuOpen(false)}
                   >
-                     Về chúng tôi
+                     {t("Về chúng tôi")}
                   </Link>
                   <Link
                      href="#linh-vuc"
                      className="py-3 text-sm font-medium border-b border-border/50"
                      onClick={() => setMobileMenuOpen(false)}
                   >
-                     Lĩnh vực
+                     {t("Lĩnh vực")}
                   </Link>
                   <Link
                      href="#ly-do-chon"
                      className="py-3 text-sm font-medium border-b border-border/50"
                      onClick={() => setMobileMenuOpen(false)}
                   >
-                     Lý do chọn
+                     {t("Lý do chọn")}
                   </Link>
                   <Link
                      href="#lien-he"
                      className="py-3 text-sm font-medium"
                      onClick={() => setMobileMenuOpen(false)}
                   >
-                     Liên hệ
+                     {t("Liên hệ")}
                   </Link>
+                  <div className="flex items-center justify-center gap-4 mt-4">
+                     <LanguageDropdown />
+                     <SimpleThemeToggle />
+                  </div>
                   <Button className="mt-4 bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90">
-                     Liên hệ tư vấn
+                     {t("Liên hệ tư vấn")}
                   </Button>
                </nav>
             </div>

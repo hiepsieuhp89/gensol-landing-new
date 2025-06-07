@@ -27,6 +27,13 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /flag-icons.*\.css$/,
+      type: "asset/resource",
+    });
+    return config;
+  },
 }
 
 if (userConfig) {

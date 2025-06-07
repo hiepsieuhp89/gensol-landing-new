@@ -6,15 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Globe as GlobeIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "@/contexts/translation-context";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, SERVICE_OPTIONS, COMPANY_INFO, type EmailTemplateParams } from '@/lib/emailjs';
 import { useToast } from "@/hooks/use-toast";
-import { Globe } from "@/components/magicui/globe";
-import { Pointer } from "@/components/magicui/pointer";
-
 interface FormData {
    name: string;
    email: string;
@@ -33,6 +30,7 @@ export default function Contact() {
    const formRef = useRef<HTMLFormElement>(null);
    const isInView = useInView(ref, { once: true, amount: 0.2 });
    const { toast } = useToast();
+   const { t } = useTranslation();
    
    // Form state management
    const [formData, setFormData] = useState<FormData>({
@@ -49,6 +47,14 @@ export default function Contact() {
    });
    
    const [isSubmitting, setIsSubmitting] = useState(false);
+
+   // Translate service options
+   const getTranslatedServiceOptions = () => {
+      return SERVICE_OPTIONS.map(option => ({
+         ...option,
+         label: t(option.label)
+      }));
+   };
    
    const { scrollYProgress } = useScroll({
       target: ref,
@@ -194,27 +200,27 @@ export default function Contact() {
    const contactInfo = [
       {
          icon: <Mail className="h-5 w-5 text-primary" />,
-         title: "Email",
+         title: t("Email"),
          content: COMPANY_INFO.email,
-         description: "Gửi email cho chúng tôi"
+         description: t("Gửi email cho chúng tôi")
       },
       {
          icon: <Phone className="h-5 w-5 text-primary" />,
-         title: "Điện thoại",
+         title: t("Điện thoại"),
          content: COMPANY_INFO.phone,
-         description: "Gọi trực tiếp cho chúng tôi"
+         description: t("Gọi trực tiếp cho chúng tôi")
       },
       {
          icon: <MapPin className="h-5 w-5 text-primary" />,
-         title: "Địa chỉ",
+         title: t("Địa chỉ"),
          content: "Tòa nhà Lotte Center, Ba Đình, Hà Nội",
-         description: "Văn phòng chính"
+         description: t("Văn phòng chính")
       },
       {
          icon: <Clock className="h-5 w-5 text-primary" />,
-         title: "Giờ làm việc",
+         title: t("Giờ làm việc"),
          content: "8:00 - 17:00",
-         description: "Thứ 2 - Thứ 6"
+         description: t("Thứ 2 - Thứ 6")
       }
    ];
 
@@ -293,7 +299,7 @@ export default function Contact() {
                      animate={isInView ? { scale: 1 } : { scale: 0 }}
                      transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                     Liên hệ với chúng tôi
+                     {t("Liên hệ với chúng tôi")}
                   </motion.div>
                   <motion.h2 
                      className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
@@ -301,9 +307,9 @@ export default function Contact() {
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                      transition={{ duration: 0.6, delay: 0.3 }}
                   >
-                     Sẵn sàng{" "}
+                     {t("Sẵn sàng")}{" "}
                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
-                        hợp tác?
+                        {t("hợp tác?")}
                      </span>
                   </motion.h2>
                   <motion.p 
@@ -312,8 +318,7 @@ export default function Contact() {
                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                      transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                     Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn 
-                     giải pháp phù hợp nhất trong thời gian sớm nhất.
+                     {t("Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.")}
                   </motion.p>
                </motion.div>
             </div>
@@ -355,9 +360,9 @@ export default function Contact() {
                            }}
                         >
                            <div className="space-y-2">
-                              <label className="text-sm font-medium">Họ và tên *</label>
+                              <label className="text-sm font-medium">{t("Họ và tên")} *</label>
                               <Input 
-                                 placeholder="Nhập họ và tên của bạn" 
+                                 placeholder={t("Nhập họ và tên của bạn")} 
                                  value={formData.name}
                                  onChange={(e) => handleInputChange('name', e.target.value)}
                                  required
@@ -365,7 +370,7 @@ export default function Contact() {
                               />
                            </div>
                            <div className="space-y-2">
-                              <label className="text-sm font-medium">Email *</label>
+                              <label className="text-sm font-medium">{t("Email")} *</label>
                               <Input 
                                  type="email" 
                                  placeholder="email@example.com" 
@@ -387,7 +392,7 @@ export default function Contact() {
                            }}
                         >
                            <div className="space-y-2">
-                              <label className="text-sm font-medium">Số điện thoại *</label>
+                              <label className="text-sm font-medium">{t("Số điện thoại")} *</label>
                               <Input 
                                  placeholder="0123 456 789" 
                                  value={formData.phone}
@@ -397,22 +402,22 @@ export default function Contact() {
                               />
                            </div>
                            <div className="space-y-2">
-                              <label className="text-sm font-medium">Dịch vụ quan tâm</label>
+                              <label className="text-sm font-medium">{t("Dịch vụ quan tâm")}</label>
                               <Select 
                                  value={formData.service} 
                                  onValueChange={(value) => handleInputChange('service', value)}
                                  disabled={isSubmitting}
                               >
                                  <SelectTrigger>
-                                    <SelectValue placeholder="Chọn dịch vụ" />
+                                    <SelectValue placeholder={t("Chọn dịch vụ")} />
                                  </SelectTrigger>
-                                 <SelectContent>
-                                    {SERVICE_OPTIONS.map((option) => (
-                                       <SelectItem key={option.value} value={option.value}>
-                                          {option.label}
-                                       </SelectItem>
-                                    ))}
-                                 </SelectContent>
+                                                            <SelectContent>
+                              {getTranslatedServiceOptions().map((option) => (
+                                 <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                 </SelectItem>
+                              ))}
+                           </SelectContent>
                               </Select>
                            </div>
                         </motion.div>
@@ -426,9 +431,9 @@ export default function Contact() {
                               scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.95, 1, 1, 0.98])
                            }}
                         >
-                           <label className="text-sm font-medium">Mô tả nhu cầu</label>
+                           <label className="text-sm font-medium">{t("Mô tả nhu cầu")}</label>
                            <Textarea 
-                              placeholder="Vui lòng mô tả chi tiết nhu cầu của bạn..."
+                              placeholder={t("Vui lòng mô tả chi tiết nhu cầu của bạn...")}
                               className="min-h-[120px]"
                               value={formData.message}
                               onChange={(e) => handleInputChange('message', e.target.value)}
@@ -452,12 +457,12 @@ export default function Contact() {
                               {isSubmitting ? (
                                  <>
                                     <div className="h-4 w-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                    Đang gửi...
+                                    {t("Đang gửi...")}
                                  </>
                               ) : (
                                  <>
                                     <Send className="h-4 w-4 mr-2" />
-                                    Gửi yêu cầu
+                                    {t("Gửi yêu cầu")}
                                  </>
                               )}
                            </Button>
@@ -545,7 +550,7 @@ export default function Contact() {
                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                            transition={{ duration: 0.4, delay: 0.4 }}
                         >
-                           <strong>Lĩnh vực:</strong> Công nghệ thông tin, Nhân sự, Logistics
+                           <strong>{t("Lĩnh vực")}:</strong> {t("Công nghệ thông tin, Nhân sự, Logistics")}
                         </motion.p>
                      </div>
                   </motion.div>

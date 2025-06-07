@@ -4,8 +4,10 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation } from "@/contexts/translation-context";
 
 export default function Footer() {
+   const { t } = useTranslation()
    const ref = useRef(null);
    
    const { scrollYProgress } = useScroll({
@@ -81,7 +83,7 @@ export default function Footer() {
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5 }}
                   >
-                     Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững.
+                     {t("Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững. Giải pháp Công nghệ toàn diện và Nhân sự IT theo yêu cầu.")}
                   </motion.p>
                   <div className="space-y-2">
                      {[
@@ -116,7 +118,7 @@ export default function Footer() {
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5 }}
                   >
-                     Dịch vụ
+                     {t("Dịch vụ")}
                   </motion.h3>
                   <ul className="space-y-2">
                      {[
@@ -154,7 +156,7 @@ export default function Footer() {
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5 }}
                   >
-                     Công ty
+                     {t("Công ty")}
                   </motion.h3>
                   <ul className="space-y-2">
                      {[
@@ -192,7 +194,7 @@ export default function Footer() {
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5 }}
                   >
-                     Nhận tư vấn
+                     {t("Nhận tư vấn")}
                   </motion.h3>
                   <motion.p 
                      className="text-sm text-muted-foreground mb-2"
@@ -200,7 +202,7 @@ export default function Footer() {
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                     Đăng ký để nhận thông tin về dịch vụ mới
+                     {t("Đăng ký để nhận thông tin về dịch vụ mới")}
                   </motion.p>
                   <motion.div 
                      className="flex gap-2"
@@ -210,7 +212,7 @@ export default function Footer() {
                   >
                      <motion.input
                         type="email"
-                        placeholder="Email của bạn"
+                        placeholder={t("Email của bạn")}
                         className="flex h-9 w-full rounded-sm border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                         whileFocus={{ scale: 1.02 }}
                         transition={{ duration: 0.2 }}
@@ -221,7 +223,7 @@ export default function Footer() {
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                      >
-                        Đăng ký
+                        {t("Đăng ký")}
                      </motion.button>
                   </motion.div>
                </div>
@@ -237,7 +239,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                >
-                  Lĩnh vực chuyên môn
+                  {t("Lĩnh vực chuyên môn")}
                </motion.h3>
                <div className="flex flex-wrap gap-2">
                   {/* Công nghệ - Phần mềm */}
@@ -247,17 +249,17 @@ export default function Footer() {
                      { text: "Tư vấn IT", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
                      { text: "Quản trị hệ thống", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
                      { text: "UI/UX Design", color: "bg-orange-50 text-orange-700 ring-orange-600/10 dark:bg-orange-900/30 dark:text-orange-400 dark:ring-orange-400/20" },
-                     { text: "Xuất bản phần mềm", color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
+                     { text: t("Xuất bản phần mềm"), color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
                      { text: "Game online", color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
                      { text: "Máy tính & Linh kiện", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
-                     { text: "Thiết bị điện tử", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: t("Thiết bị điện tử"), color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
                      { text: "Sửa chữa máy tính", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
                      { text: "Cung ứng nhân lực IT", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
                      { text: "Quản lý lao động", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
-                     { text: "Cho thuê xe", color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
-                     { text: "Vận tải hành khách", color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
-                     { text: "Tư vấn quản lý", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
-                     { text: "Tư vấn kỹ thuật", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
+                     { text: t("Cho thuê xe"), color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
+                     { text: t("Vận tải hành khách"), color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
+                     { text: t("Tư vấn quản lý"), color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
+                     { text: t("Tư vấn kỹ thuật"), color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
                      { text: "Thiết kế chuyên dụng", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" }
                   ].map((tag, index) => (
                      <motion.span
