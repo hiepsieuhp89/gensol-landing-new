@@ -11,6 +11,7 @@ interface BentoGridItemProps {
   className?: string;
   size?: 'small' | 'medium' | 'large';
   features?: string[];
+  imageUrl?: string;
 }
  
 const BentoGridItem = ({
@@ -20,6 +21,7 @@ const BentoGridItem = ({
   className,
   size = 'small',
   features = [],
+  imageUrl = '/images/caro1.png',
 }: BentoGridItemProps) => {
   const { t } = useTranslation()
   const variants = {
@@ -35,7 +37,13 @@ const BentoGridItem = ({
         className,
       )}
     >
-      <div className="absolute -right-1/2 top-0 z-0 size-full cursor-pointer bg-[linear-gradient(to_right,#3d16165e_1px,transparent_1px),linear-gradient(to_bottom,#3d16165e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 z-0 overflow-hidden cursor-pointer">
+        <img 
+          src={imageUrl} 
+          alt="Background pattern" 
+          className="w-full h-full object-cover opacity-70 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_60%,transparent_100%)]"
+        />
+      </div>
  
       <div className="absolute bottom-3 right-1 scale-[6] text-[#E2E8F0] dark:text-[#1E293B] transition-all duration-700 group-hover:scale-[6.2] group-hover:text-[#E2E8F0] dark:group-hover:text-[#1E293B]">
         {icon}
@@ -46,8 +54,8 @@ const BentoGridItem = ({
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
             {icon}
           </div>
-          <h3 className="mb-2 text-xl font-semibold tracking-tight">{title}</h3>
-          <p className="text-sm text-muted-foreground mb-4">{description}</p>
+          <h3 className="mb-2 text-xl font-bold tracking-tight text-black/80 dark:text-white/80">{title}</h3>
+          <p className="text-base mb-4 text-black/80 dark:text-white/80">{description}</p>
           
           {features.length > 0 && (
             <div className="grid grid-cols-2 gap-2 mb-4">
@@ -80,6 +88,7 @@ interface BentoGridProps {
     icon: React.ReactNode;
     size: 'small' | 'medium' | 'large';
     features?: string[];
+    imageUrl?: string;
   }>;
   columns?: 2 | 4 | 6;
 }
@@ -153,6 +162,7 @@ export default function BentoGrid({ items, columns = 6 }: BentoGridProps) {
             icon={item.icon}
             size={item.size}
             features={item.features}
+            imageUrl={item.imageUrl}
             className={cn(
               getItemClasses(item.size),
               'h-full',

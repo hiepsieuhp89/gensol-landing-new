@@ -596,13 +596,13 @@ export const translations: Translations = {
     th: "ผู้เชี่ยวชาญ IT",
     vi: "Chuyên gia IT"
   },
-  "Nhân sự logistics": {
-    en: "Logistics Personnel",
-    zh: "物流人员",
-    ja: "ロジスティクス人材",
-    ko: "물류 인력",
-    th: "บุคลากรโลจิสติกส์",
-    vi: "Nhân sự logistics"
+  "Tư vấn thiết kế": {
+    en: "Design Consulting",
+    zh: "设计咨询",
+    ja: "デザインコンサルティング",
+    ko: "디자인 컨설팅",
+    th: "การให้คำปรึกษาการออกแบบ",
+    vi: "Tư vấn thiết kế"
   },
   "Tư vấn quản lý": {
     en: "Management Consulting",
@@ -620,13 +620,13 @@ export const translations: Translations = {
     th: "ช่างเทคนิค",
     vi: "Kỹ thuật viên"
   },
-  "Sẵn sàng mở rộng quy mô": {
-    en: "Ready to Scale",
-    zh: "准备扩大规模",
-    ja: "スケール準備完了",
-    ko: "확장 준비 완료",
-    th: "พร้อมขยายขนาด",
-    vi: "Sẵn sàng mở rộng quy mô"
+  "Tín nhiệm - hợp tác chiến lược lâu dài": {
+    en: "Trust - Long-term Strategic Partnership",
+    zh: "信任 - 长期战略合作伙伴关系",
+    ja: "信頼 - 長期戦略的パートナーシップ",
+    ko: "신뢰 - 장기 전략적 파트너십",
+    th: "ความไว้วางใจ - ความเป็นหุ้นส่วนเชิงกลยุทธ์ระยะยาว",
+    vi: "Tín nhiệm - hợp tác chiến lược lâu dài"
   },
   "Khả năng mở rộng linh hoạt theo dự án, đảm bảo đáp ứng mọi yêu cầu từ nhỏ đến lớn của khách hàng.": {
     en: "Flexible scalability by project, ensuring we meet all customer requirements from small to large.",

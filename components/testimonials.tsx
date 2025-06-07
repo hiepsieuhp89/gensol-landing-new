@@ -408,7 +408,7 @@ export default function CompanyValues() {
                            draggable={false}
                         />
                         <div className="text-left">
-                           <div className="font-bold text-lg text-slate-800 dark:text-white">Ban lãnh đạo GENSOL</div>
+                           <div className="font-bold text-lg text-slate-800 dark:text-white">GENSOL</div>
                            <div className="text-slate-600 dark:text-slate-400">Công ty TNHH GENSOL</div>
                         </div>
                      </motion.div>

@@ -32,29 +32,33 @@ export default function WhyChooseUs() {
       icon: <Users className="h-6 w-6" />,
       title: t("Đội ngũ linh hoạt, đa lĩnh vực"),
       description: t("Chúng tôi có đội ngũ chuyên gia đa dạng, có thể đáp ứng nhiều nhu cầu khác nhau của doanh nghiệp từ công nghệ đến nhân sự."),
-      features: [t("Chuyên gia IT"), t("Nhân sự logistics"), t("Tư vấn quản lý"), t("Kỹ thuật viên")],
-      size: "large" as const
+      features: [t("Chuyên gia IT"), t("Tư vấn thiết kế"), t("Tư vấn quản lý"), t("Kỹ thuật viên")],
+      size: "large" as const,
+      imageUrl: "/images/caro1.png"
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
-      title: t("Sẵn sàng mở rộng quy mô"),
+      title: t("Tín nhiệm - hợp tác chiến lược lâu dài"),
       description: t("Khả năng mở rộng linh hoạt theo dự án, đảm bảo đáp ứng mọi yêu cầu từ nhỏ đến lớn của khách hàng."),
       features: [t("Mở rộng nhanh"), t("Tài nguyên linh hoạt"), t("Quản lý hiệu quả"), t("Theo dõi tiến độ")],
-      size: "medium" as const
+      size: "medium" as const,
+      imageUrl: "/images/caro2.png"
     },
     {
       icon: <Settings className="h-6 w-6" />,
       title: t("Dịch vụ đa ngành"),
       description: t("Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics."),
       features: [t("Công nghệ"), t("Thiết bị"), t("Nhân sự"), t("Vận tải")],
-      size: "medium" as const
+      size: "medium" as const,
+      imageUrl: "/images/caro3.png"
     },
     {
       icon: <Shield className="h-6 w-6" />,
       title: t("Phù hợp SME"),
       description: t("Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao."),
       features: [t("Chi phí hợp lý"), t("Giải pháp tùy chỉnh"), t("Hỗ trợ 24/7"), t("Tư vấn miễn phí")],
-      size: "large" as const
+      size: "large" as const,
+      imageUrl: "/images/caro4.png"
     }
   ]
 
