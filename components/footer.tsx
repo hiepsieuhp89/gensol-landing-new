@@ -89,7 +89,7 @@ export default function Footer() {
                      {[
                         { icon: Mail, text: "contact@gensol.vn" },
                         { icon: Phone, text: "+84 (0) 123 456 789" },
-                        { icon: MapPin, text: "Hà Nội, Việt Nam" }
+                        { icon: MapPin, text: t("Hà Nội, Việt Nam") }
                      ].map((item, index) => (
                         <motion.div 
                            key={index}
@@ -122,10 +122,10 @@ export default function Footer() {
                   </motion.h3>
                   <ul className="space-y-2">
                      {[
-                        { href: "#linh-vuc", text: "Phát triển phần mềm" },
-                        { href: "#linh-vuc", text: "Tư vấn IT" },
-                        { href: "#linh-vuc", text: "Thiết bị & Linh kiện" },
-                        { href: "#linh-vuc", text: "Nhân sự & Logistics" }
+                        { href: "#linh-vuc", text: t("Phát triển phần mềm") },
+                        { href: "#linh-vuc", text: t("Tư vấn IT") },
+                        { href: "#linh-vuc", text: t("Thiết bị & Linh kiện") },
+                        { href: "#linh-vuc", text: t("Nhân sự & Logistics") }
                      ].map((item, index) => (
                         <motion.li
                            key={index}
@@ -160,10 +160,10 @@ export default function Footer() {
                   </motion.h3>
                   <ul className="space-y-2">
                      {[
-                        { href: "#ve-chung-toi", text: "Về chúng tôi" },
-                        { href: "#ly-do-chon", text: "Lý do chọn chúng tôi" },
-                        { href: "#lien-he", text: "Liên hệ" },
-                        { href: "#", text: "Tuyển dụng" }
+                        { href: "#ve-chung-toi", text: t("Về chúng tôi") },
+                        { href: "#ly-do-chon", text: t("Lý do chọn chúng tôi") },
+                        { href: "#lien-he", text: t("Liên hệ") },
+                        { href: "#", text: t("Tuyển dụng") }
                      ].map((item, index) => (
                         <motion.li
                            key={index}
@@ -244,23 +244,23 @@ export default function Footer() {
                <div className="flex flex-wrap gap-2">
                   {/* Công nghệ - Phần mềm */}
                   {[
-                     { text: "Phát triển phần mềm", color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
-                     { text: "Lập trình máy tính", color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
-                     { text: "Tư vấn IT", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
-                     { text: "Quản trị hệ thống", color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
-                     { text: "UI/UX Design", color: "bg-orange-50 text-orange-700 ring-orange-600/10 dark:bg-orange-900/30 dark:text-orange-400 dark:ring-orange-400/20" },
+                     { text: t("Phát triển phần mềm"), color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
+                     { text: t("Lập trình máy tính"), color: "bg-blue-50 text-blue-700 ring-blue-600/10 dark:bg-blue-900/30 dark:text-blue-400 dark:ring-blue-400/20" },
+                     { text: t("Tư vấn IT"), color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
+                     { text: t("Quản trị hệ thống"), color: "bg-cyan-50 text-cyan-700 ring-cyan-600/10 dark:bg-cyan-900/30 dark:text-cyan-400 dark:ring-cyan-400/20" },
+                     { text: t("UI/UX Design"), color: "bg-orange-50 text-orange-700 ring-orange-600/10 dark:bg-orange-900/30 dark:text-orange-400 dark:ring-orange-400/20" },
                      { text: t("Xuất bản phần mềm"), color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
-                     { text: "Game online", color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
-                     { text: "Máy tính & Linh kiện", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: t("Game online"), color: "bg-purple-50 text-purple-700 ring-purple-600/10 dark:bg-purple-900/30 dark:text-purple-400 dark:ring-purple-400/20" },
+                     { text: t("Máy tính & Linh kiện"), color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
                      { text: t("Thiết bị điện tử"), color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
-                     { text: "Sửa chữa máy tính", color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
-                     { text: "Cung ứng nhân lực IT", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
-                     { text: "Quản lý lao động", color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
+                     { text: t("Sửa chữa máy tính"), color: "bg-green-50 text-green-700 ring-green-600/10 dark:bg-green-900/30 dark:text-green-400 dark:ring-green-400/20" },
+                     { text: t("Cung ứng nhân lực IT"), color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
+                     { text: t("Quản lý lao động"), color: "bg-yellow-50 text-yellow-700 ring-yellow-600/10 dark:bg-yellow-900/30 dark:text-yellow-400 dark:ring-yellow-400/20" },
                      { text: t("Cho thuê xe"), color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
                      { text: t("Vận tải hành khách"), color: "bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400 dark:ring-red-400/20" },
                      { text: t("Tư vấn quản lý"), color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
                      { text: t("Tư vấn kỹ thuật"), color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" },
-                     { text: "Thiết kế chuyên dụng", color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" }
+                     { text: t("Thiết kế chuyên dụng"), color: "bg-indigo-50 text-indigo-700 ring-indigo-600/10 dark:bg-indigo-900/30 dark:text-indigo-400 dark:ring-indigo-400/20" }
                   ].map((tag, index) => (
                      <motion.span
                         key={index}
@@ -279,13 +279,13 @@ export default function Footer() {
                transition={{ duration: 0.5, delay: 0.3 }}
             >
                <p className="text-xs text-muted-foreground">
-                  © 2024 GENSOL. Tất cả quyền được bảo lưu. |
+                  © 2024 GENSOL. {t("Tất cả quyền được bảo lưu")}. |
                   <motion.span
                      whileHover={{ color: "hsl(var(--foreground))" }}
                      transition={{ duration: 0.2 }}
                   >
                      <Link href="#" className="hover:text-foreground ml-1">
-                        Chính sách bảo mật
+                        {t("Chính sách bảo mật")}
                      </Link>
                   </motion.span> |
                   <motion.span
@@ -293,7 +293,7 @@ export default function Footer() {
                      transition={{ duration: 0.2 }}
                   >
                      <Link href="#" className="hover:text-foreground ml-1">
-                        Điều khoản sử dụng
+                        {t("Điều khoản sử dụng")}
                      </Link>
                   </motion.span>
                </p>

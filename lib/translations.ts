@@ -122,6 +122,14 @@ export const translations: Translations = {
     th: "ก่อตั้งขึ้นด้วยพันธกิจในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจเวียดนาม ช่วยให้พวกเขาพัฒนาอย่างยั่งยืนในยุคดิจิทัล",
     vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số."
   },
+  "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.": {
+    en: "Established with the mission to provide comprehensive technology and human resource solutions for Vietnamese businesses, helping clients develop sustainably in the digital era.",
+    zh: "成立的使命是为越南企业提供全面的技术和人力资源解决方案，帮助客户在数字时代可持续发展。",
+    ja: "ベトナムの企業に包括的な技術と人材ソリューションを提供し、デジタル時代におけるクライアントの持続可能な発展を支援することを使命として設立されました。",
+    ko: "베트남 기업에 포괄적인 기술 및 인력 솔루션을 제공하여 디지털 시대의 고객의 지속 가능한 발전을 돕는 것을 사명으로 설립되었습니다.",
+    th: "ก่อตั้งขึ้นด้วยพันธกิจในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจเวียดนาม ช่วยให้ลูกค้าพัฒนาอย่างยั่งยืนในยุคดิจิทัล",
+    vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số."
+  },
   "Tầm nhìn": {
     en: "Vision",
     zh: "愿景",
@@ -137,6 +145,14 @@ export const translations: Translations = {
     ko: "베트남 기업에 포괄적인 기술, 인력 및 물류 솔루션을 제공하는 선도적인 신뢰할 수 있는 파트너가 되는 것입니다.",
     th: "เป็นพันธมิตรที่เชื่อถือได้อันดับหนึ่งในการให้บริการโซลูชันเทคโนโลยี ทรัพยากรบุคคล และโลจิสติกส์ที่ครอบคลุมสำหรับธุรกิจในเวียดนาม",
     vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự và logistics toàn diện cho các doanh nghiệp tại Việt Nam."
+  },
+  "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.": {
+    en: "To become the leading trusted partner in providing comprehensive technology and human resource solutions for businesses in Vietnam.",
+    zh: "成为越南企业在提供全面技术和人力资源解决方案方面的领先可信合作伙伴。",
+    ja: "ベトナムの企業に包括的な技術と人材ソリューションを提供する信頼できるリーディングパートナーになること。",
+    ko: "베트남 기업에 포괄적인 기술 및 인력 솔루션을 제공하는 선도적인 신뢰할 수 있는 파트너가 되는 것입니다.",
+    th: "เป็นพันธมิตรที่เชื่อถือได้อันดับหนึ่งในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจในเวียดนาม",
+    vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam."
   },
   "Sứ mệnh": {
     en: "Mission",
@@ -505,6 +521,70 @@ export const translations: Translations = {
     ko: "GENSOL은 정보기술, 장비, 인력에서 물류까지 다양한 서비스를 제공하며, 중소기업에 적합합니다.",
     th: "GENSOL ให้บริการที่หลากหลายตั้งแต่เทคโนโลยีสารสนเทศ อุปกรณ์ ทรัพยากรบุคคล ไปจนถึงโลจิสติกส์ เหมาะสำหรับธุรกิจขนาดกลางและขนาดเล็ก",
     vi: "GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa và nhỏ."
+  },
+  "Công nghệ thông tin & Lập trình": {
+    en: "Information Technology & Programming",
+    zh: "信息技术与编程",
+    ja: "情報技術・プログラミング",
+    ko: "정보기술 및 프로그래밍",
+    th: "เทคโนโลยีสารสนเทศและการเขียนโปรแกรม",
+    vi: "Công nghệ thông tin & Lập trình"
+  },
+  "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính và quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin.": {
+    en: "Computer programming, software & game publishing, computer consulting and system management, information technology service activities.",
+    zh: "计算机编程、软件和游戏发布、计算机咨询和系统管理、信息技术服务活动。",
+    ja: "コンピュータープログラミング、ソフトウェア・ゲーム出版、コンピューターコンサルティング・システム管理、情報技術サービス活動。",
+    ko: "컴퓨터 프로그래밍, 소프트웨어 및 게임 출판, 컴퓨터 컨설팅 및 시스템 관리, 정보기술 서비스 활동.",
+    th: "การเขียนโปรแกรมคอมพิวเตอร์ การเผยแพร่ซอฟต์แวร์และเกม การให้คำปรึกษาคอมพิวเตอร์และการจัดการระบบ กิจกรรมบริการเทคโนโลยีสารสนเทศ",
+    vi: "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính và quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin."
+  },
+  "Thiết bị & Linh kiện ICT": {
+    en: "ICT Equipment & Components",
+    zh: "ICT设备与组件",
+    ja: "ICT機器・部品",
+    ko: "ICT 장비 및 부품",
+    th: "อุปกรณ์และชิ้นส่วน ICT",
+    vi: "Thiết bị & Linh kiện ICT"
+  },
+  "Buôn bán thiết bị và linh kiện điện tử viễn thông, tư vấn và cung cấp giải pháp công nghệ thông tin toàn diện.": {
+    en: "Trading electronic telecommunications equipment and components, consulting and providing comprehensive information technology solutions.",
+    zh: "销售电子通信设备和组件，咨询和提供全面的信息技术解决方案。",
+    ja: "電子通信機器・部品の販売、コンサルティング、包括的な情報技術ソリューションの提供。",
+    ko: "전자 통신 장비 및 부품 판매, 컨설팅 및 포괄적인 정보기술 솔루션 제공.",
+    th: "การค้าอุปกรณ์และชิ้นส่วนอิเล็กทรอนิกส์โทรคมนาคม การให้คำปรึกษาและการให้บริการโซลูชันเทคโนโลยีสารสนเทศที่ครอบคลุม",
+    vi: "Buôn bán thiết bị và linh kiện điện tử viễn thông, tư vấn và cung cấp giải pháp công nghệ thông tin toàn diện."
+  },
+  "Kiến trúc & Thiết kế": {
+    en: "Architecture & Design",
+    zh: "建筑与设计",
+    ja: "建築・デザイン",
+    ko: "건축 및 디자인",
+    th: "สถาปัตยกรรมและการออกแบบ",
+    vi: "Kiến trúc & Thiết kế"
+  },
+  "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng và các dịch vụ tư vấn kỹ thuật chuyên nghiệp.": {
+    en: "Architecture & technical consulting activities, specialized design activities and professional technical consulting services.",
+    zh: "建筑和技术咨询活动、专业设计活动和专业技术咨询服务。",
+    ja: "建築・技術コンサルティング活動、専门設計活動、専門技術コンサルティングサービス。",
+    ko: "건축 및 기술 컨설팅 활동, 전문 디자인 활동 및 전문 기술 컨설팅 서비스.",
+    th: "กิจกรรมสถาปัตยกรรมและการให้คำปรึกษาทางเทคนิค กิจกรรมการออกแบบเฉพาะทาง และบริการให้คำปรึกษาทางเทคนิคแบบมืออาชีพ",
+    vi: "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng và các dịch vụ tư vấn kỹ thuật chuyên nghiệp."
+  },
+  "Tư vấn & Quản lý": {
+    en: "Consulting & Management",
+    zh: "咨询与管理",
+    ja: "コンサルティング・管理",
+    ko: "컨설팅 및 관리",
+    th: "การให้คำปรึกษาและการจัดการ",
+    vi: "Tư vấn & Quản lý"
+  },
+  "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp và các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp.": {
+    en: "Management consulting activities, business consulting and professional internal management support services.",
+    zh: "管理咨询活动、商业咨询和专业内部管理支持服务。",
+    ja: "経営コンサルティング活動、ビジネスコンサルティング、専門的な内部管理支援サービス。",
+    ko: "경영 컨설팅 활동, 비즈니스 컨설팅 및 전문 내부 관리 지원 서비스.",
+    th: "กิจกรรมการให้คำปรึกษาการจัดการ การให้คำปรึกษาธุรกิจ และบริการสนับสนุนการจัดการภายในแบบมืออาชีพ",
+    vi: "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp và các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp."
   },
   "Công nghệ - Phần mềm": {
     en: "Technology - Software",
@@ -981,6 +1061,367 @@ export const translations: Translations = {
     ko: "차량 렌탈",
     th: "การให้เช่ารถ",
     vi: "Cho thuê xe"
+  },
+
+  // CompanyValues (testimonials.tsx) translations - Note: These are duplicates of existing entries above
+  "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn.": {
+    en: "We believe that our customers' success is our success. Each project is not just a contract, but an opportunity to create real value and build a better future.",
+    zh: "我们相信客户的成功就是我们的成功。每个项目不仅仅是一份合同，而是创造真正价值和建设更美好未来的机会。",
+    ja: "お客様の成功が私たちの成功だと信じています。各プロジェクトは単なる契約ではなく、真の価値を創造し、より良い未来を築く機会です。",
+    ko: "고객의 성공이 우리의 성공이라고 믿습니다. 각 프로젝트는 단순한 계약이 아니라 진정한 가치를 창출하고 더 나은 미래를 구축할 기회입니다.",
+    th: "เราเชื่อว่าความสำเร็จของลูกค้าคือความสำเร็จของเรา แต่ละโครงการไม่ใช่แค่สัญญา แต่เป็นโอกาสในการสร้างคุณค่าที่แท้จริงและสร้างอนาคตที่ดีกว่า",
+    vi: "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn."
+  },
+  "Công ty TNHH GENSOL": {
+    en: "GENSOL Limited Liability Company",
+    zh: "GENSOL有限责任公司",
+    ja: "GENSOL有限責任会社",
+    ko: "GENSOL 유한책임회사",
+    th: "บริษัท GENSOL จำกัด",
+    vi: "Công ty TNHH GENSOL"
+  },
+  "Công ty Trách nhiệm hữu hạn GENSOL": {
+    en: "GENSOL Limited Liability Company",
+    zh: "GENSOL有限责任公司",
+    ja: "GENSOL有限責任会社",
+    ko: "GENSOL 유한책임회사",
+    th: "บริษัท GENSOL จำกัด",
+    vi: "Công ty Trách nhiệm hữu hạn GENSOL"
+  },
+
+  // Additional Contact form translations
+  "Gửi yêu cầu hợp tác": {
+    en: "Send Collaboration Request",
+    zh: "发送合作请求",
+    ja: "協力依頼を送信",
+    ko: "협력 요청 보내기",
+    th: "ส่งคำขอความร่วมมือ",
+    vi: "Gửi yêu cầu hợp tác"
+  },
+  "Thông tin liên hệ": {
+    en: "Contact Information",
+    zh: "联系信息",
+    ja: "連絡先情報",
+    ko: "연락처 정보",
+    th: "ข้อมูลการติดต่อ",
+    vi: "Thông tin liên hệ"
+  },
+  "Công ty GENSOL": {
+    en: "GENSOL Company",
+    zh: "GENSOL公司",
+    ja: "GENSOL会社",
+    ko: "GENSOL 회사",
+    th: "บริษัท GENSOL",
+    vi: "Công ty GENSOL"
+  },
+  "Tên đầy đủ": {
+    en: "Full Name",
+    zh: "全名",
+    ja: "正式名称",
+    ko: "정식 명칭",
+    th: "ชื่อเต็ม",
+    vi: "Tên đầy đủ"
+  },
+  "Mã số thuế": {
+    en: "Tax Code",
+    zh: "税号",
+    ja: "税務番号",
+    ko: "세무 번호",
+    th: "รหัสภาษี",
+    vi: "Mã số thuế"
+  },
+  "Vị trí văn phòng": {
+    en: "Office Location",
+    zh: "办公地点",
+    ja: "オフィス所在地",
+    ko: "사무실 위치",
+    th: "ที่ตั้งสำนักงาน",
+    vi: "Vị trí văn phòng"
+  },
+  "Cách trung tâm Hà Nội": {
+    en: "Distance from Hanoi center",
+    zh: "距河内市中心",
+    ja: "ハノイ中心部からの距離",
+    ko: "하노이 중심가에서의 거리",
+    th: "ระยะห่างจากใจกลางฮานอย",
+    vi: "Cách trung tâm Hà Nội"
+  },
+  "Thời gian di chuyển": {
+    en: "Travel time",
+    zh: "出行时间",
+    ja: "移動時間",
+    ko: "이동 시간",
+    th: "เวลาเดินทาง",
+    vi: "Thời gian di chuyển"
+  },
+  "phút bằng xe": {
+    en: "minutes by car",
+    zh: "分钟车程",
+    ja: "分（車で）",
+    ko: "분 (차량)",
+    th: "นาทีโดยรถ",
+    vi: "phút bằng xe"
+  },
+  "Lỗi xác thực": {
+    en: "Validation Error",
+    zh: "验证错误",
+    ja: "検証エラー",
+    ko: "검증 오류",
+    th: "ข้อผิดพลาดในการตรวจสอบ",
+    vi: "Lỗi xác thực"
+  },
+  "Vui lòng nhập họ và tên": {
+    en: "Please enter your full name",
+    zh: "请输入您的姓名",
+    ja: "お名前を入力してください",
+    ko: "성명을 입력해 주세요",
+    th: "กรุณากรอกชื่อ-นามสกุล",
+    vi: "Vui lòng nhập họ và tên"
+  },
+  "Vui lòng nhập email hợp lệ": {
+    en: "Please enter a valid email",
+    zh: "请输入有效的邮箱",
+    ja: "有効なメールアドレスを入力してください",
+    ko: "유효한 이메일을 입력해 주세요",
+    th: "กรุณากรอกอีเมลที่ถูกต้อง",
+    vi: "Vui lòng nhập email hợp lệ"
+  },
+  "Vui lòng nhập số điện thoại": {
+    en: "Please enter your phone number",
+    zh: "请输入您的电话号码",
+    ja: "電話番号を入力してください",
+    ko: "전화번호를 입력해 주세요",
+    th: "กรุณากรอกหมายเลขโทรศัพท์",
+    vi: "Vui lòng nhập số điện thoại"
+  },
+  "Đang gửi yêu cầu...": {
+    en: "Sending request...",
+    zh: "正在发送请求...",
+    ja: "リクエストを送信中...",
+    ko: "요청을 보내는 중...",
+    th: "กำลังส่งคำขอ...",
+    vi: "Đang gửi yêu cầu..."
+  },
+  "Vui lòng chờ trong giây lát": {
+    en: "Please wait a moment",
+    zh: "请稍等片刻",
+    ja: "少々お待ちください",
+    ko: "잠시만 기다려 주세요",
+    th: "กรุณารอสักครู่",
+    vi: "Vui lòng chờ trong giây lát"
+  },
+  "Gửi thành công! 🎉": {
+    en: "Sent successfully! 🎉",
+    zh: "发送成功！🎉",
+    ja: "送信成功！🎉",
+    ko: "전송 성공! 🎉",
+    th: "ส่งสำเร็จ! 🎉",
+    vi: "Gửi thành công! 🎉"
+  },
+  "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.": {
+    en: "Thank you! We will contact you as soon as possible.",
+    zh: "谢谢您！我们将尽快与您联系。",
+    ja: "ありがとうございます！できるだけ早くご連絡いたします。",
+    ko: "감사합니다! 가능한 한 빨리 연락드리겠습니다.",
+    th: "ขอบคุณ! เราจะติดต่อกลับโดยเร็วที่สุด",
+    vi: "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất."
+  },
+  "Gửi thất bại": {
+    en: "Send failed",
+    zh: "发送失败",
+    ja: "送信失敗",
+    ko: "전송 실패",
+    th: "ส่งไม่สำเร็จ",
+    vi: "Gửi thất bại"
+  },
+  "Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email.": {
+    en: "An error occurred while sending the request. Please try again later or contact us directly via email.",
+    zh: "发送请求时出现错误。请稍后重试或直接通过邮件联系我们。",
+    ja: "リクエストの送信中にエラーが発生しました。後でもう一度お試しいただくか、メールで直接お問い合わせください。",
+    ko: "요청을 보내는 중 오류가 발생했습니다. 나중에 다시 시도하거나 이메일로 직접 문의해 주세요.",
+    th: "เกิดข้อผิดพลาดขณะส่งคำขอ กรุณาลองใหม่อีกครั้งหรือติดต่อโดยตรงทางอีเมล",
+    vi: "Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email."
+  },
+  "Không chỉ định": {
+    en: "Not specified",
+    zh: "未指定",
+    ja: "指定なし",
+    ko: "지정되지 않음",
+    th: "ไม่ระบุ",
+    vi: "Không chỉ định"
+  },
+  "Không có tin nhắn cụ thể": {
+    en: "No specific message",
+    zh: "没有具体消息",
+    ja: "具体的なメッセージなし",
+    ko: "구체적인 메시지 없음",
+    th: "ไม่มีข้อความเฉพาะ",
+    vi: "Không có tin nhắn cụ thể"
+  },
+
+  // Footer translations
+  "Phát triển phần mềm": {
+    en: "Software Development",
+    zh: "软件开发",
+    ja: "ソフトウェア開発",
+    ko: "소프트웨어 개발",
+    th: "การพัฒนาซอฟต์แวร์",
+    vi: "Phát triển phần mềm"
+  },
+  "Tư vấn IT": {
+    en: "IT Consulting",
+    zh: "IT咨询",
+    ja: "ITコンサルティング",
+    ko: "IT 컨설팅",
+    th: "การให้คำปรึกษา IT",
+    vi: "Tư vấn IT"
+  },
+  "Thiết bị & Linh kiện": {
+    en: "Equipment & Components",
+    zh: "设备与组件",
+    ja: "機器・部品",
+    ko: "장비 및 부품",
+    th: "อุปกรณ์และชิ้นส่วน",
+    vi: "Thiết bị & Linh kiện"
+  },
+  "Nhân sự & Logistics": {
+    en: "Human Resources & Logistics",
+    zh: "人力资源与物流",
+    ja: "人材・ロジスティクス",
+    ko: "인력 및 물류",
+    th: "ทรัพยากรบุคคลและโลจิสติกส์",
+    vi: "Nhân sự & Logistics"
+  },
+  
+  "Tuyển dụng": {
+    en: "Careers",
+    zh: "招聘",
+    ja: "採用情報",
+    ko: "채용",
+    th: "สมัครงาน",
+    vi: "Tuyển dụng"
+  },
+  "Lập trình máy tính": {
+    en: "Computer Programming",
+    zh: "计算机编程",
+    ja: "コンピュータープログラミング",
+    ko: "컴퓨터 프로그래밍",
+    th: "การเขียนโปรแกรมคอมพิวเตอร์",
+    vi: "Lập trình máy tính"
+  },
+  "Quản trị hệ thống": {
+    en: "System Administration",
+    zh: "系统管理",
+    ja: "システム管理",
+    ko: "시스템 관리",
+    th: "การบริหารระบบ",
+    vi: "Quản trị hệ thống"
+  },
+  "UI/UX Design": {
+    en: "UI/UX Design",
+    zh: "UI/UX设计",
+    ja: "UI/UXデザイン",
+    ko: "UI/UX 디자인",
+    th: "การออกแบบ UI/UX",
+    vi: "UI/UX Design"
+  },
+  "Game online": {
+    en: "Online Games",
+    zh: "网络游戏",
+    ja: "オンラインゲーム",
+    ko: "온라인 게임",
+    th: "เกมออนไลน์",
+    vi: "Game online"
+  },
+  "Máy tính & Linh kiện": {
+    en: "Computers & Components",
+    zh: "计算机与组件",
+    ja: "コンピューター・部品",
+    ko: "컴퓨터 및 부품",
+    th: "คอมพิวเตอร์และชิ้นส่วน",
+    vi: "Máy tính & Linh kiện"
+  },
+  "Sửa chữa máy tính": {
+    en: "Computer Repair",
+    zh: "计算机维修",
+    ja: "コンピューター修理",
+    ko: "컴퓨터 수리",
+    th: "การซ่อมแซมคอมพิวเตอร์",
+    vi: "Sửa chữa máy tính"
+  },
+  "Cung ứng nhân lực IT": {
+    en: "IT Personnel Supply",
+    zh: "IT人员供应",
+    ja: "IT人材供給",
+    ko: "IT 인력 공급",
+    th: "การจัดหาบุคลากร IT",
+    vi: "Cung ứng nhân lực IT"
+  },
+  "Quản lý lao động": {
+    en: "Labor Management",
+    zh: "劳动管理",
+    ja: "労働管理",
+    ko: "노동 관리",
+    th: "การจัดการแรงงาน",
+    vi: "Quản lý lao động"
+  },
+  "Thiết kế chuyên dụng": {
+    en: "Specialized Design",
+    zh: "专业设计",
+    ja: "専門設計",
+    ko: "전문 디자인",
+    th: "การออกแบบเฉพาะทาง",
+    vi: "Thiết kế chuyên dụng"
+  },
+  "Tất cả quyền được bảo lưu": {
+    en: "All rights reserved",
+    zh: "版权所有",
+    ja: "全著作権所有",
+    ko: "모든 권리 보유",
+    th: "สงวนลิขสิทธิ์",
+    vi: "Tất cả quyền được bảo lưu"
+  },
+  "Chính sách bảo mật": {
+    en: "Privacy Policy",
+    zh: "隐私政策",
+    ja: "プライバシーポリシー",
+    ko: "개인정보 보호정책",
+    th: "นโยบายความเป็นส่วนตัว",
+    vi: "Chính sách bảo mật"
+  },
+  "Điều khoản sử dụng": {
+    en: "Terms of Use",
+    zh: "使用条款",
+    ja: "利用規約",
+    ko: "이용 약관",
+    th: "ข้อกำหนดการใช้งาน",
+    vi: "Điều khoản sử dụng"
+  },
+
+  // Address translations
+  "Hà Nội, Việt Nam": {
+    en: "Hanoi, Vietnam",
+    zh: "河内，越南",
+    ja: "ハノイ、ベトナム",
+    ko: "하노이, 베트남",
+    th: "ฮานอย, เวียดนาม",
+    vi: "Hà Nội, Việt Nam"
+  },
+  "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam": {
+    en: "Lotte Center Building, 54 Lieu Giai, Ba Dinh, Hanoi, Vietnam",
+    zh: "乐天中心大厦，54 Lieu Giai，巴亭，河内，越南",
+    ja: "ロッテセンタービル、54 Lieu Giai、バーディン、ハノイ、ベトナム",
+    ko: "롯데센터 빌딩, 54 Lieu Giai, Ba Dinh, 하노이, 베트남",
+    th: "อาคารลอตเต้เซ็นเตอร์, 54 Lieu Giai, Ba Dinh, ฮานอย, เวียดนาม",
+    vi: "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam"
+  },
+  "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội": {
+    en: "Lotte Center Building, 54 Lieu Giai, Ba Dinh, Hanoi",
+    zh: "乐天中心大厦，54 Lieu Giai，巴亭，河内",
+    ja: "ロッテセンタービル、54 Lieu Giai、バーディン、ハノイ",
+    ko: "롯데센터 빌딩, 54 Lieu Giai, Ba Dinh, 하노이",
+    th: "อาคารลอตเต้เซ็นเตอร์, 54 Lieu Giai, Ba Dinh, ฮานอย",
+    vi: "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội"
   }
 };
 

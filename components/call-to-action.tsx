@@ -98,8 +98,8 @@ export default function Contact() {
       if (!formData.name.trim()) {
          toast({
             variant: "destructive",
-            title: "Lỗi xác thực",
-            description: "Vui lòng nhập họ và tên"
+            title: t("Lỗi xác thực"),
+            description: t("Vui lòng nhập họ và tên")
          });
          return false;
       }
@@ -107,8 +107,8 @@ export default function Contact() {
       if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
          toast({
             variant: "destructive",
-            title: "Lỗi xác thực",
-            description: "Vui lòng nhập email hợp lệ"
+            title: t("Lỗi xác thực"),
+            description: t("Vui lòng nhập email hợp lệ")
          });
          return false;
       }
@@ -116,8 +116,8 @@ export default function Contact() {
       if (!formData.phone.trim()) {
          toast({
             variant: "destructive",
-            title: "Lỗi xác thực",
-            description: "Vui lòng nhập số điện thoại"
+            title: t("Lỗi xác thực"),
+            description: t("Vui lòng nhập số điện thoại")
          });
          return false;
       }
@@ -135,8 +135,8 @@ export default function Contact() {
 
       // Show loading toast
       toast({
-         title: "Đang gửi yêu cầu...",
-         description: "Vui lòng chờ trong giây lát"
+         title: t("Đang gửi yêu cầu..."),
+         description: t("Vui lòng chờ trong giây lát")
       });
 
       try {
@@ -145,8 +145,8 @@ export default function Contact() {
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
-            service: formData.service || 'Không chỉ định',
-            message: formData.message || 'Không có tin nhắn cụ thể',
+            service: formData.service || t('Không chỉ định'),
+            message: formData.message || t('Không có tin nhắn cụ thể'),
             to_email: COMPANY_INFO.email,
             company_name: COMPANY_INFO.name,
             company_email: COMPANY_INFO.email,
@@ -164,8 +164,8 @@ export default function Contact() {
          if (result.status === 200) {
             // Show success toast with green styling
             toast({
-               title: "Gửi thành công! 🎉",
-               description: "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+               title: t("Gửi thành công! 🎉"),
+               description: t("Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất."),
                className: "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100 dark:border-green-400",
             });
             
@@ -189,8 +189,8 @@ export default function Contact() {
          // Show error toast
          toast({
             variant: "destructive",
-            title: "Gửi thất bại",
-            description: "Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email."
+            title: t("Gửi thất bại"),
+            description: t("Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email.")
          });
       } finally {
          setIsSubmitting(false);
@@ -213,7 +213,7 @@ export default function Contact() {
       {
          icon: <MapPin className="h-5 w-5 text-primary" />,
          title: t("Địa chỉ"),
-         content: "Tòa nhà Lotte Center, Ba Đình, Hà Nội",
+         content: t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội"),
          description: t("Văn phòng chính")
       },
       {
@@ -347,7 +347,7 @@ export default function Contact() {
                         )
                      }}
                   >
-                     <h3 className="text-2xl font-bold mb-6">Gửi yêu cầu hợp tác</h3>
+                     <h3 className="text-2xl font-bold mb-6">{t("Gửi yêu cầu hợp tác")}</h3>
                      
                      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                         <motion.div 
@@ -480,7 +480,7 @@ export default function Contact() {
                   style={{ x: contactInfoX, rotateY: contactInfoRotate }}
                >
                   <motion.div variants={itemVariants}>
-                     <h3 className="text-2xl font-bold mb-6">Thông tin liên hệ</h3>
+                     <h3 className="text-2xl font-bold mb-6">{t("Thông tin liên hệ")}</h3>
                      <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
                         {contactInfo.map((info, index) => (
                            <motion.div
@@ -522,28 +522,28 @@ export default function Contact() {
                         rotateX: useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, -5])
                      }}
                   >
-                     <h4 className="font-bold mb-4">Công ty GENSOL</h4>
+                     <h4 className="font-bold mb-4">{t("Công ty GENSOL")}</h4>
                      <div className="space-y-3 text-sm text-muted-foreground">
                         <motion.p
                            initial={{ opacity: 0, x: -10 }}
                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                            transition={{ duration: 0.4, delay: 0.1 }}
                         >
-                           <strong>Tên đầy đủ:</strong> Công ty TNHH GENSOL
+                           <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
                         </motion.p>
                         <motion.p
                            initial={{ opacity: 0, x: -10 }}
                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                            transition={{ duration: 0.4, delay: 0.2 }}
                         >
-                           <strong>Mã số thuế:</strong> [Mã số thuế]
+                           <strong>{t("Mã số thuế")}:</strong> 132980
                         </motion.p>
                         <motion.p
                            initial={{ opacity: 0, x: -10 }}
                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                            transition={{ duration: 0.4, delay: 0.3 }}
                         >
-                           <strong>Địa chỉ:</strong> Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam
+                           <strong>{t("Địa chỉ")}:</strong> {t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam")}
                         </motion.p>
                         <motion.p
                            initial={{ opacity: 0, x: -10 }}
@@ -575,10 +575,10 @@ export default function Contact() {
                      <div className="p-4 border-b">
                         <h4 className="font-semibold flex items-center gap-2">
                            <MapPin className="h-5 w-5 text-primary" />
-                           Vị trí văn phòng
+                           {t("Vị trí văn phòng")}
                         </h4>
                         <p className="text-sm text-muted-foreground mt-1">
-                           Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội
+                           {t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội")}
                         </p>
                      </div>
                      <div className="relative h-64">
@@ -594,12 +594,12 @@ export default function Contact() {
                      </div>
                      <div className="p-4 bg-muted/30">
                         <div className="flex items-center justify-between text-sm">
-                           <span className="text-muted-foreground">Cách trung tâm Hà Nội</span>
+                           <span className="text-muted-foreground">{t("Cách trung tâm Hà Nội")}</span>
                            <span className="font-medium">~3km</span>
                         </div>
                         <div className="flex items-center justify-between text-sm mt-1">
-                           <span className="text-muted-foreground">Thời gian di chuyển</span>
-                           <span className="font-medium">10-15 phút bằng xe</span>
+                           <span className="text-muted-foreground">{t("Thời gian di chuyển")}</span>
+                           <span className="font-medium">10-15 {t("phút bằng xe")}</span>
                         </div>
                      </div>
                   </motion.div>

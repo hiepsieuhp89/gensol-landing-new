@@ -386,8 +386,7 @@ export default function CompanyValues() {
                            scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.9, 1.02, 1.02, 0.98]),
                         }}
                      >
-                        "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là
-                        một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn."
+                        {t("Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn.")}
                      </motion.blockquote>
 
                      {/* Author section */}
@@ -409,7 +408,7 @@ export default function CompanyValues() {
                         />
                         <div className="text-left">
                            <div className="font-bold text-lg text-slate-800 dark:text-white">GENSOL</div>
-                           <div className="text-slate-600 dark:text-slate-400">Công ty TNHH GENSOL</div>
+                           <div className="text-slate-600 dark:text-slate-400">{t("Công ty TNHH GENSOL")}</div>
                         </div>
                      </motion.div>
                   </div>
