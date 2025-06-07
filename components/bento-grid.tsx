@@ -12,6 +12,7 @@ interface BentoGridItemProps {
   size?: 'small' | 'medium' | 'large';
   features?: string[];
   imageUrl?: string;
+  index?: number;
 }
  
 const BentoGridItem = ({
@@ -22,18 +23,22 @@ const BentoGridItem = ({
   size = 'small',
   features = [],
   imageUrl = '/images/caro1.png',
+  index = 0,
 }: BentoGridItemProps) => {
   const { t } = useTranslation()
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 25 } },
   };
+
+  // Brand logos for the second item (index 1)
+  const brandLogos = Array.from({ length: 7 }, (_, i) => `/images/logo${i + 1}.png`);
  
   return (
     <motion.div
       variants={variants}
       className={cn(
-        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#E2E8F0] dark:border-[#1E293B] bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary',
+        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#E2E8F0] dark:border-[#1E293B] bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary dark:hover:border-primary',
         className,
       )}
     >
@@ -41,7 +46,7 @@ const BentoGridItem = ({
         <img 
           src={imageUrl} 
           alt="Background pattern" 
-          className="w-full h-full object-cover opacity-70 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_60%,transparent_100%)]"
+          className="w-full h-full object-cover opacity-70 [mask-image:radial-gradient(ellipse_80%_60%_at_60%_0%,#000_60%,transparent_100%)]"
         />
       </div>
  
@@ -69,6 +74,24 @@ const BentoGridItem = ({
                 </div>
               ))}
             </div>
+          )}
+
+          {/* Brand section for the second item */}
+          {index === 1 && (
+              <div className="flex flex-wrap gap-3 justify-center items-center my-2">
+                {brandLogos.map((logo, logoIndex) => (
+                  <div
+                    key={logoIndex}
+                    className="flex items-center justify-center transition-all duration-300 hover:bg-white/20 dark:hover:bg-black/20"
+                  >
+                    <img
+                      src={logo}
+                      alt={`Brand logo ${logoIndex + 1}`}
+                      className="h-8 w-auto object-contain filter transition-all duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
           )}
         </div>
         <div className="mt-4 flex items-center text-sm text-primary">
@@ -163,6 +186,7 @@ export default function BentoGrid({ items, columns = 6 }: BentoGridProps) {
             size={item.size}
             features={item.features}
             imageUrl={item.imageUrl}
+            index={i}
             className={cn(
               getItemClasses(item.size),
               'h-full',
