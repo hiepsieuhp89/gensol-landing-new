@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
       backgroundImage: "url('/images/polygon-luminary.svg')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      backgroundRepeat: "no-repeat"
+      backgroundRepeat: "no-repeat",
     }}
       id="ly-do-chon"
       ref={ref}
@@ -86,7 +86,7 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-sm border backdrop-blur-sm border-primary bg-[#020B1A] text-primary">
+          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-[4px] border backdrop-blur-sm border-primary bg-[#020B1A] text-primary">
             <Award className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold text-primary">
               {t("Đối tác tin cậy cho sự phát triển bền vững")}

@@ -45,10 +45,9 @@ export default function LanguageDropdown() {
         <Button
           variant="outline"
           size="icon"
-          className="relative"
+          className="relative dark:backdrop-blur-md dark:bg-white/10 dark:border-white/20 text-muted-foreground"
         >
           <Globe className="h-4 w-4" />
-          <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">

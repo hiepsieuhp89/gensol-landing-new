@@ -93,7 +93,7 @@ export default function CompanyValues() {
    return (
       <motion.section
          ref={ref}
-         className="w-full py-16 md:py-24 relative overflow-hidden"
+         className="w-full py-16 md:py-20 relative overflow-hidden"
       >
          <div className="absolute inset-0 -z-10">
             <motion.div

@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/contexts/translation-context";
+import { LiquidButton } from "./animate-ui/buttons/liquid";
 
 export default function Header() {
    const [isScrolled, setIsScrolled] = useState(false);
@@ -113,9 +114,11 @@ export default function Header() {
             <div className="flex items-center gap-4">
                <LanguageDropdown />
                <SimpleThemeToggle />
-               <Button className="hidden md:flex bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90 transition-all duration-300">
-                  {t("Liên hệ tư vấn")}
-               </Button>
+               <Button
+                        size="lg"
+                     >
+                        {t("Liên hệ tư vấn")}
+                     </Button>
 
                {/* Mobile Menu Button */}
                <Button
@@ -169,9 +172,11 @@ export default function Header() {
                      <LanguageDropdown />
                      <SimpleThemeToggle />
                   </div>
-                  <Button className="mt-4 bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90">
-                     {t("Liên hệ tư vấn")}
-                  </Button>
+                  <Button
+                        size="lg"
+                     >
+                        {t("Liên hệ tư vấn")}
+                     </Button>
                </nav>
             </div>
          )}

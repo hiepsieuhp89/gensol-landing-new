@@ -1,3 +1,6 @@
+"use client"
+import { useTheme } from 'next-themes'
+
 const logos = [
   {
     name: 'Vercel',
@@ -30,14 +33,17 @@ const logos = [
 ]
 
 const Brand = () => {
+  const { theme } = useTheme()
+  
   return (
-    <div className="w-full pb-12 pt-4">
+    <div className="w-full py-12">
       <div className="mx-auto w-full px-4 md:px-8">
         <div
           className="group relative flex gap-4 overflow-hidden p-2"
           style={{
-            maskImage:
-              'linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)',
+            maskImage: theme === 'dark' 
+              ? 'linear-gradient(to left, transparent 0%, rgba(255,255,255,0.9) 20%, rgba(255,255,255,0.9) 80%, transparent 95%)'
+              : 'linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)',
           }}
         >
           {Array(5)

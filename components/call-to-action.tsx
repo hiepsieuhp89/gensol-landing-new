@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Send, Sparkle } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, Sparkle, Building } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/contexts/translation-context";
 import emailjs from '@emailjs/browser';
@@ -29,7 +29,33 @@ export default function Contact() {
    const formRef = useRef<HTMLFormElement>(null);
    const { toast } = useToast();
    const { t } = useTranslation();
-   
+   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+   useEffect(() => {
+      // Check initial theme
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'dark' : 'light');
+
+      // Create observer for theme changes
+      const observer = new MutationObserver((mutations) => {
+         mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+               const isDark = document.documentElement.classList.contains('dark');
+               setTheme(isDark ? 'dark' : 'light');
+            }
+         });
+      });
+
+      // Start observing
+      observer.observe(document.documentElement, {
+         attributes: true,
+         attributeFilter: ['class'],
+      });
+
+      // Cleanup
+      return () => observer.disconnect();
+   }, []);
+
    const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -37,12 +63,12 @@ export default function Contact() {
       service: '',
       message: ''
    });
-   
+
    const [formStatus, setFormStatus] = useState<FormStatus>({
       type: 'idle',
       message: ''
    });
-   
+
    const [isSubmitting, setIsSubmitting] = useState(false);
 
    const getTranslatedServiceOptions = () => {
@@ -77,7 +103,7 @@ export default function Contact() {
          });
          return false;
       }
-      
+
       if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
          toast({
             variant: "destructive",
@@ -86,7 +112,7 @@ export default function Contact() {
          });
          return false;
       }
-      
+
       if (!formData.phone.trim()) {
          toast({
             variant: "destructive",
@@ -95,15 +121,15 @@ export default function Contact() {
          });
          return false;
       }
-      
+
       return true;
    };
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      
+
       if (!validateForm()) return;
-      
+
       setIsSubmitting(true);
 
       toast({
@@ -137,7 +163,7 @@ export default function Contact() {
                description: t("Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất."),
                className: "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100 dark:border-green-400",
             });
-            
+
             setFormData({
                name: '',
                email: '',
@@ -145,14 +171,14 @@ export default function Contact() {
                service: '',
                message: ''
             });
-            
+
             if (formRef.current) {
                formRef.current.reset();
             }
          }
       } catch (error) {
          console.error('EmailJS Error:', error);
-         
+
          toast({
             variant: "destructive",
             title: t("Gửi thất bại"),
@@ -185,7 +211,7 @@ export default function Contact() {
                         {t("hợp tác?")}
                      </span>
                   </h2>
-                  <p className="max-w-[840px] mx-auto dark:text-white/80 text-black/80 md:text-xl">
+                  <p className="max-w-[840px] mx-auto dark:text-white/70 text-black/80 md:text-xl">
                      {t("Hãy để lại thông tin & nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.")}
                   </p>
                </div>
@@ -193,15 +219,28 @@ export default function Contact() {
 
             <div className="grid gap-8 lg:grid-cols-2 items-start">
                <div className="space-y-4">
-                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-lg transition-shadow">
-                     <h3 className="text-2xl font-bold mb-6">{t("Gửi yêu cầu hợp tác")}</h3>
-                     
+                  <div
+                     style={{
+                        backgroundImage: `url('/images/rect-${theme}.svg')`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                     }}
+                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-4 hover:shadow-lg transition-shadow">
+                     <div className="font-semibold flex items-center gap-2 mb-2">
+                        <div
+                           className="relative dark:backdrop-blur-md dark:bg-white/10 bg-[#D6E2F6] dark:border-white/20 text-muted-foreground h-8 w-8 rounded-full flex items-center justify-center"
+                        >
+                           <Mail className="h-4 w-4" />
+                        </div>
+                        <h4 className="font-bold uppercase"> {t("Gửi yêu cầu hợp tác")}</h4>
+                     </div>
                      <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Họ & tên")} *</label>
-                              <Input 
-                                 placeholder={t("Nhập họ & tên của bạn")} 
+                              <Input
+                                 placeholder={t("Nhập họ & tên của bạn")}
                                  value={formData.name}
                                  onChange={(e) => handleInputChange('name', e.target.value)}
                                  required
@@ -210,9 +249,9 @@ export default function Contact() {
                            </div>
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Email")} *</label>
-                              <Input 
-                                 type="email" 
-                                 placeholder="email@example.com" 
+                              <Input
+                                 type="email"
+                                 placeholder="email@example.com"
                                  value={formData.email}
                                  onChange={(e) => handleInputChange('email', e.target.value)}
                                  required
@@ -220,12 +259,12 @@ export default function Contact() {
                               />
                            </div>
                         </div>
-                        
+
                         <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Số điện thoại")} *</label>
-                              <Input 
-                                 placeholder="0123 456 789" 
+                              <Input
+                                 placeholder="0123 456 789"
                                  value={formData.phone}
                                  onChange={(e) => handleInputChange('phone', e.target.value)}
                                  required
@@ -234,8 +273,8 @@ export default function Contact() {
                            </div>
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Dịch vụ quan tâm")}</label>
-                              <Select 
-                                 value={formData.service} 
+                              <Select
+                                 value={formData.service}
                                  onValueChange={(value) => handleInputChange('service', value)}
                                  disabled={isSubmitting}
                               >
@@ -252,10 +291,10 @@ export default function Contact() {
                               </Select>
                            </div>
                         </div>
-                        
+
                         <div className="space-y-2">
                            <label className="text-sm font-medium">{t("Mô tả nhu cầu")}</label>
-                           <Textarea 
+                           <Textarea
                               placeholder={t("Vui lòng mô tả chi tiết nhu cầu của bạn...")}
                               className="min-h-[120px]"
                               value={formData.message}
@@ -263,11 +302,12 @@ export default function Contact() {
                               disabled={isSubmitting}
                            />
                         </div>
-                        
+
                         <div>
-                           <Button 
-                              type="submit" 
-                              className="w-full bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
+                           <Button
+                              type="submit"
+                              size={"lg"}
+                              className="w-full"
                               disabled={isSubmitting}
                            >
                               {isSubmitting ? (
@@ -288,9 +328,23 @@ export default function Contact() {
                </div>
 
                <div className="space-y-4">
-                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-4 hover:shadow-lg transition-shadow">
-                     <h4 className="font-bold mb-4">{t("Công ty GENSOL")}</h4>
-                     <div className="space-y-3 text-sm dark:text-white/80 text-black/80">
+                  <div
+                     style={{
+                        backgroundImage: `url('/images/rect-${theme}-info.svg')`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                     }}
+                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-4 hover:shadow-lg transition-shadow">
+                     <div className="font-semibold flex items-center gap-2 mb-2">
+                        <div
+                           className="relative dark:backdrop-blur-md dark:bg-white/10 bg-[#D6E2F6] dark:border-white/20 text-muted-foreground h-8 w-8 rounded-full flex items-center justify-center"
+                        >
+                           <Building className="h-4 w-4" />
+                        </div>
+                        <h4 className="font-bold uppercase">{t("Công ty GENSOL")}</h4>
+                     </div>
+                     <div className="space-y-3 text-sm dark:text-white/70 text-black/80">
                         <p>
                            <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
                         </p>
@@ -308,13 +362,17 @@ export default function Contact() {
                         </p>
                      </div>
                   </div>
-                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="rounded-xl border bg-[#F2F8FF] dark:bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow">
                      <div className="p-4 border-b">
-                        <h4 className="font-semibold flex items-center gap-2">
-                           <MapPin className="h-5 w-5 text-primary" />
-                           {t("Vị trí văn phòng")}
-                        </h4>
-                        <p className="text-sm dark:text-white/80 text-black/80 mt-1">
+                        <div className="font-semibold flex items-center gap-2 mb-2">
+                           <div
+                              className="relative dark:backdrop-blur-md dark:bg-white/10 bg-[#D6E2F6] dark:border-white/20 text-muted-foreground h-8 w-8 rounded-full flex items-center justify-center"
+                           >
+                              <MapPin className="h-4 w-4" />
+                           </div>
+                           <h4 className="font-bold uppercase"> {t("Vị trí văn phòng")}</h4>
+                        </div>
+                        <p className="text-sm dark:text-white/70 text-black/80">
                            {t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh")}
                         </p>
                      </div>
@@ -331,11 +389,11 @@ export default function Contact() {
                      </div>
                      <div className="p-4 bg-muted/30">
                         <div className="flex items-center justify-between text-sm">
-                           <span className="dark:text-white/80 text-black/80">{t("Cách trung tâm Hồ Chính Minh")}</span>
+                           <span className="dark:text-white/70 text-black/80">{t("Cách trung tâm Hồ Chính Minh")}</span>
                            <span className="font-medium">~3km</span>
                         </div>
                         <div className="flex items-center justify-between text-sm mt-1">
-                           <span className="dark:text-white/80 text-black/80">{t("Thời gian di chuyển")}</span>
+                           <span className="dark:text-white/70 text-black/80">{t("Thời gian di chuyển")}</span>
                            <span className="font-medium">10-15 {t("phút bằng xe")}</span>
                         </div>
                      </div>

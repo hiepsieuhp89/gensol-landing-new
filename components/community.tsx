@@ -102,7 +102,7 @@ export default function AboutUs() {
               {t("Công ty")}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">GENSOL</span>
             </h2>
-            <p className="max-w-[840px] mx-auto dark:text-white/80 text-black/80 md:text-xl">
+            <p className="max-w-[840px] mx-auto dark:text-white/70 text-black/80 md:text-xl">
               {t("Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.")}
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function AboutUs() {
                   </div>
                   <h3 className="text-xl font-bold text-primary dark:text-white">{t("Tầm nhìn")}</h3>
                 </div>
-                <p className="dark:text-white/80 text-black/80">
+                <p className="dark:text-white/70 text-black/80">
                   {t("Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.")}
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default function AboutUs() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-primary dark:text-white">{t("Sứ mệnh")}</h3>
                 </div>
-                <p className="dark:text-white/80 text-black/80">
+                <p className="dark:text-white/70 text-black/80">
                   {t("Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả & bền vững để tối ưu hóa hoạt động kinh doanh.")}
                 </p>
               </div>
@@ -161,8 +161,8 @@ export default function AboutUs() {
                   >
                     {/* Glassmorphism gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-white/5 to-transparent rounded-full" />
-                    <CheckCircle className="h-4 w-4 text-primary dark:text-white/80 mt-0.5 flex-shrink-0 relative z-10" />
-                    <span className="text-sm dark:text-white/80 text-black/80 relative z-10">{area}</span>
+                    <CheckCircle className="h-4 w-4 text-primary dark:text-white/70 mt-0.5 flex-shrink-0 relative z-10" />
+                    <span className="text-sm dark:text-white/70 text-black/80 relative z-10">{area}</span>
                   </div>
                 ))}
               </div>
@@ -172,7 +172,7 @@ export default function AboutUs() {
 
         {/* Company Values */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-sm border backdrop-blur-sm border-primary bg-[#ffffff95] dark:bg-background text-primary">
+          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-[4px] border backdrop-blur-sm border-primary bg-[#ffffff95] dark:bg-background text-primary">
             <Sparkle className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold text-primary">
               {t("Đội ngũ linh hoạt • Dịch vụ đa ngành • Giải pháp bền vững")}

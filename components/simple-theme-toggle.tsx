@@ -23,9 +23,8 @@ export function SimpleThemeToggle() {
   }
 
   return (
-    <Button variant="outline" size="icon" onClick={toggleTheme} className="focus-visible:ring-0">
-      {theme === "dark" ? <Sun className="h-[1.2rem] w-[1.2rem]" /> : <Moon className="h-[1.2rem] w-[1.2rem]" />}
-      <span className="sr-only">Toggle theme</span>
+    <Button variant="outline" size="icon" onClick={toggleTheme} className="focus-visible:ring-0 dark:backdrop-blur-md dark:bg-white/10 dark:border-white/20">
+      {theme === "dark" ? <Sun className="h-[1.2rem] w-[1.2rem] text-muted-foreground" /> : <Moon className="h-[1.2rem] w-[1.2rem] text-muted-foreground" />}
     </Button>
   )
 }

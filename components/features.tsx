@@ -62,7 +62,7 @@ export default function Features() {
                 {t("cho doanh nghiệp")}
               </span>
             </h2>
-            <p className="max-w-[840px] mx-auto dark:text-white/80 text-black/80 md:text-xl">
+            <p className="max-w-[840px] mx-auto dark:text-white/70 text-black/80 md:text-xl">
               {t("GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa & nhỏ.")}
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function Features() {
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                   </div>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500 flex-shrink-0 group-hover:scale-110 group-hover:rotate-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500 flex-shrink-0 group-hover:scale-110 group-hover:rotate-3">
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-bold text-primary dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
