@@ -52,18 +52,18 @@ export default function Model() {
           if (child.material) {
             if (child.material.type === 'MeshStandardMaterial' || child.material.type === 'MeshPhysicalMaterial') {
               child.material.metalness = isDark 
-                ? Math.min(child.material.metalness + 0.3, 1.0) 
+                ? Math.min(child.material.metalness + 0.4, 1.0) 
                 : Math.min(child.material.metalness + 0.2, 1.0);
               
               child.material.roughness = isDark
-                ? Math.max(child.material.roughness - 0.4, 0.1) 
+                ? Math.max(child.material.roughness - 0.5, 0.05) 
                 : Math.max(child.material.roughness - 0.3, 0.1);
               
-              child.material.envMapIntensity = isDark ? 2.0 : 1.5; 
+              child.material.envMapIntensity = isDark ? 2.5 : 1.5; 
             }
             
             if (child.material.emissive) {
-              child.material.emissive.multiplyScalar(isDark ? 1.8 : 1.2); 
+              child.material.emissive.multiplyScalar(isDark ? 2.2 : 1.2); 
             }
             
             child.material.needsUpdate = true;

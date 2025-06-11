@@ -97,7 +97,7 @@ export default function CompanyValues() {
       >
          <div className="absolute inset-0 -z-10">
             <motion.div
-               className="absolute inset-0 bg-gradient-to-br from-slate-50/90 via-white/95 to-blue-50/90 dark:from-slate-900/90 dark:via-slate-800/95 dark:to-blue-900/90"
+               className="absolute inset-0"
             />
             <motion.div
                className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-200/30 via-pink-200/20 to-blue-200/30 dark:from-purple-800/20 dark:via-pink-800/15 dark:to-blue-800/20 blur-3xl"
@@ -114,10 +114,10 @@ export default function CompanyValues() {
          </div>
 
          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20">
-               <motion.div className="space-y-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-20">
+               <motion.div className="space-y-4">
                   <motion.div
-                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4"
+                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4 border border-[#8FC3FF]"
                   >
                      <Sparkle className="h-4 w-4 text-white" />
                      {t("Giá trị cốt lõi")}
@@ -210,8 +210,7 @@ export default function CompanyValues() {
                      backgroundPosition: "center",
                      backgroundRepeat: "no-repeat"
                   }}
-                  className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 via-slate-50/90 to-blue-50/80 dark:from-slate-800/80 dark:via-slate-900/90 dark:to-blue-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/30 p-12">
-                    
+                  className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 via-slate-50/90 to-blue-50/80 dark:from-slate-800/80 dark:via-slate-900/90 dark:to-blue-900/80 backdrop-blur-xl border dark:border-slate-700/30 p-12 border-[#8FC3FF50]">
                      <motion.blockquote
                         className="text-2xl md:text-3xl font-normal dark:text-black/80 text-black/80 italic mb-8 leading-relaxed"
                         style={{

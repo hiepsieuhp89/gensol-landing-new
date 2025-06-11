@@ -145,7 +145,7 @@ export default function AboutUs() {
           </div>
 
           {/* Business Areas */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div>
               <div className="flex items-center gap-4">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">

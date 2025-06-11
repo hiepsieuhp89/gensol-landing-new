@@ -58,13 +58,13 @@ export default function Hero() {
                   transition={{ duration: 0.8 }}
                >
                   <motion.div
-                     className="!w-fit flex items-center rounded-full border px-3 py-1 text-sm"
+                     className="!w-fit flex items-center rounded-full border border-[#027C96] px-3 py-1 text-sm"
                      initial={{ opacity: 0, scale: 0.8 }}
                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                      transition={{ duration: 0.6, delay: 0.1 }}
                   >
-                     <Sparkles className="mr-1 h-3.5 w-3.5 text-primary" />
-                     <span>{t("Giải pháp công nghệ toàn diện")}</span>
+                     <Sparkles className="mr-1 h-3.5 w-3.5 text-[#027C96]" />
+                     <span className="text-[#027C96]">{t("Giải pháp công nghệ toàn diện")}</span>
                   </motion.div>
                   <div className="space-y-3">
                      <Image
@@ -72,7 +72,7 @@ export default function Hero() {
                         alt="GENSOL text logo"
                         height={96}
                         width={360}
-                        className='filter'
+                        className='filter -ml-2'
                         style={{
                            imageRendering: 'crisp-edges',
                         }}

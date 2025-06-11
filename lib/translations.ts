@@ -846,13 +846,13 @@ export const translations: Translations = {
   },
 
   // Footer and other components
-  "Công nghệ thông tin, Nhân sự, Logistics": {
+  "Công nghệ thông tin, Nhân sự": {
     en: "Information Technology, Human Resources, Logistics",
     zh: "信息技术、人力资源、物流",
     ja: "情報技術、人材、ロジスティクス",
     ko: "정보기술, 인력, 물류",
     th: "เทคโนโลยีสารสนเทศ ทรัพยากรบุคคล โลจิสติกส์",
-    vi: "Công nghệ thông tin, Nhân sự, Logistics"
+    vi: "Công nghệ thông tin, Nhân sự"
   },
 
   // Community/AboutUs business areas
@@ -1138,13 +1138,13 @@ export const translations: Translations = {
     th: "ที่ตั้งสำนักงาน",
     vi: "Vị trí văn phòng"
   },
-  "Cách trung tâm Hà Nội": {
+  "Cách trung tâm Hồ Chính Minh": {
     en: "Distance from Hanoi center",
     zh: "距河内市中心",
     ja: "ハノイ中心部からの距離",
     ko: "하노이 중심가에서의 거리",
     th: "ระยะห่างจากใจกลางฮานอย",
-    vi: "Cách trung tâm Hà Nội"
+    vi: "Cách trung tâm Hồ Chính Minh"
   },
   "Thời gian di chuyển": {
     en: "Travel time",

@@ -163,35 +163,8 @@ export default function Contact() {
       }
    };
 
-   const contactInfo = [
-      {
-         icon: <Mail className="h-5 w-5 text-primary" />,
-         title: t("Email"),
-         content: COMPANY_INFO.email,
-         description: t("Gửi email cho chúng tôi")
-      },
-      {
-         icon: <Phone className="h-5 w-5 text-primary" />,
-         title: t("Điện thoại"),
-         content: COMPANY_INFO.phone,
-         description: t("Gọi trực tiếp cho chúng tôi")
-      },
-      {
-         icon: <MapPin className="h-5 w-5 text-primary" />,
-         title: t("Địa chỉ"),
-         content: t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh"),
-         description: t("Văn phòng chính")
-      },
-      {
-         icon: <Clock className="h-5 w-5 text-primary" />,
-         title: t("Giờ làm việc"),
-         content: "8:00 - 17:00",
-         description: t("Thứ 2 - Thứ 6")
-      }
-   ];
-
    return (
-      <section id="lien-he" className="w-full py-12 md:py-20 relative overflow-hidden">
+      <section id="lien-he" className="w-full py-12 md:py-20 relative overflow-hidden max-w-7xl mx-auto">
          <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
             <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10" />
@@ -218,12 +191,12 @@ export default function Contact() {
                </div>
             </div>
 
-            <div className="grid gap-12 lg:grid-cols-2 items-start">
-               <div className="space-y-6">
+            <div className="grid gap-8 lg:grid-cols-2 items-start">
+               <div className="space-y-4">
                   <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-lg transition-shadow">
                      <h3 className="text-2xl font-bold mb-6">{t("Gửi yêu cầu hợp tác")}</h3>
                      
-                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Họ & tên")} *</label>
@@ -314,33 +287,15 @@ export default function Contact() {
                   </div>
                </div>
 
-               <div className="space-y-6">
-                  <div>
-                     <h3 className="text-2xl font-bold mb-6">{t("Thông tin liên hệ")}</h3>
-                     <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-                        {contactInfo.map((info, index) => (
-                           <div
-                              key={index}
-                              className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary transition-colors"
-                           >
-                              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                                 {info.icon}
-                              </div>
-                              <div className="flex-1">
-                                 <h4 className="font-semibold text-sm dark:text-white/80 text-black/80">{info.title}</h4>
-                                 <p className="font-medium">{info.content}</p>
-                                 <p className="text-sm dark:text-white/80 text-black/80">{info.description}</p>
-                              </div>
-                           </div>
-                        ))}
-                     </div>
-                  </div>
-
+               <div className="space-y-4">
                   <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-4 hover:shadow-lg transition-shadow">
                      <h4 className="font-bold mb-4">{t("Công ty GENSOL")}</h4>
                      <div className="space-y-3 text-sm dark:text-white/80 text-black/80">
                         <p>
                            <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
+                        </p>
+                        <p>
+                           <strong>{t("Email")}:</strong> {t("contact@gensol.com.vn")}
                         </p>
                         <p>
                            <strong>{t("Mã số thuế")}:</strong> 0318558477
@@ -349,11 +304,10 @@ export default function Contact() {
                            <strong>{t("Địa chỉ")}:</strong> {t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam")}
                         </p>
                         <p>
-                           <strong>{t("Lĩnh vực")}:</strong> {t("Công nghệ thông tin, Nhân sự, Logistics")}
+                           <strong>{t("Lĩnh vực")}:</strong> {t("Công nghệ thông tin, Nhân sự")}
                         </p>
                      </div>
                   </div>
-
                   <div className="rounded-xl border bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow">
                      <div className="p-4 border-b">
                         <h4 className="font-semibold flex items-center gap-2">
@@ -366,7 +320,7 @@ export default function Contact() {
                      </div>
                      <div className="relative h-64">
                         <iframe
-                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.096756919!2d105.8197!3d21.0285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2sLotte%20Center%20Hanoi!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s"
+                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.442079544798!2d106.82608587460377!3d10.855111089299054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752797e321f8e9%3A0xb3ff69197b10ec4f!2zxJAuIDI3LCBMb25nIFRo4bqhbmggTeG7uSwgVGjhu6cgxJDhu6ljLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1710405517013!5m2!1svi!2s"
                            width="100%"
                            height="100%"
                            style={{ border: 0 }}
@@ -377,7 +331,7 @@ export default function Contact() {
                      </div>
                      <div className="p-4 bg-muted/30">
                         <div className="flex items-center justify-between text-sm">
-                           <span className="dark:text-white/80 text-black/80">{t("Cách trung tâm Hà Nội")}</span>
+                           <span className="dark:text-white/80 text-black/80">{t("Cách trung tâm Hồ Chính Minh")}</span>
                            <span className="font-medium">~3km</span>
                         </div>
                         <div className="flex items-center justify-between text-sm mt-1">
