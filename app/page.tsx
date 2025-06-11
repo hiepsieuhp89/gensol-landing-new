@@ -7,6 +7,7 @@ import CompanyValues from "@/components/testimonials"
 import Contact from "@/components/call-to-action"
 import Footer from "@/components/footer"
 import { ReactLenis, useLenis } from 'lenis/react'
+import Brand from "@/components/brand"
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <ReactLenis root>
       <main className="flex-1">
         <Hero />
+        <Brand />
         <AboutUs />
         <Features />
         <WhyChooseUs />

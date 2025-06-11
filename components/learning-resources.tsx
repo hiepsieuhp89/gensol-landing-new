@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
     <section
       id="ly-do-chon"
       ref={ref}
-      className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden"
+      className="w-full py-12 md:py-20 relative overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />

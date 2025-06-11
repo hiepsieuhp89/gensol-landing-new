@@ -31,14 +31,13 @@ const BentoGridItem = ({
     visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 25 } },
   };
 
-  // Brand logos for the second item (index 1)
   const brandLogos = Array.from({ length: 7 }, (_, i) => `/images/logo${i + 1}.png`);
  
   return (
     <motion.div
       variants={variants}
       className={cn(
-        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#E2E8F0] dark:border-[#1E293B] bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary dark:hover:border-primary',
+        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#E2E8F0] dark:border-[#1E293B] bg-background px-4 pb-10 pt-4 shadow-md transition-all duration-500 hover:border-primary dark:hover:border-primary',
         className,
       )}
     >
@@ -56,10 +55,10 @@ const BentoGridItem = ({
  
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div>
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
+          <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
             {icon}
           </div>
-          <h3 className="mb-2 text-xl font-bold tracking-tight text-black/80 dark:text-white/80">{title}</h3>
+          <h3 className="mt-20 mb-2 text-xl font-bold tracking-tight text-black/80 dark:text-white/80">{title}</h3>
           <p className="text-base mb-4 text-black/80 dark:text-white/80">{description}</p>
           
           {features.length > 0 && (
@@ -70,33 +69,11 @@ const BentoGridItem = ({
                   className="flex items-center gap-2 text-sm"
                 >
                   <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-muted-foreground">{feature}</span>
+                  <span className="text-black/80 dark:text-white/80">{feature}</span>
                 </div>
               ))}
             </div>
           )}
-
-          {/* Brand section for the second item */}
-          {index === 1 && (
-              <div className="flex flex-wrap gap-3 justify-center items-center my-2">
-                {brandLogos.map((logo, logoIndex) => (
-                  <div
-                    key={logoIndex}
-                    className="flex items-center justify-center transition-all duration-300 hover:bg-white/20 dark:hover:bg-black/20"
-                  >
-                    <img
-                      src={logo}
-                      alt={`Brand logo ${logoIndex + 1}`}
-                      className="h-8 w-auto object-contain filter transition-all duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
-          )}
-        </div>
-        <div className="mt-4 flex items-center text-sm text-primary">
-          <span className="mr-1">{t("Tìm hiểu thêm")}</span>
-          <ArrowRight className="size-4 transition-all duration-500 group-hover:translate-x-2" />
         </div>
       </div>
       <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-primary to-primary blur-2xl transition-all duration-500 group-hover:blur-lg" />

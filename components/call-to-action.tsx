@@ -179,7 +179,7 @@ export default function Contact() {
       {
          icon: <MapPin className="h-5 w-5 text-primary" />,
          title: t("Địa chỉ"),
-         content: t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội"),
+         content: t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh"),
          description: t("Văn phòng chính")
       },
       {
@@ -191,7 +191,7 @@ export default function Contact() {
    ];
 
    return (
-      <section id="lien-he" className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden">
+      <section id="lien-he" className="w-full py-12 md:py-20 relative overflow-hidden">
          <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
             <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10" />
@@ -340,10 +340,10 @@ export default function Contact() {
                            <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
                         </p>
                         <p>
-                           <strong>{t("Mã số thuế")}:</strong> 132980
+                           <strong>{t("Mã số thuế")}:</strong> 0318558477
                         </p>
                         <p>
-                           <strong>{t("Địa chỉ")}:</strong> {t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam")}
+                           <strong>{t("Địa chỉ")}:</strong> {t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam")}
                         </p>
                         <p>
                            <strong>{t("Lĩnh vực")}:</strong> {t("Công nghệ thông tin, Nhân sự, Logistics")}
@@ -358,7 +358,7 @@ export default function Contact() {
                            {t("Vị trí văn phòng")}
                         </h4>
                         <p className="text-sm text-muted-foreground mt-1">
-                           {t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội")}
+                           {t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh")}
                         </p>
                      </div>
                      <div className="relative h-64">

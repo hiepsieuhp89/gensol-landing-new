@@ -24,7 +24,7 @@ export default function Footer() {
    return (
       <motion.footer 
          ref={ref}
-         className="w-full border-t bg-background py-12 md:py-16"
+         className="w-full border-t bg-background py-12 md:py-20"
          style={{ y: footerY, opacity: footerOpacity }}
       >
          <div className="container px-4 md:px-6">
@@ -87,7 +87,7 @@ export default function Footer() {
                   </motion.p>
                   <div className="space-y-2">
                      {[
-                        { icon: Mail, text: "contact@gensol.vn" },
+                        { icon: Mail, text: "contact@gensol.com.vn" },
                         { icon: Phone, text: "+84 (0) 123 456 789" },
                         { icon: MapPin, text: t("Hà Nội, Việt Nam") }
                      ].map((item, index) => (

@@ -1407,21 +1407,21 @@ export const translations: Translations = {
     th: "ฮานอย, เวียดนาม",
     vi: "Hà Nội, Việt Nam"
   },
-  "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam": {
+  "16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam": {
     en: "Lotte Center Building, 54 Lieu Giai, Ba Dinh, Hanoi, Vietnam",
     zh: "乐天中心大厦，54 Lieu Giai，巴亭，河内，越南",
     ja: "ロッテセンタービル、54 Lieu Giai、バーディン、ハノイ、ベトナム",
     ko: "롯데센터 빌딩, 54 Lieu Giai, Ba Dinh, 하노이, 베트남",
     th: "อาคารลอตเต้เซ็นเตอร์, 54 Lieu Giai, Ba Dinh, ฮานอย, เวียดนาม",
-    vi: "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam"
+    vi: "16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam"
   },
-  "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội": {
+  "16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh": {
     en: "Lotte Center Building, 54 Lieu Giai, Ba Dinh, Hanoi",
     zh: "乐天中心大厦，54 Lieu Giai，巴亭，河内",
     ja: "ロッテセンタービル、54 Lieu Giai、バーディン、ハノイ",
     ko: "롯데센터 빌딩, 54 Lieu Giai, Ba Dinh, 하노이",
     th: "อาคารลอตเต้เซ็นเตอร์, 54 Lieu Giai, Ba Dinh, ฮานอย",
-    vi: "Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội"
+    vi: "16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh"
   }
 };
 

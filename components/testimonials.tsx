@@ -219,16 +219,12 @@ export default function CompanyValues() {
                         <motion.img
                            src={"/images/logo.png"}
                            alt="GENSOL logo"
-                           className='object-contain filter h-16 w-auto'
+                           className='object-contain filter h-24 w-auto'
                            style={{
                               imageRendering: 'crisp-edges',
                            }}
                            draggable={false}
                         />
-                        <div className="text-left">
-                           <div className="font-bold text-lg text-slate-800 dark:text-white">GENSOL</div>
-                           <div className="text-slate-600 dark:text-slate-400">{t("Công ty TNHH GENSOL")}</div>
-                        </div>
                      </motion.div>
                   </div>
                </div>

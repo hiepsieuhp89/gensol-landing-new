@@ -28,7 +28,7 @@ export default function AboutUs() {
     <section
       id="ve-chung-toi"
       ref={ref}
-      className="w-full py-12 md:py-16 relative overflow-hidden"
+      className="w-full py-12 md:py-20 relative overflow-hidden max-w-7xl mx-auto"
     >
       {/* Base gradient background */}
       <div className="absolute inset-0 -z-10">
@@ -111,7 +111,7 @@ export default function AboutUs() {
         <div className="grid gap-10 lg:grid-cols-2 items-start mb-16">
           {/* Vision & Mission */}
           <div className="space-y-8">
-            <div className="group relative overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-6 hover:shadow-2xl hover:bg-white/15 transition-all duration-300">
+            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-6 shadow-md bg-white/15 transition-all duration-300">
               {/* Glassmorphism gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-xl" />
               <div className="relative z-10">
@@ -127,7 +127,7 @@ export default function AboutUs() {
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-6 hover:shadow-2xl hover:bg-white/15 transition-all duration-300">
+            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-6 shadow-md bg-white/15 transition-all duration-300">
               {/* Glassmorphism gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-xl" />
               <div className="relative z-10">
@@ -157,7 +157,7 @@ export default function AboutUs() {
                 {businessAreas.map((area, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 p-3 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:shadow-xl transition-all duration-300 cursor-pointer w-fit relative overflow-hidden"
+                    className="flex items-start gap-3 p-3 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:shadow-md transition-all duration-300 cursor-pointer w-fit relative overflow-hidden"
                   >
                     {/* Glassmorphism gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-white/5 to-transparent rounded-full" />

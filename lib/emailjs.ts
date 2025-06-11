@@ -32,9 +32,9 @@ export const SERVICE_OPTIONS = [
 // Company information
 export const COMPANY_INFO = {
   name: 'GENSOL',
-  email: 'contact@gensol.vn',
+  email: 'contact@gensol.com.vn',
   phone: '+84 (0) 123 456 789',
-  address: 'Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam',
+  address: '16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh, Việt Nam',
   website: 'https://gensol-beta.vercel.app',
   fullName: 'Công ty TNHH GENSOL',
   taxCode: '[Mã số thuế]',
