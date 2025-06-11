@@ -24,7 +24,7 @@ export default function Footer() {
                         alt="GENSOL logo"
                         height={70}
                         width={70}
-                        className='object-cover filter scale-90 -ml-5'
+                        className='object-cover filter scale-90'
                         style={{
                            imageRendering: 'crisp-edges',
                         }}
