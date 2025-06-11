@@ -37,7 +37,7 @@ const BentoGridItem = ({
     <motion.div
       variants={variants}
       className={cn(
-        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#E2E8F0] dark:border-[#1E293B] bg-background px-4 pb-10 pt-4 shadow-md transition-all duration-500 hover:border-primary dark:hover:border-primary',
+        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 border-[#1E293B] bg-[#020B1A] px-4 pb-10 pt-4 shadow-md transition-all duration-500 hover:border-primary',
         className,
       )}
     >
@@ -49,7 +49,7 @@ const BentoGridItem = ({
         />
       </div>
  
-      <div className="absolute bottom-3 right-1 scale-[6] text-[#E2E8F0] dark:text-[#1E293B] transition-all duration-700 group-hover:scale-[6.2] group-hover:text-[#E2E8F0] dark:group-hover:text-[#1E293B]">
+      <div className="absolute bottom-3 right-1 scale-[6]  text-[#1E293B] transition-all duration-700 group-hover:scale-[6.2] group-hover:text-[#1E293B]">
         {icon}
       </div>
  
@@ -58,18 +58,18 @@ const BentoGridItem = ({
           <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#007B9490] text-white shadow shadow-primary/10 transition-all duration-500">
             {icon}
           </div>
-          <h3 className="mt-20 mb-2 text-xl font-bold tracking-tight text-black/80 dark:text-white/80">{title}</h3>
-          <p className="text-base mb-4 text-black/80 dark:text-white/80">{description}</p>
+          <h3 className="mt-20 mb-2 text-xl font-bold tracking-tight text-white">{title}</h3>
+          <p className="text-base mb-4 text-white/80">{description}</p>
           
           {features.length > 0 && (
-            <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="grid grid-cols-2 gap-2">
               {features.map((feature, featureIndex) => (
                 <div
                   key={featureIndex}
                   className="flex items-center gap-2 text-sm"
                 >
                   <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-black/80 dark:text-white/80">{feature}</span>
+                  <span className=" text-white/80">{feature}</span>
                 </div>
               ))}
             </div>

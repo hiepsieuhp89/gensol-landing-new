@@ -12,16 +12,16 @@ export default function AboutUs() {
 
   const businessAreas = [
     t("Hoạt động tư vấn quản lý"),
-    t("Tư vấn máy vi tính và quản trị hệ thống"),
+    t("Tư vấn máy vi tính & quản trị hệ thống"),
     t("Hoạt động dịch vụ công nghệ thông tin"),
     t("Lập trình máy vi tính"),
     t("Xuất bản phần mềm & game"),
-    t("Bán buôn thiết bị và linh kiện điện tử, viễn thông"),
-    t("Hoạt động kiến trúc và tư vấn kỹ thuật"),
+    t("Bán buôn thiết bị & linh kiện điện tử, viễn thông"),
+    t("Hoạt động kiến trúc & tư vấn kỹ thuật"),
     t("Hoạt động thiết kế chuyên dụng"),
-    t("Bán buôn máy vi tính, thiết bị ngoại vi và phần mềm"),
-    t("Sửa chữa máy vi tính và thiết bị ngoại vi"),
-    t("Cung ứng và quản lý nguồn lao động"),
+    t("Bán buôn máy vi tính, thiết bị ngoại vi & phần mềm"),
+    t("Sửa chữa máy vi tính & thiết bị ngoại vi"),
+    t("Cung ứng & quản lý nguồn lao động"),
   ]
 
   return (
@@ -94,7 +94,7 @@ export default function AboutUs() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <div className="space-y-4">
-            <div className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto">
+            <div className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4">
               <Sparkle className="h-4 w-4 text-white" />
               {t("Về chúng tôi")}
             </div>
@@ -102,8 +102,8 @@ export default function AboutUs() {
               {t("Công ty")}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">GENSOL</span>
             </h2>
-            <p className="max-w-[800px] mx-auto text-muted-foreground md:text-lg">
-              {t("Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.")}
+            <p className="max-w-[840px] mx-auto dark:text-white/80 text-black/80 md:text-xl">
+              {t("Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.")}
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function AboutUs() {
         <div className="grid gap-10 lg:grid-cols-2 items-start mb-16">
           {/* Vision & Mission */}
           <div className="space-y-8">
-            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-6 shadow-md bg-white/15 transition-all duration-300">
+            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-4 shadow-md bg-white/15 transition-all duration-300">
               {/* Glassmorphism gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-xl" />
               <div className="relative z-10">
@@ -121,13 +121,13 @@ export default function AboutUs() {
                   </div>
                   <h3 className="text-xl font-bold text-primary dark:text-white">{t("Tầm nhìn")}</h3>
                 </div>
-                <p>
-                  {t("Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.")}
+                <p className="dark:text-white/80 text-black/80">
+                  {t("Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.")}
                 </p>
               </div>
             </div>
 
-            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-6 shadow-md bg-white/15 transition-all duration-300">
+            <div className="group relative overflow-hidden rounded-xl border border-white/20 backdrop-blur-md p-4 shadow-md bg-white/15 transition-all duration-300">
               {/* Glassmorphism gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-xl" />
               <div className="relative z-10">
@@ -137,8 +137,8 @@ export default function AboutUs() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-primary dark:text-white">{t("Sứ mệnh")}</h3>
                 </div>
-                <p>
-                  {t("Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả và bền vững để tối ưu hóa hoạt động kinh doanh.")}
+                <p className="dark:text-white/80 text-black/80">
+                  {t("Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả & bền vững để tối ưu hóa hoạt động kinh doanh.")}
                 </p>
               </div>
             </div>
@@ -157,12 +157,12 @@ export default function AboutUs() {
                 {businessAreas.map((area, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 p-3 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:shadow-md transition-all duration-300 cursor-pointer w-fit relative overflow-hidden"
+                    className="flex items-start gap-3 p-3 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/15 hover:shadow-md transition-all duration-300 cursor-pointer w-fit relative overflow-hidden shadow-md"
                   >
                     {/* Glassmorphism gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-white/5 to-transparent rounded-full" />
-                    <CheckCircle className="h-4 w-4 text-primary dark:text-white mt-0.5 flex-shrink-0 relative z-10" />
-                    <span className="text-sm text-foreground relative z-10">{area}</span>
+                    <CheckCircle className="h-4 w-4 text-primary dark:text-white/80 mt-0.5 flex-shrink-0 relative z-10" />
+                    <span className="text-sm dark:text-white/80 text-black/80 relative z-10">{area}</span>
                   </div>
                 ))}
               </div>

@@ -78,12 +78,12 @@ export default function Footer() {
                      </motion.div>
                   </motion.div>
                   <motion.p 
-                     className="text-sm text-muted-foreground"
+                     className="text-sm dark:text-white/80 text-black/80"
                      initial={{ opacity: 0, y: 10 }}
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5 }}
                   >
-                     {t("Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững. Giải pháp Công nghệ toàn diện và Nhân sự IT theo yêu cầu.")}
+                     {t("Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt & bền vững. Giải pháp Công nghệ toàn diện & Nhân sự IT theo yêu cầu.")}
                   </motion.p>
                   <div className="space-y-2">
                      {[
@@ -93,7 +93,7 @@ export default function Footer() {
                      ].map((item, index) => (
                         <motion.div 
                            key={index}
-                           className="flex items-center gap-2 text-sm text-muted-foreground"
+                           className="flex items-center gap-2 text-sm dark:text-white/80 text-black/80"
                            initial={{ opacity: 0, x: -10 }}
                            whileInView={{ opacity: 1, x: 0 }}
                            transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -139,7 +139,7 @@ export default function Footer() {
                            >
                               <Link
                                  href={item.href}
-                                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                 className="text-sm dark:text-white/80 text-black/80 hover:text-foreground transition-colors"
                               >
                                  {item.text}
                               </Link>
@@ -177,7 +177,7 @@ export default function Footer() {
                            >
                               <Link
                                  href={item.href}
-                                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                 className="text-sm dark:text-white/80 text-black/80 hover:text-foreground transition-colors"
                               >
                                  {item.text}
                               </Link>
@@ -197,7 +197,7 @@ export default function Footer() {
                      {t("Nhận tư vấn")}
                   </motion.h3>
                   <motion.p 
-                     className="text-sm text-muted-foreground mb-2"
+                     className="text-sm dark:text-white/80 text-black/80 mb-2"
                      initial={{ opacity: 0, y: 10 }}
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.5, delay: 0.1 }}
@@ -213,7 +213,7 @@ export default function Footer() {
                      <motion.input
                         type="email"
                         placeholder={t("Email của bạn")}
-                        className="flex h-9 w-full rounded-sm border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-9 w-full rounded-sm border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:dark:text-white/80 text-black/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                         whileFocus={{ scale: 1.02 }}
                         transition={{ duration: 0.2 }}
                      />
@@ -278,7 +278,7 @@ export default function Footer() {
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.5, delay: 0.3 }}
             >
-               <p className="text-xs text-muted-foreground">
+               <p className="text-xs dark:text-white/80 text-black/80">
                   © 2024 GENSOL. {t("Tất cả quyền được bảo lưu")}. |
                   <motion.span
                      whileHover={{ color: "hsl(var(--foreground))" }}

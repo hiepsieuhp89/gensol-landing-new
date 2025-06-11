@@ -17,7 +17,7 @@ export default function CompanyValues() {
          icon: <Heart className="h-10 w-10 text-white" />,
          title: t("Tận tâm"),
          description:
-            t("Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe và thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất."),
+            t("Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe & thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất."),
          gradient: "from-rose-400 via-pink-500 to-red-500",
          bgGradient: "from-rose-50/80 via-pink-50/60 to-red-50/80",
          darkBgGradient: "from-rose-900/20 via-pink-900/15 to-red-900/20",
@@ -27,7 +27,7 @@ export default function CompanyValues() {
       {
          icon: <Lightbulb className="h-10 w-10 text-white" />,
          title: t("Sáng tạo"),
-         description: t("Không ngừng đổi mới và sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo và hiệu quả."),
+         description: t("Không ngừng đổi mới & sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo & hiệu quả."),
          gradient: "from-amber-400 via-yellow-500 to-orange-500",
          bgGradient: "from-amber-50/80 via-yellow-50/60 to-orange-50/80",
          darkBgGradient: "from-amber-900/20 via-yellow-900/15 to-orange-900/20",
@@ -37,7 +37,7 @@ export default function CompanyValues() {
       {
          icon: <Target className="h-10 w-10 text-white" />,
          title: t("Chính xác"),
-         description: t("Cam kết chất lượng cao trong mọi sản phẩm và dịch vụ, đảm bảo độ chính xác và tin cậy tuyệt đối."),
+         description: t("Cam kết chất lượng cao trong mọi sản phẩm & dịch vụ, đảm bảo độ chính xác & tin cậy tuyệt đối."),
          gradient: "from-blue-400 via-cyan-500 to-teal-500",
          bgGradient: "from-blue-50/80 via-cyan-50/60 to-teal-50/80",
          darkBgGradient: "from-blue-900/20 via-cyan-900/15 to-teal-900/20",
@@ -117,7 +117,7 @@ export default function CompanyValues() {
             <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20">
                <motion.div className="space-y-6">
                   <motion.div
-                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto"
+                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4"
                   >
                      <Sparkle className="h-4 w-4 text-white" />
                      {t("Giá trị cốt lõi")}
@@ -129,7 +129,7 @@ export default function CompanyValues() {
                      </span>
                   </motion.h2>
                   <motion.p className="max-w-3xl mx-auto text-slate-600 dark:text-slate-300 text-lg md:text-xl leading-relaxed">
-                     {t("Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm và dịch vụ.")}
+                     {t("Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm & dịch vụ.")}
                   </motion.p>
                </motion.div>
             </div>
@@ -203,17 +203,25 @@ export default function CompanyValues() {
 
             <motion.div className="mt-24 text-center">
                <div className="max-w-5xl mx-auto">
-                  <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 via-slate-50/90 to-blue-50/80 dark:from-slate-800/80 dark:via-slate-900/90 dark:to-blue-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/30 p-12">
-                     <motion.div className="mb-8">
-                        <Quote className="h-12 w-12 text-primary mx-auto" />
-                     </motion.div>
+                  <div 
+                  style={{
+                     backgroundImage: "url('/images/simple-shiny.svg')",
+                     backgroundSize: "cover",
+                     backgroundPosition: "center",
+                     backgroundRepeat: "no-repeat"
+                  }}
+                  className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 via-slate-50/90 to-blue-50/80 dark:from-slate-800/80 dark:via-slate-900/90 dark:to-blue-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/30 p-12">
+                    
                      <motion.blockquote
-                        className="text-2xl md:text-3xl font-normal text-slate-700 dark:text-slate-200 italic mb-8 leading-relaxed"
+                        className="text-2xl md:text-3xl font-normal dark:text-black/80 text-black/80 italic mb-8 leading-relaxed"
                         style={{
                            fontFamily: '"Playfair Display", "Crimson Text", "Noto Serif", "Times New Roman", serif',
                         }}
                      >
-                        {t("Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn.")}
+                         <motion.div className="mb-8">
+                        <Quote className="h-12 w-12 text-[#025191] mx-auto" fill="currentColor"/>
+                     </motion.div>
+                        {t("Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự & xây dựng tương lai tốt đẹp hơn.")}
                      </motion.blockquote>
                      <motion.div className="flex items-center justify-center gap-4">
                         <motion.img

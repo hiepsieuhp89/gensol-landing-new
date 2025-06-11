@@ -64,13 +64,13 @@ export const translations: Translations = {
     th: "เดินทางร่วมกับคุณ",
     vi: "Đồng hành cùng bạn"
   },
-  "Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững. Giải pháp Công nghệ toàn diện và Nhân sự IT theo yêu cầu.": {
+  "Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt & bền vững. Giải pháp Công nghệ toàn diện & Nhân sự IT theo yêu cầu.": {
     en: "Partnering with you on your digital transformation journey – Developing flexible and sustainable solutions. Comprehensive technology solutions and on-demand IT personnel.",
     zh: "在您的数字化转型之旅中与您同行 - 开发灵活可持续的解决方案。全面的技术解决方案和按需IT人员。",
     ja: "デジタル変革の旅路でお客様と共に歩む - 柔軟で持続可能なソリューションを開発。包括的な技術ソリューションとオンデマンドIT人材。",
     ko: "디지털 전환 여정에서 함께 동행 - 유연하고 지속 가능한 솔루션 개발. 포괄적인 기술 솔루션과 맞춤형 IT 인력.",
     th: "เดินทางร่วมกับคุณในการเปลี่ยนแปลงดิจิทัล - พัฒนาโซลูชันที่ยืดหยุ่นและยั่งยืน โซลูชันเทคโนโลยีที่ครอบคลุมและบุคลากร IT ตามความต้องการ",
-    vi: "Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững. Giải pháp Công nghệ toàn diện và Nhân sự IT theo yêu cầu."
+    vi: "Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt & bền vững. Giải pháp Công nghệ toàn diện & Nhân sự IT theo yêu cầu."
   },
   "Tìm hiểu thêm": {
     en: "Learn More",
@@ -114,21 +114,21 @@ export const translations: Translations = {
     th: "บริษัท",
     vi: "Công ty"
   },
-  "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số.": {
+  "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số.": {
     en: "Established with the mission to provide comprehensive technology and human resource solutions for Vietnamese businesses, helping them develop sustainably in the digital era.",
     zh: "成立的使命是为越南企业提供全面的技术和人力资源解决方案，帮助他们在数字时代可持续发展。",
     ja: "ベトナムの企業に包括的な技術と人材ソリューションを提供し、デジタル時代における持続可能な発展を支援することを使命として設立されました。",
     ko: "베트남 기업에 포괄적인 기술 및 인력 솔루션을 제공하여 디지털 시대의 지속 가능한 발전을 돕는 것을 사명으로 설립되었습니다.",
     th: "ก่อตั้งขึ้นด้วยพันธกิจในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจเวียดนาม ช่วยให้พวกเขาพัฒนาอย่างยั่งยืนในยุคดิจิทัล",
-    vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số."
+    vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp họ phát triển bền vững trong kỷ nguyên số."
   },
-  "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.": {
+  "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số.": {
     en: "Established with the mission to provide comprehensive technology and human resource solutions for Vietnamese businesses, helping clients develop sustainably in the digital era.",
     zh: "成立的使命是为越南企业提供全面的技术和人力资源解决方案，帮助客户在数字时代可持续发展。",
     ja: "ベトナムの企業に包括的な技術と人材ソリューションを提供し、デジタル時代におけるクライアントの持続可能な発展を支援することを使命として設立されました。",
     ko: "베트남 기업에 포괄적인 기술 및 인력 솔루션을 제공하여 디지털 시대의 고객의 지속 가능한 발전을 돕는 것을 사명으로 설립되었습니다.",
     th: "ก่อตั้งขึ้นด้วยพันธกิจในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจเวียดนาม ช่วยให้ลูกค้าพัฒนาอย่างยั่งยืนในยุคดิจิทัล",
-    vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số."
+    vi: "Được thành lập với sứ mệnh cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp Việt Nam, giúp khách hàng phát triển bền vững trong kỷ nguyên số."
   },
   "Tầm nhìn": {
     en: "Vision",
@@ -138,21 +138,21 @@ export const translations: Translations = {
     th: "วิสัยทัศน์",
     vi: "Tầm nhìn"
   },
-  "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự và logistics toàn diện cho các doanh nghiệp tại Việt Nam.": {
+  "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự & logistics toàn diện cho các doanh nghiệp tại Việt Nam.": {
     en: "To become the leading trusted partner in providing comprehensive technology, human resources, and logistics solutions for businesses in Vietnam.",
     zh: "成为越南企业在提供全面技术、人力资源和物流解决方案方面的领先可信合作伙伴。",
     ja: "ベトナムの企業に包括的な技術、人材、物流ソリューションを提供する信頼できるリーディングパートナーになること。",
     ko: "베트남 기업에 포괄적인 기술, 인력 및 물류 솔루션을 제공하는 선도적인 신뢰할 수 있는 파트너가 되는 것입니다.",
     th: "เป็นพันธมิตรที่เชื่อถือได้อันดับหนึ่งในการให้บริการโซลูชันเทคโนโลยี ทรัพยากรบุคคล และโลจิสติกส์ที่ครอบคลุมสำหรับธุรกิจในเวียดนาม",
-    vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự và logistics toàn diện cho các doanh nghiệp tại Việt Nam."
+    vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ, nhân sự & logistics toàn diện cho các doanh nghiệp tại Việt Nam."
   },
-  "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.": {
+  "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp tại Việt Nam.": {
     en: "To become the leading trusted partner in providing comprehensive technology and human resource solutions for businesses in Vietnam.",
     zh: "成为越南企业在提供全面技术和人力资源解决方案方面的领先可信合作伙伴。",
     ja: "ベトナムの企業に包括的な技術と人材ソリューションを提供する信頼できるリーディングパートナーになること。",
     ko: "베트남 기업에 포괄적인 기술 및 인력 솔루션을 제공하는 선도적인 신뢰할 수 있는 파트너가 되는 것입니다.",
     th: "เป็นพันธมิตรที่เชื่อถือได้อันดับหนึ่งในการให้บริการโซลูชันเทคโนโลยีและทรัพยากรบุคคลที่ครอบคลุมสำหรับธุรกิจในเวียดนาม",
-    vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ và nhân sự toàn diện cho các doanh nghiệp tại Việt Nam."
+    vi: "Trở thành đối tác tin cậy hàng đầu trong việc cung cấp giải pháp công nghệ & nhân sự toàn diện cho các doanh nghiệp tại Việt Nam."
   },
   "Sứ mệnh": {
     en: "Mission",
@@ -162,13 +162,13 @@ export const translations: Translations = {
     th: "พันธกิจ",
     vi: "Sứ mệnh"
   },
-  "Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả và bền vững để tối ưu hóa hoạt động kinh doanh.": {
+  "Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả & bền vững để tối ưu hóa hoạt động kinh doanh.": {
     en: "Partnering with businesses in their digital transformation journey, providing flexible, efficient, and sustainable solutions to optimize business operations.",
     zh: "在数字化转型之旅中与企业合作，提供灵活、高效和可持续的解决方案来优化业务运营。",
     ja: "企業のデジタル変革の旅路でパートナーとなり、柔軟で効率的かつ持続可能なソリューションを提供してビジネス運営を最適化します。",
     ko: "기업의 디지털 전환 여정에서 파트너가 되어 유연하고 효율적이며 지속 가능한 솔루션을 제공하여 비즈니스 운영을 최적화합니다.",
     th: "เป็นพันธมิตรกับธุรกิจในการเดินทางการเปลี่ยนแปลงดิจิทัล โดยให้บริการโซลูชันที่ยืดหยุ่น มีประสิทธิภาพ และยั่งยืนเพื่อเพิ่มประสิทธิภาพการดำเนินธุรกิจ",
-    vi: "Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả và bền vững để tối ưu hóa hoạt động kinh doanh."
+    vi: "Đồng hành cùng doanh nghiệp trong hành trình chuyển đổi số, cung cấp các giải pháp linh hoạt, hiệu quả & bền vững để tối ưu hóa hoạt động kinh doanh."
   },
   "Lĩnh vực kinh doanh": {
     en: "Business Areas",
@@ -204,13 +204,13 @@ export const translations: Translations = {
     th: "ทำไมเลือก",
     vi: "Tại sao chọn"
   },
-  "Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn.": {
+  "Chúng tôi mang đến những giá trị vượt trội & cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn.": {
     en: "We bring superior value and commit to long-term partnership with your business development.",
     zh: "我们带来卓越的价值，并承诺与您的业务发展建立长期合作伙伴关系。",
     ja: "私たちは優れた価値をもたらし、お客様のビジネス発展との長期的なパートナーシップをお約束します。",
     ko: "우리는 뛰어난 가치를 제공하고 귀하의 비즈니스 발전과 장기적인 파트너십을 약속합니다.",
     th: "เรานำเสนอคุณค่าที่เหนือกว่าและมุ่งมั่นในการเป็นพันธมิตรระยะยาวกับการพัฒนาธุรกิจของคุณ",
-    vi: "Chúng tôi mang đến những giá trị vượt trội và cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn."
+    vi: "Chúng tôi mang đến những giá trị vượt trội & cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn."
   },
   "Đối tác tin cậy cho sự phát triển bền vững": {
     en: "Trusted Partner for Sustainable Development",
@@ -246,13 +246,13 @@ export const translations: Translations = {
     th: "ที่นำทางเรา",
     vi: "định hướng"
   },
-  "Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm và dịch vụ.": {
+  "Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm & dịch vụ.": {
     en: "These core values guide all our activities, from how we serve customers to how we develop products and services.",
     zh: "这些核心价值观指导我们的所有活动，从我们如何为客户服务到我们如何开发产品和服务。",
     ja: "これらのコアバリューは、お客様へのサービス提供から製品・サービスの開発まで、私たちのすべての活動を導いています。",
     ko: "이러한 핵심 가치는 고객 서비스 방식부터 제품 및 서비스 개발 방식까지 우리의 모든 활동을 안내합니다.",
     th: "ค่านิยมหลักเหล่านี้เป็นแนวทางในกิจกรรมทั้งหมดของเรา ตั้งแต่วิธีที่เราให้บริการลูกค้าไปจนถึงวิธีที่เราพัฒนาผลิตภัณฑ์และบริการ",
-    vi: "Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm và dịch vụ."
+    vi: "Các giá trị cốt lõi này định hướng mọi hoạt động của chúng tôi, từ cách chúng tôi phục vụ khách hàng đến cách chúng tôi phát triển sản phẩm & dịch vụ."
   },
   "Tận tâm": {
     en: "Dedication",
@@ -262,13 +262,13 @@ export const translations: Translations = {
     th: "ความทุ่มเท",
     vi: "Tận tâm"
   },
-  "Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe và thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất.": {
+  "Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe & thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất.": {
     en: "We always put customers at the center, listening and understanding their needs to provide the most optimal solutions.",
     zh: "我们始终以客户为中心，倾听并理解他们的需求，以提供最优化的解决方案。",
     ja: "私たちは常にお客様を中心に据え、ニーズを聞き理解して最適なソリューションを提供します。",
     ko: "우리는 항상 고객을 중심에 두고, 그들의 요구를 듣고 이해하여 최적의 솔루션을 제공합니다.",
     th: "เรามักจะให้ความสำคัญกับลูกค้าเป็นศูนย์กลาง ฟังและเข้าใจความต้องการเพื่อให้โซลูชันที่เหมาะสมที่สุด",
-    vi: "Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe và thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất."
+    vi: "Chúng tôi luôn đặt khách hàng làm trung tâm, lắng nghe & thấu hiểu nhu cầu để đưa ra giải pháp tối ưu nhất."
   },
   "Sáng tạo": {
     en: "Innovation",
@@ -278,13 +278,13 @@ export const translations: Translations = {
     th: "นวัตกรรม",
     vi: "Sáng tạo"
   },
-  "Không ngừng đổi mới và sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo và hiệu quả.": {
+  "Không ngừng đổi mới & sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo & hiệu quả.": {
     en: "Continuously innovating and being creative in our approach, seeking unique and effective solutions.",
     zh: "在方法上不断创新和创造，寻求独特有效的解决方案。",
     ja: "アプローチにおいて継続的に革新し創造性を発揮し、独自で効果的なソリューションを追求します。",
     ko: "접근 방식에서 지속적으로 혁신하고 창의적이며, 독특하고 효과적인 솔루션을 추구합니다.",
     th: "พัฒนานวัตกรรมและความคิดสร้างสรรค์อย่างต่อเนื่องในแนวทางของเรา แสวงหาโซลูชันที่เป็นเอกลักษณ์และมีประสิทธิภาพ",
-    vi: "Không ngừng đổi mới và sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo và hiệu quả."
+    vi: "Không ngừng đổi mới & sáng tạo trong cách tiếp cận, tìm kiếm những giải pháp độc đáo & hiệu quả."
   },
   "Chính xác": {
     en: "Precision",
@@ -294,13 +294,13 @@ export const translations: Translations = {
     th: "ความแม่นยำ",
     vi: "Chính xác"
   },
-  "Cam kết chất lượng cao trong mọi sản phẩm và dịch vụ, đảm bảo độ chính xác và tin cậy tuyệt đối.": {
+  "Cam kết chất lượng cao trong mọi sản phẩm & dịch vụ, đảm bảo độ chính xác & tin cậy tuyệt đối.": {
     en: "Committed to high quality in all products and services, ensuring absolute accuracy and reliability.",
     zh: "致力于所有产品和服务的高质量，确保绝对的准确性和可靠性。",
     ja: "すべての製品とサービスにおいて高品質をお約束し、絶対的な正確性と信頼性を保証します。",
     ko: "모든 제품과 서비스에서 고품질을 약속하며, 절대적인 정확성과 신뢰성을 보장합니다.",
     th: "มุ่งมั่นในคุณภาพสูงในผลิตภัณฑ์และบริการทั้งหมด รับประกันความแม่นยำและความน่าเชื่อถืออย่างสมบูรณ์",
-    vi: "Cam kết chất lượng cao trong mọi sản phẩm và dịch vụ, đảm bảo độ chính xác và tin cậy tuyệt đối."
+    vi: "Cam kết chất lượng cao trong mọi sản phẩm & dịch vụ, đảm bảo độ chính xác & tin cậy tuyệt đối."
   },
   "Đồng hành": {
     en: "Partnership",
@@ -344,29 +344,29 @@ export const translations: Translations = {
     th: "ร่วมมือกัน?",
     vi: "hợp tác?"
   },
-  "Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.": {
+  "Hãy để lại thông tin & nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.": {
     en: "Leave your information and requirements. We will contact you to provide the most suitable solution as soon as possible.",
     zh: "请留下您的信息和需求。我们将尽快联系您，提供最合适的解决方案。",
     ja: "お客様の情報とご要望をお聞かせください。最適なソリューションをご提案するため、できるだけ早くご連絡いたします。",
     ko: "귀하의 정보와 요구사항을 남겨주세요. 가장 적합한 솔루션을 제공하기 위해 가능한 한 빨리 연락드리겠습니다.",
     th: "กรุณาฝากข้อมูลและความต้องการของคุณ เราจะติดต่อเพื่อให้คำปรึกษาโซลูชันที่เหมาะสมที่สุดในเวลาที่เร็วที่สุด",
-    vi: "Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất."
+    vi: "Hãy để lại thông tin & nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất."
   },
-  "Họ và tên": {
+  "Họ & tên": {
     en: "Full Name",
     zh: "姓名",
     ja: "氏名",
     ko: "성명",
     th: "ชื่อ-นามสกุล",
-    vi: "Họ và tên"
+    vi: "Họ & tên"
   },
-  "Nhập họ và tên của bạn": {
+  "Nhập họ & tên của bạn": {
     en: "Enter your full name",
     zh: "输入您的姓名",
     ja: "お名前を入力してください",
     ko: "성명을 입력하세요",
     th: "กรอกชื่อ-นามสกุลของคุณ",
-    vi: "Nhập họ và tên của bạn"
+    vi: "Nhập họ & tên của bạn"
   },
   "Số điện thoại": {
     en: "Phone Number",
@@ -514,13 +514,13 @@ export const translations: Translations = {
     th: "สำหรับธุรกิจ",
     vi: "cho doanh nghiệp"
   },
-  "GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa và nhỏ.": {
+  "GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa & nhỏ.": {
     en: "GENSOL provides diverse services from information technology, equipment, human resources to logistics, suitable for small and medium enterprises.",
     zh: "GENSOL提供从信息技术、设备、人力资源到物流的多样化服务，适合中小企业。",
     ja: "GENSOLは情報技術、機器、人材からロジスティクスまで多様なサービスを提供し、中小企業に適しています。",
     ko: "GENSOL은 정보기술, 장비, 인력에서 물류까지 다양한 서비스를 제공하며, 중소기업에 적합합니다.",
     th: "GENSOL ให้บริการที่หลากหลายตั้งแต่เทคโนโลยีสารสนเทศ อุปกรณ์ ทรัพยากรบุคคล ไปจนถึงโลจิสติกส์ เหมาะสำหรับธุรกิจขนาดกลางและขนาดเล็ก",
-    vi: "GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa và nhỏ."
+    vi: "GENSOL cung cấp các dịch vụ đa dạng từ công nghệ thông tin, thiết bị, nhân sự đến logistics, phù hợp cho các doanh nghiệp vừa & nhỏ."
   },
   "Công nghệ thông tin & Lập trình": {
     en: "Information Technology & Programming",
@@ -530,13 +530,13 @@ export const translations: Translations = {
     th: "เทคโนโลยีสารสนเทศและการเขียนโปรแกรม",
     vi: "Công nghệ thông tin & Lập trình"
   },
-  "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính và quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin.": {
+  "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính & quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin.": {
     en: "Computer programming, software & game publishing, computer consulting and system management, information technology service activities.",
     zh: "计算机编程、软件和游戏发布、计算机咨询和系统管理、信息技术服务活动。",
     ja: "コンピュータープログラミング、ソフトウェア・ゲーム出版、コンピューターコンサルティング・システム管理、情報技術サービス活動。",
     ko: "컴퓨터 프로그래밍, 소프트웨어 및 게임 출판, 컴퓨터 컨설팅 및 시스템 관리, 정보기술 서비스 활동.",
     th: "การเขียนโปรแกรมคอมพิวเตอร์ การเผยแพร่ซอฟต์แวร์และเกม การให้คำปรึกษาคอมพิวเตอร์และการจัดการระบบ กิจกรรมบริการเทคโนโลยีสารสนเทศ",
-    vi: "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính và quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin."
+    vi: "Lập trình máy tính, xuất bản phần mềm & game, tư vấn máy tính & quản lý hệ thống, hoạt động dịch vụ công nghệ thông tin."
   },
   "Thiết bị & Linh kiện ICT": {
     en: "ICT Equipment & Components",
@@ -546,13 +546,13 @@ export const translations: Translations = {
     th: "อุปกรณ์และชิ้นส่วน ICT",
     vi: "Thiết bị & Linh kiện ICT"
   },
-  "Buôn bán thiết bị và linh kiện điện tử viễn thông, tư vấn và cung cấp giải pháp công nghệ thông tin toàn diện.": {
+  "Buôn bán thiết bị & linh kiện điện tử viễn thông, tư vấn & cung cấp giải pháp công nghệ thông tin toàn diện.": {
     en: "Trading electronic telecommunications equipment and components, consulting and providing comprehensive information technology solutions.",
     zh: "销售电子通信设备和组件，咨询和提供全面的信息技术解决方案。",
     ja: "電子通信機器・部品の販売、コンサルティング、包括的な情報技術ソリューションの提供。",
     ko: "전자 통신 장비 및 부품 판매, 컨설팅 및 포괄적인 정보기술 솔루션 제공.",
     th: "การค้าอุปกรณ์และชิ้นส่วนอิเล็กทรอนิกส์โทรคมนาคม การให้คำปรึกษาและการให้บริการโซลูชันเทคโนโลยีสารสนเทศที่ครอบคลุม",
-    vi: "Buôn bán thiết bị và linh kiện điện tử viễn thông, tư vấn và cung cấp giải pháp công nghệ thông tin toàn diện."
+    vi: "Buôn bán thiết bị & linh kiện điện tử viễn thông, tư vấn & cung cấp giải pháp công nghệ thông tin toàn diện."
   },
   "Kiến trúc & Thiết kế": {
     en: "Architecture & Design",
@@ -562,13 +562,13 @@ export const translations: Translations = {
     th: "สถาปัตยกรรมและการออกแบบ",
     vi: "Kiến trúc & Thiết kế"
   },
-  "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng và các dịch vụ tư vấn kỹ thuật chuyên nghiệp.": {
+  "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng & các dịch vụ tư vấn kỹ thuật chuyên nghiệp.": {
     en: "Architecture & technical consulting activities, specialized design activities and professional technical consulting services.",
     zh: "建筑和技术咨询活动、专业设计活动和专业技术咨询服务。",
     ja: "建築・技術コンサルティング活動、専门設計活動、専門技術コンサルティングサービス。",
     ko: "건축 및 기술 컨설팅 활동, 전문 디자인 활동 및 전문 기술 컨설팅 서비스.",
     th: "กิจกรรมสถาปัตยกรรมและการให้คำปรึกษาทางเทคนิค กิจกรรมการออกแบบเฉพาะทาง และบริการให้คำปรึกษาทางเทคนิคแบบมืออาชีพ",
-    vi: "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng và các dịch vụ tư vấn kỹ thuật chuyên nghiệp."
+    vi: "Hoạt động về kiến trúc & tư vấn kỹ thuật, hoạt động thiết kế chuyên dụng & các dịch vụ tư vấn kỹ thuật chuyên nghiệp."
   },
   "Tư vấn & Quản lý": {
     en: "Consulting & Management",
@@ -578,13 +578,13 @@ export const translations: Translations = {
     th: "การให้คำปรึกษาและการจัดการ",
     vi: "Tư vấn & Quản lý"
   },
-  "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp và các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp.": {
+  "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp & các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp.": {
     en: "Management consulting activities, business consulting and professional internal management support services.",
     zh: "管理咨询活动、商业咨询和专业内部管理支持服务。",
     ja: "経営コンサルティング活動、ビジネスコンサルティング、専門的な内部管理支援サービス。",
     ko: "경영 컨설팅 활동, 비즈니스 컨설팅 및 전문 내부 관리 지원 서비스.",
     th: "กิจกรรมการให้คำปรึกษาการจัดการ การให้คำปรึกษาธุรกิจ และบริการสนับสนุนการจัดการภายในแบบมืออาชีพ",
-    vi: "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp và các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp."
+    vi: "Hoạt động tư vấn quản lý, tư vấn doanh nghiệp & các dịch vụ hỗ trợ quản lý nội bộ chuyên nghiệp."
   },
   "Công nghệ - Phần mềm": {
     en: "Technology - Software",
@@ -594,13 +594,13 @@ export const translations: Translations = {
     th: "เทคโนโลยี - ซอฟต์แวร์",
     vi: "Công nghệ - Phần mềm"
   },
-  "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT và thiết kế UI/UX chuyên nghiệp.": {
+  "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT & thiết kế UI/UX chuyên nghiệp.": {
     en: "Custom software development, computer programming, IT consulting and professional UI/UX design.",
     zh: "定制软件开发、计算机编程、IT咨询和专业UI/UX设计。",
     ja: "カスタムソフトウェア開発、コンピュータープログラミング、ITコンサルティング、プロフェッショナルUI/UXデザイン。",
     ko: "맞춤형 소프트웨어 개발, 컴퓨터 프로그래밍, IT 컨설팅 및 전문 UI/UX 디자인.",
     th: "การพัฒนาซอฟต์แวร์ที่กำหนดเอง การเขียนโปรแกรมคอมพิวเตอร์ การให้คำปรึกษา IT และการออกแบบ UI/UX แบบมืออาชีพ",
-    vi: "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT và thiết kế UI/UX chuyên nghiệp."
+    vi: "Phát triển phần mềm tùy chỉnh, lập trình máy tính, tư vấn IT & thiết kế UI/UX chuyên nghiệp."
   },
   "Thiết bị & Dịch vụ": {
     en: "Equipment & Services",
@@ -610,13 +610,13 @@ export const translations: Translations = {
     th: "อุปกรณ์และบริการ",
     vi: "Thiết bị & Dịch vụ"
   },
-  "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị và các dịch vụ công nghệ liên quan.": {
+  "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị & các dịch vụ công nghệ liên quan.": {
     en: "Wholesale computers, electronic components, equipment repair and related technology services.",
     zh: "批发计算机、电子元件、设备维修和相关技术服务。",
     ja: "コンピューター、電子部品の卸売、機器修理および関連技術サービス。",
     ko: "컴퓨터, 전자 부품 도매, 장비 수리 및 관련 기술 서비스.",
     th: "ขายส่งคอมพิวเตอร์ ชิ้นส่วนอิเล็กทรอนิกส์ การซ่อมแซมอุปกรณ์ และบริการเทคโนโลยีที่เกี่ยวข้อง",
-    vi: "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị và các dịch vụ công nghệ liên quan."
+    vi: "Bán buôn máy tính, linh kiện điện tử, sửa chữa thiết bị & các dịch vụ công nghệ liên quan."
   },
   "Nhân sự & Tư vấn": {
     en: "Human Resources & Consulting",
@@ -626,13 +626,13 @@ export const translations: Translations = {
     th: "ทรัพยากรบุคคลและการให้คำปรึกษา",
     vi: "Nhân sự & Tư vấn"
   },
-  "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ và các dịch vụ nhân sự chuyên nghiệp.": {
+  "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ & các dịch vụ nhân sự chuyên nghiệp.": {
     en: "Labor supply, IT personnel, internal management consulting and professional human resource services.",
     zh: "劳动力供应、IT人员、内部管理咨询和专业人力资源服务。",
     ja: "労働力供給、IT人材、内部管理コンサルティング、専門人材サービス。",
     ko: "인력 공급, IT 인력, 내부 관리 컨설팅 및 전문 인력 서비스.",
     th: "การจัดหาแรงงาน บุคลากร IT การให้คำปรึกษาการจัดการภายใน และบริการทรัพยากรบุคคลแบบมืออาชีพ",
-    vi: "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ và các dịch vụ nhân sự chuyên nghiệp."
+    vi: "Cung ứng lao động, nhân lực IT, tư vấn quản lý nội bộ & các dịch vụ nhân sự chuyên nghiệp."
   },
   "Logistics & Vận tải": {
     en: "Logistics & Transportation",
@@ -642,13 +642,13 @@ export const translations: Translations = {
     th: "โลจิสติกส์และการขนส่ง",
     vi: "Logistics & Vận tải"
   },
-  "Dịch vụ cho thuê xe, vận tải hành khách và các giải pháp logistics linh hoạt theo nhu cầu.": {
+  "Dịch vụ cho thuê xe, vận tải hành khách & các giải pháp logistics linh hoạt theo nhu cầu.": {
     en: "Vehicle rental services, passenger transportation and flexible logistics solutions on demand.",
     zh: "车辆租赁服务、客运和按需灵活物流解决方案。",
     ja: "車両レンタルサービス、旅客輸送、オンデマンドの柔軟なロジスティクスソリューション。",
     ko: "차량 렌탈 서비스, 승객 운송 및 맞춤형 유연한 물류 솔루션.",
     th: "บริการเช่ารถ การขนส่งผู้โดยสาร และโซลูชันโลจิสติกส์ที่ยืดหยุ่นตามความต้องการ",
-    vi: "Dịch vụ cho thuê xe, vận tải hành khách và các giải pháp logistics linh hoạt theo nhu cầu."
+    vi: "Dịch vụ cho thuê xe, vận tải hành khách & các giải pháp logistics linh hoạt theo nhu cầu."
   },
 
   // WhyChooseUs Section - Additional translations
@@ -756,13 +756,13 @@ export const translations: Translations = {
     th: "บริการหลากหลายอุตสาหกรรม",
     vi: "Dịch vụ đa ngành"
   },
-  "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics.": {
+  "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự & logistics.": {
     en: "One destination for all needs - from software development, IT equipment to human resources and logistics.",
     zh: "满足所有需求的一站式服务 - 从软件开发、IT设备到人力资源和物流。",
     ja: "ソフトウェア開発、IT機器から人材、ロジスティクスまで、あらゆるニーズに対応するワンストップサービス。",
     ko: "소프트웨어 개발, IT 장비에서 인력 및 물류까지 모든 요구를 위한 원스톱 서비스.",
     th: "จุดหมายปลายทางเดียวสำหรับทุกความต้องการ - ตั้งแต่การพัฒนาซอฟต์แวร์ อุปกรณ์ IT ไปจนถึงทรัพยากรบุคคลและโลจิสติกส์",
-    vi: "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự và logistics."
+    vi: "Một điểm đến cho mọi nhu cầu - từ phát triển phần mềm, thiết bị IT đến nhân sự & logistics."
   },
   "Công nghệ": {
     en: "Technology",
@@ -804,13 +804,13 @@ export const translations: Translations = {
     th: "เหมาะสำหรับ SME",
     vi: "Phù hợp SME"
   },
-  "Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao.": {
+  "Đặc biệt thiết kế cho các doanh nghiệp vừa & nhỏ với giải pháp tối ưu chi phí & hiệu quả cao.": {
     en: "Specially designed for small and medium enterprises with cost-optimized and highly effective solutions.",
     zh: "专为中小企业设计，提供成本优化且高效的解决方案。",
     ja: "中小企業向けに特別設計された、コスト最適化と高効率のソリューション。",
     ko: "중소기업을 위해 특별히 설계된 비용 최적화 및 고효율 솔루션.",
     th: "ออกแบบเป็นพิเศษสำหรับธุรกิจขนาดกลางและขนาดเล็ก ด้วยโซลูชันที่เหมาะสมด้านต้นทุนและมีประสิทธิภาพสูง",
-    vi: "Đặc biệt thiết kế cho các doanh nghiệp vừa và nhỏ với giải pháp tối ưu chi phí và hiệu quả cao."
+    vi: "Đặc biệt thiết kế cho các doanh nghiệp vừa & nhỏ với giải pháp tối ưu chi phí & hiệu quả cao."
   },
   "Chi phí hợp lý": {
     en: "Reasonable Cost",
@@ -864,21 +864,21 @@ export const translations: Translations = {
     th: "กิจกรรมการให้คำปรึกษาการจัดการ",
     vi: "Hoạt động tư vấn quản lý"
   },
-  "Bán buôn máy vi tính, thiết bị ngoại vi và phần mềm": {
+  "Bán buôn máy vi tính, thiết bị ngoại vi & phần mềm": {
     en: "Wholesale of computers, peripheral equipment and software",
     zh: "批发计算机、外围设备和软件",
     ja: "コンピューター、周辺機器、ソフトウェアの卸売",
     ko: "컴퓨터, 주변기기 및 소프트웨어 도매",
     th: "ขายส่งคอมพิวเตอร์ อุปกรณ์ต่อพ่วง และซอฟต์แวร์",
-    vi: "Bán buôn máy vi tính, thiết bị ngoại vi và phần mềm"
+    vi: "Bán buôn máy vi tính, thiết bị ngoại vi & phần mềm"
   },
-  "Bán buôn thiết bị và linh kiện điện tử, viễn thông": {
+  "Bán buôn thiết bị & linh kiện điện tử, viễn thông": {
     en: "Wholesale of electronic and telecommunications equipment and components",
     zh: "批发电子和电信设备及组件",
     ja: "電子・通信機器および部品の卸売",
     ko: "전자 및 통신 장비와 부품 도매",
     th: "ขายส่งอุปกรณ์และชิ้นส่วนอิเล็กทรอนิกส์และโทรคมนาคม",
-    vi: "Bán buôn thiết bị và linh kiện điện tử, viễn thông"
+    vi: "Bán buôn thiết bị & linh kiện điện tử, viễn thông"
   },
   "Vận tải hành khách đường bộ": {
     en: "Road passenger transport",
@@ -888,21 +888,21 @@ export const translations: Translations = {
     th: "การขนส่งผู้โดยสารทางถนน",
     vi: "Vận tải hành khách đường bộ"
   },
-  "Cung ứng và quản lý nhân lực": {
+  "Cung ứng & quản lý nhân lực": {
     en: "Human resource supply and management",
     zh: "人力资源供应和管理",
     ja: "人材供給・管理",
     ko: "인력 공급 및 관리",
     th: "การจัดหาและจัดการทรัพยากรบุคคล",
-    vi: "Cung ứng và quản lý nhân lực"
+    vi: "Cung ứng & quản lý nhân lực"
   },
-  "Tư vấn máy vi tính và quản trị hệ thống": {
+  "Tư vấn máy vi tính & quản trị hệ thống": {
     en: "Computer consulting and system administration",
     zh: "计算机咨询和系统管理",
     ja: "コンピューターコンサルティングとシステム管理",
     ko: "컴퓨터 컨설팅 및 시스템 관리",
     th: "การให้คำปรึกษาคอมพิวเตอร์และการบริหารระบบ",
-    vi: "Tư vấn máy vi tính và quản trị hệ thống"
+    vi: "Tư vấn máy vi tính & quản trị hệ thống"
   },
   "Lập trình máy vi tính": {
     en: "Computer programming",
@@ -912,13 +912,13 @@ export const translations: Translations = {
     th: "การเขียนโปรแกรมคอมพิวเตอร์",
     vi: "Lập trình máy vi tính"
   },
-  "Hoạt động kiến trúc và tư vấn kỹ thuật": {
+  "Hoạt động kiến trúc & tư vấn kỹ thuật": {
     en: "Architectural and technical consulting activities",
     zh: "建筑和技术咨询活动",
     ja: "建築・技術コンサルティング活動",
     ko: "건축 및 기술 컨설팅 활동",
     th: "กิจกรรมการให้คำปรึกษาด้านสถาปัตยกรรมและเทคนิค",
-    vi: "Hoạt động kiến trúc và tư vấn kỹ thuật"
+    vi: "Hoạt động kiến trúc & tư vấn kỹ thuật"
   },
   "Cho thuê máy móc, thiết bị khác": {
     en: "Rental of other machinery and equipment",
@@ -928,13 +928,13 @@ export const translations: Translations = {
     th: "ให้เช่าเครื่องจักรและอุปกรณ์อื่นๆ",
     vi: "Cho thuê máy móc, thiết bị khác"
   },
-  "Sửa chữa máy vi tính và thiết bị ngoại vi": {
+  "Sửa chữa máy vi tính & thiết bị ngoại vi": {
     en: "Repair of computers and peripheral equipment",
     zh: "计算机和外围设备维修",
     ja: "コンピューターおよび周辺機器の修理",
     ko: "컴퓨터 및 주변기기 수리",
     th: "การซ่อมแซมคอมพิวเตอร์และอุปกรณ์ต่อพ่วง",
-    vi: "Sửa chữa máy vi tính và thiết bị ngoại vi"
+    vi: "Sửa chữa máy vi tính & thiết bị ngoại vi"
   },
 
   // Footer tags
@@ -1036,13 +1036,13 @@ export const translations: Translations = {
     th: "กิจกรรมการออกแบบเฉพาะทาง",
     vi: "Hoạt động thiết kế chuyên dụng"
   },
-  "Cung ứng và quản lý nguồn lao động": {
+  "Cung ứng & quản lý nguồn lao động": {
     en: "Labor supply and management",
     zh: "劳动力供应和管理",
     ja: "労働力供給・管理",
     ko: "인력 공급 및 관리",
     th: "การจัดหาและจัดการแรงงาน",
-    vi: "Cung ứng và quản lý nguồn lao động"
+    vi: "Cung ứng & quản lý nguồn lao động"
   },
 
   // Footer tags
@@ -1064,13 +1064,13 @@ export const translations: Translations = {
   },
 
   // CompanyValues (testimonials.tsx) translations - Note: These are duplicates of existing entries above
-  "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn.": {
+  "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự & xây dựng tương lai tốt đẹp hơn.": {
     en: "We believe that our customers' success is our success. Each project is not just a contract, but an opportunity to create real value and build a better future.",
     zh: "我们相信客户的成功就是我们的成功。每个项目不仅仅是一份合同，而是创造真正价值和建设更美好未来的机会。",
     ja: "お客様の成功が私たちの成功だと信じています。各プロジェクトは単なる契約ではなく、真の価値を創造し、より良い未来を築く機会です。",
     ko: "고객의 성공이 우리의 성공이라고 믿습니다. 각 프로젝트는 단순한 계약이 아니라 진정한 가치를 창출하고 더 나은 미래를 구축할 기회입니다.",
     th: "เราเชื่อว่าความสำเร็จของลูกค้าคือความสำเร็จของเรา แต่ละโครงการไม่ใช่แค่สัญญา แต่เป็นโอกาสในการสร้างคุณค่าที่แท้จริงและสร้างอนาคตที่ดีกว่า",
-    vi: "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự và xây dựng tương lai tốt đẹp hơn."
+    vi: "Chúng tôi tin rằng thành công của khách hàng chính là thành công của chúng tôi. Mỗi dự án không chỉ là một hợp đồng, mà là một cơ hội để tạo ra giá trị thực sự & xây dựng tương lai tốt đẹp hơn."
   },
   "Công ty TNHH GENSOL": {
     en: "GENSOL Limited Liability Company",
@@ -1170,13 +1170,13 @@ export const translations: Translations = {
     th: "ข้อผิดพลาดในการตรวจสอบ",
     vi: "Lỗi xác thực"
   },
-  "Vui lòng nhập họ và tên": {
+  "Vui lòng nhập họ & tên": {
     en: "Please enter your full name",
     zh: "请输入您的姓名",
     ja: "お名前を入力してください",
     ko: "성명을 입력해 주세요",
     th: "กรุณากรอกชื่อ-นามสกุล",
-    vi: "Vui lòng nhập họ và tên"
+    vi: "Vui lòng nhập họ & tên"
   },
   "Vui lòng nhập email hợp lệ": {
     en: "Please enter a valid email",

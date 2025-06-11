@@ -50,7 +50,7 @@ export default function Hero() {
          </div>
 
          <div className="container px-4 md:px-12 relative z-10">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-10 items-center relative">
+            <div className="grid gap-4 lg:grid-cols-2 lg:gap-10 items-center relative">
                <motion.div
                   className="flex flex-col justify-start items-start space-y-8 h-full z-10"
                   initial={{ opacity: 0, y: 50 }}
@@ -95,12 +95,12 @@ export default function Hero() {
                      </motion.h1>
 
                      <motion.p
-                        className="max-w-[650px] text-muted-foreground md:text-xl text-justify"
+                        className="max-w-[650px] dark:text-white/80 text-black/80 md:text-xl text-justify"
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                      >
-                        {t("Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt và bền vững. Giải pháp Công nghệ toàn diện và Nhân sự IT theo yêu cầu.")}
+                        {t("Đồng hành cùng bạn trong hành trình số hóa – Phát triển giải pháp linh hoạt & bền vững. Giải pháp Công nghệ toàn diện & Nhân sự IT theo yêu cầu.")}
                      </motion.p>
                   </div>
 
@@ -150,7 +150,7 @@ export default function Hero() {
                                  typeof stat.value === 'number' ? `${stat.value}${stat.suffix}` : stat.value
                               )}
                            </div>
-                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                           <div className="flex items-center gap-2 text-sm dark:text-white/80 text-black/80">
                               <stat.icon className="h-5 w-5 text-blue-400" />
                               {stat.label}
                            </div>

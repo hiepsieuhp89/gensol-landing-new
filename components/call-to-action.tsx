@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, Sparkle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/contexts/translation-context";
 import emailjs from '@emailjs/browser';
@@ -73,7 +73,7 @@ export default function Contact() {
          toast({
             variant: "destructive",
             title: t("Lỗi xác thực"),
-            description: t("Vui lòng nhập họ và tên")
+            description: t("Vui lòng nhập họ & tên")
          });
          return false;
       }
@@ -200,17 +200,20 @@ export default function Contact() {
          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
                <div className="space-y-4">
-                  <div className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary">
+                  <motion.div
+                     className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4"
+                  >
+                     <Sparkle className="h-4 w-4 text-white" />
                      {t("Liên hệ với chúng tôi")}
-                  </div>
+                  </motion.div>
                   <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl">
                      {t("Sẵn sàng")}{" "}
                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                         {t("hợp tác?")}
                      </span>
                   </h2>
-                  <p className="max-w-[800px] mx-auto text-muted-foreground md:text-lg">
-                     {t("Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.")}
+                  <p className="max-w-[840px] mx-auto dark:text-white/80 text-black/80 md:text-xl">
+                     {t("Hãy để lại thông tin & nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.")}
                   </p>
                </div>
             </div>
@@ -223,9 +226,9 @@ export default function Contact() {
                      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
-                              <label className="text-sm font-medium">{t("Họ và tên")} *</label>
+                              <label className="text-sm font-medium">{t("Họ & tên")} *</label>
                               <Input 
-                                 placeholder={t("Nhập họ và tên của bạn")} 
+                                 placeholder={t("Nhập họ & tên của bạn")} 
                                  value={formData.name}
                                  onChange={(e) => handleInputChange('name', e.target.value)}
                                  required
@@ -314,7 +317,7 @@ export default function Contact() {
                <div className="space-y-6">
                   <div>
                      <h3 className="text-2xl font-bold mb-6">{t("Thông tin liên hệ")}</h3>
-                     <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+                     <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
                         {contactInfo.map((info, index) => (
                            <div
                               key={index}
@@ -324,18 +327,18 @@ export default function Contact() {
                                  {info.icon}
                               </div>
                               <div className="flex-1">
-                                 <h4 className="font-semibold text-sm text-muted-foreground">{info.title}</h4>
+                                 <h4 className="font-semibold text-sm dark:text-white/80 text-black/80">{info.title}</h4>
                                  <p className="font-medium">{info.content}</p>
-                                 <p className="text-sm text-muted-foreground">{info.description}</p>
+                                 <p className="text-sm dark:text-white/80 text-black/80">{info.description}</p>
                               </div>
                            </div>
                         ))}
                      </div>
                   </div>
 
-                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow">
+                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-4 hover:shadow-lg transition-shadow">
                      <h4 className="font-bold mb-4">{t("Công ty GENSOL")}</h4>
-                     <div className="space-y-3 text-sm text-muted-foreground">
+                     <div className="space-y-3 text-sm dark:text-white/80 text-black/80">
                         <p>
                            <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
                         </p>
@@ -357,7 +360,7 @@ export default function Contact() {
                            <MapPin className="h-5 w-5 text-primary" />
                            {t("Vị trí văn phòng")}
                         </h4>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <p className="text-sm dark:text-white/80 text-black/80 mt-1">
                            {t("16, Đường 27, Phường Long Thạnh Mỹ, T.P Thủ Đức, T.P Hồ Chí Minh")}
                         </p>
                      </div>
@@ -374,11 +377,11 @@ export default function Contact() {
                      </div>
                      <div className="p-4 bg-muted/30">
                         <div className="flex items-center justify-between text-sm">
-                           <span className="text-muted-foreground">{t("Cách trung tâm Hà Nội")}</span>
+                           <span className="dark:text-white/80 text-black/80">{t("Cách trung tâm Hà Nội")}</span>
                            <span className="font-medium">~3km</span>
                         </div>
                         <div className="flex items-center justify-between text-sm mt-1">
-                           <span className="text-muted-foreground">{t("Thời gian di chuyển")}</span>
+                           <span className="dark:text-white/80 text-black/80">{t("Thời gian di chuyển")}</span>
                            <span className="font-medium">10-15 {t("phút bằng xe")}</span>
                         </div>
                      </div>
