@@ -1,17 +1,17 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { useInView, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Globe as GlobeIcon } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/contexts/translation-context";
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG, SERVICE_OPTIONS, COMPANY_INFO, type EmailTemplateParams } from '@/lib/emailjs';
 import { useToast } from "@/hooks/use-toast";
+
 interface FormData {
    name: string;
    email: string;
@@ -26,13 +26,10 @@ interface FormStatus {
 }
 
 export default function Contact() {
-   const ref = useRef(null);
    const formRef = useRef<HTMLFormElement>(null);
-   const isInView = useInView(ref, { once: true, amount: 0.2 });
    const { toast } = useToast();
    const { t } = useTranslation();
    
-   // Form state management
    const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -48,34 +45,13 @@ export default function Contact() {
    
    const [isSubmitting, setIsSubmitting] = useState(false);
 
-   // Translate service options
    const getTranslatedServiceOptions = () => {
       return SERVICE_OPTIONS.map(option => ({
          ...option,
          label: t(option.label)
       }));
    };
-   
-   const { scrollYProgress } = useScroll({
-      target: ref,
-      offset: ["start end", "end start"]
-   });
 
-   // Enhanced scroll-based transforms for contact section
-   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.9]);
-   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
-   
-   // Form-specific animations
-   const formY = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [80, 0, 0, -40]);
-   const formRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-5, 0, 3]);
-   
-   // Contact info animations
-   const contactInfoX = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [60, 0, 0, -30]);
-   const contactInfoRotate = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -3]);
-
-   // Reset status after 5 seconds
    useEffect(() => {
       if (formStatus.type !== 'idle') {
          const timer = setTimeout(() => {
@@ -85,7 +61,6 @@ export default function Contact() {
       }
    }, [formStatus.type]);
 
-   // Handle form input changes
    const handleInputChange = (field: keyof FormData, value: string) => {
       setFormData(prev => ({
          ...prev,
@@ -93,7 +68,6 @@ export default function Contact() {
       }));
    };
 
-   // Validate form data
    const validateForm = (): boolean => {
       if (!formData.name.trim()) {
          toast({
@@ -125,7 +99,6 @@ export default function Contact() {
       return true;
    };
 
-   // Handle form submission
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       
@@ -133,14 +106,12 @@ export default function Contact() {
       
       setIsSubmitting(true);
 
-      // Show loading toast
       toast({
          title: t("Đang gửi yêu cầu..."),
          description: t("Vui lòng chờ trong giây lát")
       });
 
       try {
-         // Prepare template parameters
          const templateParams: EmailTemplateParams = {
             name: formData.name,
             email: formData.email,
@@ -153,7 +124,6 @@ export default function Contact() {
             website_link: COMPANY_INFO.website
          };
 
-         // Send email using EmailJS
          const result = await emailjs.send(
             EMAILJS_CONFIG.SERVICE_ID,
             EMAILJS_CONFIG.TEMPLATE_ID,
@@ -162,14 +132,12 @@ export default function Contact() {
          );
 
          if (result.status === 200) {
-            // Show success toast with green styling
             toast({
                title: t("Gửi thành công! 🎉"),
                description: t("Cảm ơn bạn! Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất."),
                className: "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100 dark:border-green-400",
             });
             
-            // Reset form
             setFormData({
                name: '',
                email: '',
@@ -178,7 +146,6 @@ export default function Contact() {
                message: ''
             });
             
-            // Reset form ref
             if (formRef.current) {
                formRef.current.reset();
             }
@@ -186,7 +153,6 @@ export default function Contact() {
       } catch (error) {
          console.error('EmailJS Error:', error);
          
-         // Show error toast
          toast({
             variant: "destructive",
             title: t("Gửi thất bại"),
@@ -224,141 +190,38 @@ export default function Contact() {
       }
    ];
 
-   const containerVariants = {
-      hidden: { opacity: 0 },
-      visible: {
-         opacity: 1,
-         transition: {
-            staggerChildren: 0.1,
-         },
-      },
-   };
-
-   const itemVariants = {
-      hidden: { y: 30, opacity: 0 },
-      visible: {
-         y: 0,
-         opacity: 1,
-         transition: { 
-            duration: 0.6,
-            ease: "easeOut"
-         },
-      },
-   };
-
    return (
-      <motion.section 
-         id="lien-he" 
-         ref={ref}
-         className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden"
-         style={{ y, opacity, scale, rotateX, perspective: 1000 }}
-      >
-         {/* Enhanced Background Elements with scroll effects */}
+      <section id="lien-he" className="w-full py-12 md:pb-16 md:pt-0 relative overflow-hidden">
          <div className="absolute inset-0 -z-10">
-            <motion.div 
-               className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background"
-               style={{ 
-                  opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5])
-               }}
-            />
-            
-            {/* Globe Background Effect */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10">
-               {/* <Globe className="w-[800px] h-[800px]" /> */}
-            </div>
-            
-            <motion.div 
-               className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-primary/5 to-blue-400/5 blur-3xl"
-               style={{
-                  x: useTransform(scrollYProgress, [0, 1], [0, 100]),
-                  y: useTransform(scrollYProgress, [0, 1], [0, -50]),
-                  scale: useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.6])
-               }}
-            />
-            <motion.div 
-               className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-400/5 to-primary/5 blur-3xl"
-               style={{
-                  x: useTransform(scrollYProgress, [0, 1], [0, -80]),
-                  y: useTransform(scrollYProgress, [0, 1], [0, 60]),
-                  scale: useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 1.1])
-               }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-10" />
          </div>
 
          <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-               <motion.div
-                  className="space-y-4"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                  transition={{ duration: 0.6 }}
-               >
-                  <motion.div 
-                     className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary"
-                     initial={{ scale: 0 }}
-                     animate={isInView ? { scale: 1 } : { scale: 0 }}
-                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
+               <div className="space-y-4">
+                  <div className="inline-block rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] px-4 py-1.5 text-sm font-medium text-primary">
                      {t("Liên hệ với chúng tôi")}
-                  </motion.div>
-                  <motion.h2 
-                     className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl"
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                     transition={{ duration: 0.6, delay: 0.3 }}
-                  >
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl">
                      {t("Sẵn sàng")}{" "}
                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                         {t("hợp tác?")}
                      </span>
-                  </motion.h2>
-                  <motion.p 
-                     className="max-w-[800px] mx-auto text-muted-foreground md:text-lg"
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                     transition={{ duration: 0.6, delay: 0.4 }}
-                  >
+                  </h2>
+                  <p className="max-w-[800px] mx-auto text-muted-foreground md:text-lg">
                      {t("Hãy để lại thông tin và nhu cầu của bạn. Chúng tôi sẽ liên hệ tư vấn giải pháp phù hợp nhất trong thời gian sớm nhất.")}
-                  </motion.p>
-               </motion.div>
+                  </p>
+               </div>
             </div>
 
             <div className="grid gap-12 lg:grid-cols-2 items-start">
-               {/* Contact Form with enhanced scroll animations */}
-               <motion.div
-                  className="space-y-6"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  style={{ y: formY, rotateY: formRotate }}
-               >
-                  <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-lg transition-shadow"
-                     variants={itemVariants}
-                     style={{
-                        boxShadow: useTransform(
-                           scrollYProgress,
-                           [0, 0.5, 1],
-                           [
-                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                              "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                              "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
-                           ]
-                        )
-                     }}
-                  >
+               <div className="space-y-6">
+                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-lg transition-shadow">
                      <h3 className="text-2xl font-bold mb-6">{t("Gửi yêu cầu hợp tác")}</h3>
                      
                      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                        <motion.div 
-                           className="grid gap-4 md:grid-cols-2"
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.5, delay: 0.1 }}
-                           style={{
-                              x: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [-20, 0, 0, 10])
-                           }}
-                        >
+                        <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Họ và tên")} *</label>
                               <Input 
@@ -380,17 +243,9 @@ export default function Contact() {
                                  disabled={isSubmitting}
                               />
                            </div>
-                        </motion.div>
+                        </div>
                         
-                        <motion.div 
-                           className="grid gap-4 md:grid-cols-2"
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.5, delay: 0.2 }}
-                           style={{
-                              x: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [20, 0, 0, -10])
-                           }}
-                        >
+                        <div className="grid gap-4 md:grid-cols-2">
                            <div className="space-y-2">
                               <label className="text-sm font-medium">{t("Số điện thoại")} *</label>
                               <Input 
@@ -411,26 +266,18 @@ export default function Contact() {
                                  <SelectTrigger>
                                     <SelectValue placeholder={t("Chọn dịch vụ")} />
                                  </SelectTrigger>
-                                                            <SelectContent>
-                              {getTranslatedServiceOptions().map((option) => (
-                                 <SelectItem key={option.value} value={option.value}>
-                                    {option.label}
-                                 </SelectItem>
-                              ))}
-                           </SelectContent>
+                                 <SelectContent>
+                                    {getTranslatedServiceOptions().map((option) => (
+                                       <SelectItem key={option.value} value={option.value}>
+                                          {option.label}
+                                       </SelectItem>
+                                    ))}
+                                 </SelectContent>
                               </Select>
                            </div>
-                        </motion.div>
+                        </div>
                         
-                        <motion.div 
-                           className="space-y-2"
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.5, delay: 0.3 }}
-                           style={{
-                              scale: useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.95, 1, 1, 0.98])
-                           }}
-                        >
+                        <div className="space-y-2">
                            <label className="text-sm font-medium">{t("Mô tả nhu cầu")}</label>
                            <Textarea 
                               placeholder={t("Vui lòng mô tả chi tiết nhu cầu của bạn...")}
@@ -439,16 +286,9 @@ export default function Contact() {
                               onChange={(e) => handleInputChange('message', e.target.value)}
                               disabled={isSubmitting}
                            />
-                        </motion.div>
+                        </div>
                         
-                        <motion.div
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                           transition={{ duration: 0.5, delay: 0.4 }}
-                           style={{
-                              y: useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, -5])
-                           }}
-                        >
+                        <div>
                            <Button 
                               type="submit" 
                               className="w-full bg-gradient-to-r from-primary to-blue-400 hover:from-primary/90 hover:to-blue-400/90"
@@ -466,39 +306,19 @@ export default function Contact() {
                                  </>
                               )}
                            </Button>
-                        </motion.div>
+                        </div>
                      </form>
-                  </motion.div>
-               </motion.div>
+                  </div>
+               </div>
 
-               {/* Contact Information with sliding animations */}
-               <motion.div
-                  className="space-y-6"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  style={{ x: contactInfoX, rotateY: contactInfoRotate }}
-               >
-                  <motion.div variants={itemVariants}>
+               <div className="space-y-6">
+                  <div>
                      <h3 className="text-2xl font-bold mb-6">{t("Thông tin liên hệ")}</h3>
                      <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
                         {contactInfo.map((info, index) => (
-                           <motion.div
+                           <div
                               key={index}
                               className="group flex items-start gap-4 p-4 rounded-lg border bg-background/50 backdrop-blur-sm hover:border-primary transition-colors"
-                              variants={itemVariants}
-                              style={{
-                                 x: useTransform(
-                                    scrollYProgress,
-                                    [0, 0.4, 0.6, 1],
-                                    [50 + index * 10, 0, 0, -20 - index * 5]
-                                 ),
-                                 opacity: useTransform(
-                                    scrollYProgress,
-                                    [0, 0.2 + index * 0.05, 0.8 - index * 0.05, 1],
-                                    [0, 1, 1, 0.7]
-                                 )
-                              }}
                            >
                               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#1E293B] flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                                  {info.icon}
@@ -508,70 +328,30 @@ export default function Contact() {
                                  <p className="font-medium">{info.content}</p>
                                  <p className="text-sm text-muted-foreground">{info.description}</p>
                               </div>
-                           </motion.div>
+                           </div>
                         ))}
                      </div>
-                  </motion.div>
+                  </div>
 
-                  {/* Company Info with enhanced animations */}
-                  <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow"
-                     variants={itemVariants}
-                     style={{
-                        scale: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95]),
-                        rotateX: useTransform(scrollYProgress, [0, 0.5, 1], [10, 0, -5])
-                     }}
-                  >
+                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm p-6 hover:shadow-lg transition-shadow">
                      <h4 className="font-bold mb-4">{t("Công ty GENSOL")}</h4>
                      <div className="space-y-3 text-sm text-muted-foreground">
-                        <motion.p
-                           initial={{ opacity: 0, x: -10 }}
-                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                           transition={{ duration: 0.4, delay: 0.1 }}
-                        >
+                        <p>
                            <strong>{t("Tên đầy đủ")}:</strong> {t("Công ty TNHH GENSOL")}
-                        </motion.p>
-                        <motion.p
-                           initial={{ opacity: 0, x: -10 }}
-                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                           transition={{ duration: 0.4, delay: 0.2 }}
-                        >
+                        </p>
+                        <p>
                            <strong>{t("Mã số thuế")}:</strong> 132980
-                        </motion.p>
-                        <motion.p
-                           initial={{ opacity: 0, x: -10 }}
-                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                           transition={{ duration: 0.4, delay: 0.3 }}
-                        >
+                        </p>
+                        <p>
                            <strong>{t("Địa chỉ")}:</strong> {t("Tòa nhà Lotte Center, 54 Liễu Giai, Ba Đình, Hà Nội, Việt Nam")}
-                        </motion.p>
-                        <motion.p
-                           initial={{ opacity: 0, x: -10 }}
-                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                           transition={{ duration: 0.4, delay: 0.4 }}
-                        >
+                        </p>
+                        <p>
                            <strong>{t("Lĩnh vực")}:</strong> {t("Công nghệ thông tin, Nhân sự, Logistics")}
-                        </motion.p>
+                        </p>
                      </div>
-                  </motion.div>
+                  </div>
 
-                  {/* Map with reveal animation */}
-                  <motion.div
-                     className="rounded-xl border bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow"
-                     variants={itemVariants}
-                     style={{
-                        clipPath: useTransform(
-                           scrollYProgress,
-                           [0, 0.4, 0.6, 1],
-                           [
-                              "inset(50% 50% 50% 50%)",
-                              "inset(0% 0% 0% 0%)",
-                              "inset(0% 0% 0% 0%)",
-                              "inset(10% 10% 10% 10%)"
-                           ]
-                        )
-                     }}
-                  >
+                  <div className="rounded-xl border bg-background/50 backdrop-blur-sm overflow-hidden hover:shadow-lg transition-shadow">
                      <div className="p-4 border-b">
                         <h4 className="font-semibold flex items-center gap-2">
                            <MapPin className="h-5 w-5 text-primary" />
@@ -602,10 +382,10 @@ export default function Contact() {
                            <span className="font-medium">10-15 {t("phút bằng xe")}</span>
                         </div>
                      </div>
-                  </motion.div>
-               </motion.div>
+                  </div>
+               </div>
             </div>
          </div>
-      </motion.section>
+      </section>
    );
 }
