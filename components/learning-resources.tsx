@@ -12,6 +12,7 @@ export default function WhyChooseUs() {
   const ref = useRef(null)
   const { t } = useTranslation()
   const [init, setInit] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   // Initialize particles engine
   useEffect(() => {
@@ -22,11 +23,37 @@ export default function WhyChooseUs() {
     })
   }, [])
 
+  // Theme detection
+  useEffect(() => {
+    // Check initial theme
+    const isDark = document.documentElement.classList.contains('dark')
+    setTheme(isDark ? 'dark' : 'light')
+
+    // Create observer for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const isDark = document.documentElement.classList.contains('dark')
+          setTheme(isDark ? 'dark' : 'light')
+        }
+      })
+    })
+
+    // Start observing
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    // Cleanup
+    return () => observer.disconnect()
+  }, [])
+
   const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container)
   }
 
-  // Particle configuration with #132E65 color
+  // Particle configuration with theme-aware colors
   const options: ISourceOptions = useMemo(
     () => ({
       background: {
@@ -62,13 +89,13 @@ export default function WhyChooseUs() {
       },
       particles: {
         color: {
-          value: "#466F8D",
+          value: theme === 'dark' ? "#466F8D" : "#007B94",
         },
         links: {
-          color: "#466F8D",
+          color: theme === 'dark' ? "#466F8D" : "#007B94",
           distance: 160,
           enable: true,
-          opacity: 0.4,
+          opacity: theme === 'dark' ? 0.4 : 0.2,
           width: 2,
         },
         move: {
@@ -81,18 +108,18 @@ export default function WhyChooseUs() {
             right: "bounce",
             top: "bounce",
           },
-          random: false,
-          speed: 2,
+          random: true,
+          speed: 1.5,
           straight: false,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 160,
+          value: theme === 'dark' ? 160 : 120,
         },
         opacity: {
-          value: 0.8,
+          value: theme === 'dark' ? 0.6 : 0.2,
         },
         shape: {
           type: "circle",
@@ -103,7 +130,7 @@ export default function WhyChooseUs() {
       },
       detectRetina: true,
     }),
-    [],
+    [theme],
   )
 
   const reasons = [
@@ -146,7 +173,7 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section id="ly-do-chon" ref={ref} className="w-full py-12 md:py-20 relative overflow-hidden bg-[#060D1C]">
+    <section id="ly-do-chon" ref={ref} className={`w-full py-12 md:py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-[#060D1C]' : 'bg-gradient-to-br from-blue-50/80 via-white to-cyan-50/80'}`}>
       {/* Particles Background */}
       {init && (
         <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -166,23 +193,23 @@ export default function WhyChooseUs() {
       )}
 
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background" />
-        <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-primary/5 to-blue-400/5 blur-3xl" />
+        <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-gradient-to-b from-background via-muted/30 to-background' : 'bg-gradient-to-b from-blue-50/50 via-white/80 to-cyan-50/50'}`} />
+        <div className={`absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full blur-3xl ${theme === 'dark' ? 'bg-gradient-to-tr from-primary/5 to-blue-400/5' : 'bg-gradient-to-tr from-primary/10 to-blue-400/15'}`} />
       </div>
 
       <div className="container px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <div className="space-y-4">
-            <div className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium text-primary flex items-center w-fit gap-1 mx-auto mb-4">
+            <div className="rounded-full bg-gradient-to-r from-primary to-blue-400 text-white px-4 py-1.5 text-sm font-medium flex items-center w-fit gap-1 mx-auto mb-4">
               <Sparkle className="h-4 w-4 text-white" />
               {t("Lý do chọn chúng tôi")}
             </div>
 
-            <h2 className="text-3xl text-white font-bold tracking-tighter md:text-4xl/tight lg:text-5xl">
+            <h2 className={`text-3xl font-bold tracking-tighter md:text-4xl/tight lg:text-5xl ${theme === 'dark' ? 'text-white' : 'text-foreground'}`}>
               {t("Tại sao chọn")}{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">GENSOL?</span>
             </h2>
-            <p className="max-w-[840px] mx-auto text-white/80 md:text-xl">
+            <p className={`max-w-[840px] mx-auto md:text-xl ${theme === 'dark' ? 'text-white/80' : 'text-muted-foreground'}`}>
               {t(
                 "Chúng tôi mang đến những giá trị vượt trội & cam kết đồng hành lâu dài với sự phát triển của doanh nghiệp bạn.",
               )}
@@ -195,7 +222,7 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-3 rounded-[4px] border backdrop-blur-sm border-primary bg-[#020B1A] text-primary">
+          <div className={`inline-flex items-center gap-2 px-4 py-3 rounded-[4px] border backdrop-blur-sm border-primary ${theme === 'dark' ? 'bg-[#020B1A]' : 'bg-white/80'} text-primary`}>
             <Award className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold text-primary">
               {t("Đối tác tin cậy cho sự phát triển bền vững")}

@@ -19,7 +19,7 @@ export default function Home() {
         <AboutUs />
         <Features />
         <WhyChooseUs />
-        <div className="bg-gradient-to-br from-slate-50/90 via-white/95 to-blue-50/90 dark:from-slate-900/90 dark:via-slate-800/95 dark:to-blue-900/90">
+        <div className="bg-gradient-to-br from-slate-50/90 via-white/95 to-blue-50/90 dark:from-slate-900 dark:via-slate-1000 dark:to-slate-1000">
           <CompanyValues />
           <Contact />
           <Footer />
