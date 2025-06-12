@@ -36,7 +36,7 @@ const Brand = () => {
   const { theme } = useTheme()
   
   return (
-    <div className="w-full py-12">
+    <div className="w-full py-8">
       <div className="mx-auto w-full px-4 md:px-8">
         <div
           className="group relative flex gap-4 overflow-hidden p-2"
@@ -57,7 +57,7 @@ const Brand = () => {
                   <img
                     key={key}
                     src={logo.url}
-                    className="h-10 cursor-pointer w-auto px-2 object-contain filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform hover:scale-110"
+                    className="h-8 cursor-pointer w-auto px-2 object-contain filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 transform hover:scale-110"
                     alt={`${logo.name}`}
                     loading="eager"
                     draggable="false"
